@@ -1,0 +1,40 @@
+{
+  "connection": "default",
+  "collectionName": "",
+  "info": {
+    "name": "event",
+    "description": ""
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "title": {
+      "default": "",
+      "maxLength": 50,
+      "minLength": 1,
+      "type": "string",
+      "required": true
+    },
+    "date": {
+      "default": "",
+      "type": "date",
+      "required": true
+    },
+    "date_isFinal": {
+      "default": false,
+      "type": "boolean",
+      "required": true
+    },
+    "location": {
+      "default": "",
+      "type": "json",
+      "required": true
+    },
+    "location_isFinal": {
+      "default": false,
+      "type": "boolean",
+      "required": true
+    }
+  }
+}
