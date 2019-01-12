@@ -5,15 +5,14 @@
       "connector": "strapi-hook-mongoose",
       "settings": {
         "client": "mongo",
-        "host": "127.0.0.1",
-        "srv": false,
-        "port": 27017,
-        "database": "AmazeAPI",
-        "username": "",
-        "password": ""
+        "host": "ds149914.mlab.com",
+        "port": "49914",
+        "database": "amaze-development",
+        "username": "amazeAdmin",
+        "password": "AmazeHetic2019"
       },
       "options": {
-        "authenticationDatabase": "",
+        "authenticationDatabase": "amaze-development",
         "ssl": false
       }
     }
