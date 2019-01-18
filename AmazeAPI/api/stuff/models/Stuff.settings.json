@@ -1,0 +1,30 @@
+{
+  "connection": "default",
+  "collectionName": "",
+  "info": {
+    "name": "stuff",
+    "description": "Every things which are used during the birthday such as spots, chairs, etcs"
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "name": {
+      "default": "",
+      "type": "string",
+      "required": true
+    },
+    "quantity": {
+      "default": 1,
+      "type": "integer"
+    },
+    "description": {
+      "default": "",
+      "type": "string"
+    },
+    "user_on_it": {
+      "default": "",
+      "type": "json"
+    }
+  }
+}

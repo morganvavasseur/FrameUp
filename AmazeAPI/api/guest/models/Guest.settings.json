@@ -1,0 +1,41 @@
+{
+  "connection": "default",
+  "collectionName": "guest",
+  "info": {
+    "name": "guest",
+    "description": ""
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "firstname": {
+      "default": "",
+      "type": "string"
+    },
+    "lastname": {
+      "default": "",
+      "type": "string"
+    },
+    "birthday": {
+      "default": "",
+      "type": "date"
+    },
+    "is_admin": {
+      "default": false,
+      "type": "boolean"
+    },
+    "email": {
+      "default": "",
+      "type": "email"
+    },
+    "phone": {
+      "default": "",
+      "type": "string"
+    },
+    "diet": {
+      "model": "diet",
+      "via": "guest"
+    }
+  }
+}

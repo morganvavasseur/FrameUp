@@ -1,0 +1,30 @@
+{
+  "connection": "default",
+  "collectionName": "diet",
+  "info": {
+    "name": "diet",
+    "description": "Diet of each Guest"
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "diet_option": {
+      "default": "Aucune",
+      "type": "enumeration",
+      "enum": [
+        "Végétarien",
+        " Ne mange pas de viande",
+        " autre"
+      ]
+    },
+    "diet_explanations": {
+      "default": "",
+      "type": "text"
+    },
+    "guest": {
+      "model": "guest",
+      "via": "diet"
+    }
+  }
+}
