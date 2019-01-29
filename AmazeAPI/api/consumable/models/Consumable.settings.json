@@ -1,0 +1,40 @@
+{
+  "connection": "default",
+  "collectionName": "consumable",
+  "info": {
+    "name": "consumable",
+    "description": ""
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "name": {
+      "default": "",
+      "type": "string"
+    },
+    "quantity": {
+      "default": 1,
+      "type": "integer",
+      "required": true
+    },
+    "description": {
+      "default": "",
+      "type": "text"
+    },
+    "event": {
+      "model": "event",
+      "via": "consumables"
+    },
+    "usersOnIt": {
+      "collection": "user",
+      "via": "consumables",
+      "dominant": true,
+      "plugin": "users-permissions"
+    },
+    "price": {
+      "default": "",
+      "type": "decimal"
+    }
+  }
+}

@@ -48,6 +48,57 @@
       "via": "users",
       "plugin": "users-permissions",
       "configurable": false
+    },
+    "dietOther": {
+      "default": "",
+      "type": "text"
+    },
+    "profilePicture": {
+      "model": "file",
+      "via": "related",
+      "plugin": "upload",
+      "required": false
+    },
+    "firstName": {
+      "default": "",
+      "type": "string"
+    },
+    "lastName": {
+      "default": "",
+      "type": "string"
+    },
+    "birthday": {
+      "default": "",
+      "type": "date",
+      "required": true
+    },
+    "phone": {
+      "default": "",
+      "type": "string"
+    },
+    "organizedEvents": {
+      "collection": "event",
+      "dominant": true,
+      "via": "organizers"
+    },
+    "invitedEvents": {
+      "collection": "event",
+      "dominant": true,
+      "via": "guests"
+    },
+    "stuffs": {
+      "collection": "stuff",
+      "via": "usersOnIt",
+      "dominant": true
+    },
+    "consumables": {
+      "collection": "consumable",
+      "via": "usersOnIt"
+    },
+    "diets": {
+      "collection": "diet",
+      "via": "users"
     }
-  }
+  },
+  "collectionName": "users-permissions_user"
 }

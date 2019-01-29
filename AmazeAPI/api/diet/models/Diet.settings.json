@@ -1,0 +1,29 @@
+{
+  "connection": "default",
+  "collectionName": "",
+  "info": {
+    "name": "diet",
+    "description": ""
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "Name": {
+      "default": "",
+      "type": "string",
+      "required": true
+    },
+    "Description": {
+      "default": "",
+      "type": "text",
+      "required": true
+    },
+    "users": {
+      "collection": "user",
+      "via": "diets",
+      "dominant": true,
+      "plugin": "users-permissions"
+    }
+  }
+}

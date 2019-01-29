@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/consumables",
+      "handler": "Consumable.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/consumables/count",
+      "handler": "Consumable.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/consumables/:_id",
+      "handler": "Consumable.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/consumables",
+      "handler": "Consumable.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/consumables/:_id",
+      "handler": "Consumable.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/consumables/:_id",
+      "handler": "Consumable.destroy",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
