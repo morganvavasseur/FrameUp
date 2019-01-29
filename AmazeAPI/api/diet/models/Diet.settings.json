@@ -1,26 +1,29 @@
 {
   "connection": "default",
-  "collectionName": "diet",
+  "collectionName": "",
   "info": {
     "name": "diet",
-    "description": "Diet of each Guest"
+    "description": ""
   },
   "options": {
     "timestamps": true
   },
   "attributes": {
-    "title": {
+    "Name": {
       "default": "",
-      "type": "string"
+      "type": "string",
+      "required": true
+    },
+    "Description": {
+      "default": "",
+      "type": "text",
+      "required": true
     },
     "users": {
       "collection": "user",
       "via": "diets",
+      "dominant": true,
       "plugin": "users-permissions"
-    },
-    "description": {
-      "default": "",
-      "type": "text"
     }
   }
 }

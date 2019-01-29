@@ -49,11 +49,6 @@
       "plugin": "users-permissions",
       "configurable": false
     },
-    "diets": {
-      "collection": "diet",
-      "dominant": true,
-      "via": "users"
-    },
     "dietOther": {
       "default": "",
       "type": "text"
@@ -99,6 +94,10 @@
     "consumables": {
       "collection": "consumable",
       "via": "usersOnIt"
+    },
+    "diets": {
+      "collection": "diet",
+      "via": "users"
     }
   },
   "collectionName": "users-permissions_user"
