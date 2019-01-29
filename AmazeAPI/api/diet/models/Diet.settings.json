@@ -9,22 +9,18 @@
     "timestamps": true
   },
   "attributes": {
-    "diet_option": {
-      "default": "Aucune",
-      "type": "enumeration",
-      "enum": [
-        "Végétarien",
-        " Ne mange pas de viande",
-        " autre"
-      ]
+    "title": {
+      "default": "",
+      "type": "string"
     },
-    "diet_explanations": {
+    "users": {
+      "collection": "user",
+      "via": "diets",
+      "plugin": "users-permissions"
+    },
+    "description": {
       "default": "",
       "type": "text"
-    },
-    "guest": {
-      "model": "guest",
-      "via": "diet"
     }
   }
 }

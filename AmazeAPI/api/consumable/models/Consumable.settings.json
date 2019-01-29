@@ -1,9 +1,9 @@
 {
   "connection": "default",
-  "collectionName": "",
+  "collectionName": "consumable",
   "info": {
-    "name": "stuff",
-    "description": "Every things which are used during the birthday such as spots, chairs, etcs"
+    "name": "consumable",
+    "description": ""
   },
   "options": {
     "timestamps": true
@@ -11,29 +11,30 @@
   "attributes": {
     "name": {
       "default": "",
-      "type": "string",
-      "required": true
+      "type": "string"
     },
     "quantity": {
       "default": 1,
-      "type": "integer"
+      "type": "integer",
+      "required": true
     },
     "description": {
       "default": "",
-      "type": "string"
-    },
-    "user_on_it": {
-      "default": "",
-      "type": "json"
+      "type": "text"
     },
     "event": {
       "model": "event",
-      "via": "stuffs"
+      "via": "consumables"
     },
     "usersOnIt": {
       "collection": "user",
-      "via": "stuffs",
+      "via": "consumables",
+      "dominant": true,
       "plugin": "users-permissions"
+    },
+    "price": {
+      "default": "",
+      "type": "decimal"
     }
   }
 }

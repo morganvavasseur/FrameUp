@@ -1,6 +1,6 @@
 {
   "connection": "default",
-  "collectionName": "",
+  "collectionName": "event",
   "info": {
     "name": "event",
     "description": ""
@@ -34,6 +34,29 @@
     "location_isFinal": {
       "default": false,
       "type": "boolean",
+      "required": true
+    },
+    "organizers": {
+      "collection": "user",
+      "via": "organizedEvents",
+      "plugin": "users-permissions"
+    },
+    "guests": {
+      "collection": "user",
+      "via": "invitedEvents",
+      "plugin": "users-permissions"
+    },
+    "stuffs": {
+      "collection": "stuff",
+      "via": "event"
+    },
+    "consumables": {
+      "collection": "consumable",
+      "via": "event"
+    },
+    "entrancePrice": {
+      "default": 0,
+      "type": "decimal",
       "required": true
     }
   }

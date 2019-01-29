@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- * Lifecycle callbacks for the `Guest` model.
+ * Lifecycle callbacks for the `Consumable` model.
  */
 
 module.exports = {

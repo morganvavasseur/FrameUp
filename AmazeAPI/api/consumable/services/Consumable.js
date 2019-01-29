@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- * Guest.js service
+ * Consumable.js service
  *
  * @description: A set of functions similar to controller's actions to avoid code duplication.
  */
@@ -12,21 +12,21 @@ const _ = require('lodash');
 module.exports = {
 
   /**
-   * Promise to fetch all guests.
+   * Promise to fetch all consumables.
    *
    * @return {Promise}
    */
 
   fetchAll: (params) => {
     // Convert `params` object to filters compatible with Mongo.
-    const filters = strapi.utils.models.convertParams('guest', params);
+    const filters = strapi.utils.models.convertParams('consumable', params);
     // Select field to populate.
-    const populate = Guest.associations
+    const populate = Consumable.associations
       .filter(ast => ast.autoPopulate !== false)
       .map(ast => ast.alias)
       .join(' ');
 
-    return Guest
+    return Consumable
       .find()
       .where(filters.where)
       .sort(filters.sort)
@@ -36,90 +36,90 @@ module.exports = {
   },
 
   /**
-   * Promise to fetch a/an guest.
+   * Promise to fetch a/an consumable.
    *
    * @return {Promise}
    */
 
   fetch: (params) => {
     // Select field to populate.
-    const populate = Guest.associations
+    const populate = Consumable.associations
       .filter(ast => ast.autoPopulate !== false)
       .map(ast => ast.alias)
       .join(' ');
 
-    return Guest
-      .findOne(_.pick(params, _.keys(Guest.schema.paths)))
+    return Consumable
+      .findOne(_.pick(params, _.keys(Consumable.schema.paths)))
       .populate(populate);
   },
 
   /**
-   * Promise to count guests.
+   * Promise to count consumables.
    *
    * @return {Promise}
    */
 
   count: (params) => {
     // Convert `params` object to filters compatible with Mongo.
-    const filters = strapi.utils.models.convertParams('guest', params);
+    const filters = strapi.utils.models.convertParams('consumable', params);
 
-    return Guest
+    return Consumable
       .count()
       .where(filters.where);
   },
 
   /**
-   * Promise to add a/an guest.
+   * Promise to add a/an consumable.
    *
    * @return {Promise}
    */
 
   add: async (values) => {
     // Extract values related to relational data.
-    const relations = _.pick(values, Guest.associations.map(ast => ast.alias));
-    const data = _.omit(values, Guest.associations.map(ast => ast.alias));
+    const relations = _.pick(values, Consumable.associations.map(ast => ast.alias));
+    const data = _.omit(values, Consumable.associations.map(ast => ast.alias));
 
     // Create entry with no-relational data.
-    const entry = await Guest.create(data);
+    const entry = await Consumable.create(data);
 
     // Create relational data and return the entry.
-    return Guest.updateRelations({ _id: entry.id, values: relations });
+    return Consumable.updateRelations({ _id: entry.id, values: relations });
   },
 
   /**
-   * Promise to edit a/an guest.
+   * Promise to edit a/an consumable.
    *
    * @return {Promise}
    */
 
   edit: async (params, values) => {
     // Extract values related to relational data.
-    const relations = _.pick(values, Guest.associations.map(a => a.alias));
-    const data = _.omit(values, Guest.associations.map(a => a.alias));
+    const relations = _.pick(values, Consumable.associations.map(a => a.alias));
+    const data = _.omit(values, Consumable.associations.map(a => a.alias));
 
     // Update entry with no-relational data.
-    const entry = await Guest.update(params, data, { multi: true });
+    const entry = await Consumable.update(params, data, { multi: true });
 
     // Update relational data and return the entry.
-    return Guest.updateRelations(Object.assign(params, { values: relations }));
+    return Consumable.updateRelations(Object.assign(params, { values: relations }));
   },
 
   /**
-   * Promise to remove a/an guest.
+   * Promise to remove a/an consumable.
    *
    * @return {Promise}
    */
 
   remove: async params => {
     // Select field to populate.
-    const populate = Guest.associations
+    const populate = Consumable.associations
       .filter(ast => ast.autoPopulate !== false)
       .map(ast => ast.alias)
       .join(' ');
 
     // Note: To get the full response of Mongo, use the `remove()` method
     // or add spent the parameter `{ passRawResult: true }` as second argument.
-    const data = await Guest
+    const data = await Consumable
       .findOneAndRemove(params, {})
       .populate(populate);
 
@@ -128,7 +128,7 @@ module.exports = {
     }
 
     await Promise.all(
-      Guest.associations.map(async association => {
+      Consumable.associations.map(async association => {
         if (!association.via || !data._id) {
           return true;
         }
@@ -149,22 +149,22 @@ module.exports = {
   },
 
   /**
-   * Promise to search a/an guest.
+   * Promise to search a/an consumable.
    *
    * @return {Promise}
    */
 
   search: async (params) => {
     // Convert `params` object to filters compatible with Mongo.
-    const filters = strapi.utils.models.convertParams('guest', params);
+    const filters = strapi.utils.models.convertParams('consumable', params);
     // Select field to populate.
-    const populate = Guest.associations
+    const populate = Consumable.associations
       .filter(ast => ast.autoPopulate !== false)
       .map(ast => ast.alias)
       .join(' ');
 
-    const $or = Object.keys(Guest.attributes).reduce((acc, curr) => {
-      switch (Guest.attributes[curr].type) {
+    const $or = Object.keys(Consumable.attributes).reduce((acc, curr) => {
+      switch (Consumable.attributes[curr].type) {
         case 'integer':
         case 'float':
         case 'decimal':
@@ -188,7 +188,7 @@ module.exports = {
       }
     }, []);
 
-    return Guest
+    return Consumable
       .find({ $or })
       .sort(filters.sort)
       .skip(filters.start)
