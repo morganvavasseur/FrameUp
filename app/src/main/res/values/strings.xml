@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">FrameUp</string>
+    <string name="app_name">Amaze</string>
+    <string name="lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ullamcorper</string>
 </resources>
