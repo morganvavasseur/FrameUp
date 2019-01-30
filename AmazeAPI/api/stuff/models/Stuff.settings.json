@@ -1,6 +1,6 @@
 {
   "connection": "default",
-  "collectionName": "",
+  "collectionName": "stuff",
   "info": {
     "name": "stuff",
     "description": "Every things which are used during the birthday such as spots, chairs, etcs"
@@ -22,18 +22,14 @@
       "default": "",
       "type": "string"
     },
-    "user_on_it": {
-      "default": "",
-      "type": "json"
-    },
-    "event": {
-      "model": "event",
-      "via": "stuffs"
-    },
     "usersOnIt": {
       "collection": "user",
       "via": "stuffs",
       "plugin": "users-permissions"
+    },
+    "event": {
+      "model": "event",
+      "via": "stuffs"
     }
   }
 }

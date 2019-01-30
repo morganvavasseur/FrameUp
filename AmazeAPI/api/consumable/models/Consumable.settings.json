@@ -22,19 +22,19 @@
       "default": "",
       "type": "text"
     },
-    "event": {
-      "model": "event",
-      "via": "consumables"
-    },
     "usersOnIt": {
       "collection": "user",
-      "via": "consumables",
       "dominant": true,
+      "via": "consumables",
       "plugin": "users-permissions"
     },
     "price": {
       "default": "",
       "type": "decimal"
+    },
+    "event": {
+      "model": "event",
+      "via": "consumables"
     }
   }
 }
