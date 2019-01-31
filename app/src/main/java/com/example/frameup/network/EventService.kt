@@ -21,7 +21,7 @@ class EventService {
 
             // 3ème paramètre = Modèe de classe que l'on spécifie
             // au parser Json pour mapper le Json reçu à une classe donnée
-            val request = BaseRequest.Builder<Event>(Request.Method.GET, url, Event::class.java)
+            /*val request = BaseRequest.Builder<Event>(Request.Method.GET, url, Event::class.java)
                 .listener(object: RequestListener<Event> {
                     override fun onSuccess(
                         request: Request<Event>,
@@ -42,10 +42,10 @@ class EventService {
                         error.toString()
                     }
 
-                }).build() // Créer l'objet Request
+                }).build() // Créer l'objet Request*/
 
             // Lancer la requête
-            AmazeApp.sharedInstance.requestQueue.add(request)
+           // AmazeApp.sharedInstance.requestQueue.add(request)
         }
     }
 }

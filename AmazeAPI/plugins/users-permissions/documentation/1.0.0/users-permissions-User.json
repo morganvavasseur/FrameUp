@@ -1261,17 +1261,17 @@
             "items": {
               "required": [
                 "id",
-                "Name",
-                "Description"
+                "name",
+                "description"
               ],
               "properties": {
                 "id": {
                   "type": "string"
                 },
-                "Name": {
+                "name": {
                   "type": "string"
                 },
-                "Description": {
+                "description": {
                   "type": "string"
                 },
                 "users": {
