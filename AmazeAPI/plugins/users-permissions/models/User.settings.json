@@ -76,20 +76,10 @@
       "default": "",
       "type": "string"
     },
-    "organizedEvents": {
-      "collection": "event",
-      "dominant": true,
-      "via": "organizers"
-    },
-    "invitedEvents": {
-      "collection": "event",
-      "dominant": true,
-      "via": "guests"
-    },
     "stuffs": {
       "collection": "stuff",
-      "via": "usersOnIt",
-      "dominant": true
+      "dominant": true,
+      "via": "usersOnIt"
     },
     "consumables": {
       "collection": "consumable",
@@ -98,6 +88,14 @@
     "diets": {
       "collection": "diet",
       "via": "users"
+    },
+    "organizedEvents": {
+      "collection": "event",
+      "via": "organizers"
+    },
+    "invitedEvents": {
+      "collection": "event",
+      "via": "guests"
     }
   },
   "collectionName": "users-permissions_user"

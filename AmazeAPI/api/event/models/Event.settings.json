@@ -11,53 +11,48 @@
   "attributes": {
     "title": {
       "default": "",
-      "maxLength": 50,
-      "minLength": 1,
-      "type": "string",
-      "required": true
+      "type": "string"
     },
     "date": {
       "default": "",
       "type": "date",
       "required": true
     },
-    "date_isFinal": {
+    "dateIsFinal": {
       "default": false,
-      "type": "boolean",
-      "required": true
+      "type": "boolean"
     },
     "location": {
       "default": "",
-      "type": "json",
-      "required": true
+      "type": "json"
     },
-    "location_isFinal": {
+    "locationIsFinal": {
       "default": false,
-      "type": "boolean",
-      "required": true
+      "type": "boolean"
+    },
+    "entrancePrice": {
+      "default": 0,
+      "type": "decimal"
     },
     "organizers": {
       "collection": "user",
+      "dominant": true,
       "via": "organizedEvents",
       "plugin": "users-permissions"
     },
     "guests": {
       "collection": "user",
+      "dominant": true,
       "via": "invitedEvents",
       "plugin": "users-permissions"
-    },
-    "stuffs": {
-      "collection": "stuff",
-      "via": "event"
     },
     "consumables": {
       "collection": "consumable",
       "via": "event"
     },
-    "entrancePrice": {
-      "default": 0,
-      "type": "decimal",
-      "required": true
+    "stuffs": {
+      "collection": "stuff",
+      "via": "event"
     }
   }
 }
