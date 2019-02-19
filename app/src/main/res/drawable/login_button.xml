@@ -5,7 +5,6 @@
             />
     <solid
             android:color="@color/colorAccent"
-            android:text_color="#FFFFFF"
             />
     <padding
             android:left="0dp"

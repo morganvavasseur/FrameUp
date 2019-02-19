@@ -5,23 +5,24 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="com.example.frameup.activities.LoginActivity">
+        tools:context="com.example.frameup.activities.SignUpActivity">
 
     <ImageView
-            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:id="@+id/imageView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:adjustViewBounds="true"
             android:cropToPadding="false"
+            android:adjustViewBounds="true"
+            android:scaleType="fitStart"
+            android:layout_width="0dp"
             android:background="@drawable/login_header"/>
 
     <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/people_group_login"
+            app:srcCompat="@drawable/people_group_signup"
             android:id="@+id/imageView2"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="16dp"
@@ -31,7 +32,7 @@
             />
 
     <TextView
-            android:text="Login"
+            android:text="Sign Up"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:id="@+id/textView"
@@ -45,7 +46,7 @@
             app:layout_constraintTop_toBottomOf="@+id/imageView"/>
 
     <TextView
-            android:text="Please SigIn in to continue"
+            android:text="Please create an Account to continue"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:id="@+id/textView2"
@@ -61,7 +62,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
-            android:hint="Please enter your email"
+            android:hint="Username"
             android:textColorHint="@color/colorEditTextHintColor"
             android:drawablePadding="16dp"
             android:paddingLeft="0sp"
@@ -85,23 +86,66 @@
     <EditText
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:hint="Mail"
+            android:textColorHint="@color/colorEditTextHintColor"
+            android:drawablePadding="16dp"
+            android:paddingLeft="0sp"
+            android:paddingRight="0dp"
+            android:maxLines="1"
+            android:drawableLeft="@drawable/close_envelope"
+            android:ems="10"
+            android:id="@+id/editText4"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@+id/editText"
+            app:layout_constraintHorizontal_bias="0.0"
+            android:paddingBottom="@dimen/edittext_padding_bottom">
+    </EditText>
+
+    <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:inputType="textPassword"
             android:ems="10"
             android:id="@+id/editText2"
             android:textColorHint="@color/colorEditTextHintColor"
-            android:layout_marginTop="8dp"
-            app:layout_constraintTop_toBottomOf="@+id/editText"
             android:layout_marginStart="16dp"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginEnd="16dp"
             app:layout_constraintEnd_toEndOf="parent"
-            android:hint="Please enter your password"
+            android:hint="Password"
             android:drawableLeft="@drawable/password_locker"
             android:drawablePadding="16dp"
+            app:layout_constraintHorizontal_bias="0.0"
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@+id/editText4"
+            android:paddingBottom="@dimen/edittext_padding_bottom"/>
+
+    <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:ems="10"
+            android:id="@+id/editText3"
+            android:textColorHint="@color/colorEditTextHintColor"
+            android:layout_marginStart="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:hint="Repeat password"
+            android:drawableLeft="@drawable/password_locker"
+            android:drawablePadding="16dp"
+            app:layout_constraintHorizontal_bias="0.0"
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@+id/editText2"
             android:paddingBottom="@dimen/edittext_padding_bottom"/>
 
     <Button
-            android:text="Login"
+            android:text="Create an account"
             android:textColor="#FFFFFF"
             android:textSize="15sp"
             android:background="@drawable/login_button"
@@ -112,52 +156,26 @@
             android:layout_marginEnd="16dp"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            app:layout_constraintTop_toBottomOf="@+id/editText2"
-            android:textAllCaps="false"
-            />
-
-    <Button
-            android:text="Login with Facebook"
-            android:textColor="#FFFFFF"
-            android:textSize="15sp"
-            android:background="@drawable/login_button"
-            android:backgroundTint="#42A9C3"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/button2"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginEnd="16dp"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="16dp"
             android:textAllCaps="false"
             app:layout_constraintHorizontal_bias="0.0"
-            android:layout_marginTop="16dp"
-            app:layout_constraintTop_toBottomOf="@+id/button"/>
+            android:layout_marginTop="32dp"
+            app:layout_constraintTop_toBottomOf="@+id/editText3"/>
 
     <TextView
-            android:text="Forgot password ? Reset here"
+            android:text="By creating an account, you agree to our Terms of Service and Privacy Policy"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:id="@+id/textView3"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            app:layout_constraintTop_toBottomOf="@+id/button2"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginEnd="16dp"/>
-
-    <TextView
-            android:text="Don’t have an account? Swipe right to create a new account."
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:id="@+id/textView4"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginEnd="8dp"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="8dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintHorizontal_bias="0.0"
             android:layout_marginTop="16dp"
-            app:layout_constraintTop_toBottomOf="@+id/textView3"
+            app:layout_constraintTop_toBottomOf="@+id/button"
+            android:textSize="10sp"
+            android:textAlignment="center"
+            android:textColor="@color/colorBlackText"
             android:layout_marginBottom="16dp"
             app:layout_constraintBottom_toBottomOf="parent"/>
 
