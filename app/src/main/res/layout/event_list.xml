@@ -7,6 +7,20 @@
                 android:orientation="vertical"
                 tools:context="com.example.amaze.HomeActivity">
 
+    <Button
+            android:text="goLoginActivity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/goLoginBtn"
+            android:layout_marginEnd="0dp"
+            android:layout_alignEnd="@+id/toolbar"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="0dp"
+            android:layout_alignTop="@+id/toolbar"
+            android:layout_marginTop="8dp"
+            android:layout_above="@+id/event_recycler_view"
+            android:layout_marginBottom="8dp"/>
+
     <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"

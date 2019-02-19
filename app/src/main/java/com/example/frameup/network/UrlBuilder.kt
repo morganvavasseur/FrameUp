@@ -11,7 +11,7 @@ class UrlBuilder {
                 "NO URI YET"
 
             } else {
-                "http://localhost:1337/"
+                "http://10.93.182.81:1337"
             }
         }
 
