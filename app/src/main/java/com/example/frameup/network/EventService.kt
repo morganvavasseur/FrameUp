@@ -13,39 +13,35 @@ class Error(code:Int, message: String)
 class EventService {
     companion object {
 
-        fun getEvents(results: (results: Array<Event>,
+        fun getEvents(results: (results: List<Event>,
                                   error: Error)-> Unit) {
 
             val url = UrlBuilder.getEvents()
-
+            val token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YzM5Y2M3ZGEyNDQyNTEwYzMyMzZjZGYiLCJpYXQiOjE1NDg5MzgxMjUsImV4cCI6MTU1MTUzMDEyNX0.yFknfrwLjskuqF-8gV67Hyjzzv3xzR-5lxlWAKDnZvs"
 
             // 3ème paramètre = Modèe de classe que l'on spécifie
             // au parser Json pour mapper le Json reçu à une classe donnée
-            /*val request = BaseRequest.Builder<Event>(Request.Method.GET, url, Event::class.java)
-                .listener(object: RequestListener<Event> {
+            val request = BaseRequest.Builder<Array<Event>>(Request.Method.GET, url, Array<Event>::class.java)
+                .headers(hashMapOf("Authorization" to "Bearer ${token}"))
+                .listener(object: RequestListener<Array<Event>> {
                     override fun onSuccess(
-                        request: Request<Event>,
-                        response: NetworkResponse,
-                        result: Array<Event>?
-                    ) {
+                        request: Request<*>?,
+                        response: NetworkResponse?,
+                        result: Array<Event>?) {
                         if (result is Array<Event>){
                             // Ici result n'est pas nul
 
                         }
                     }
 
-                    override fun onFailure(
-                        request: Request<Event>,
-                        response: NetworkResponse?,
-                        error: VolleyError?
-                    ) {
+                    override fun onFailure(request: Request<*>?, response: NetworkResponse?, error: VolleyError?) {
                         error.toString()
                     }
 
-                }).build() // Créer l'objet Request*/
+                }).build() // Créer l'objet Request
 
             // Lancer la requête
-           // AmazeApp.sharedInstance.requestQueue.add(request)
+            AmazeApp.sharedInstance.requestQueue.add(request)
         }
     }
 }

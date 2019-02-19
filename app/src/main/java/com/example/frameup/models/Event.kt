@@ -13,17 +13,20 @@ import java.util.*
 @JsonIgnoreProperties(ignoreUnknown = true)
 class Event {
 
+    @JsonProperty("_id")
+    lateinit var id: String
+
     // Titre de l'event
     lateinit var title: String
 
     // Date présumé de l'event
-    lateinit var date: Date
+    lateinit var date: String
 
     // Vrai si la date de l'event est validée
     var dateIsFinal: Boolean = false
 
     // Contient le lieu de l'event
-    lateinit var location: Location
+    //lateinit var location: Location
 
     // Vrai si le lieu de l'event est validé
     var locationIsFinal: Boolean = false
@@ -33,14 +36,14 @@ class Event {
     var entrancePrice: Int = 0
 
     // Liste des organisateurs de l'event
-    lateinit var organizers: MutableList<User>
+    lateinit var organizers: Array<User>
 
     // Liste des invités
-    lateinit var guests: MutableList<User>
+    lateinit var guests: Array<User>
 
     // Liste des Consumables de l'event
-    lateinit var consumables: MutableList<Consumable>
+    var consumables: Array<Consumable>? = null
 
     // Liste des Stuffs de l'event
-    lateinit var stuffs: MutableList<Stuff>
+    lateinit var stuffs: Array<Stuff>
 }
