@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "01/31/2019 11:36:02 AM"
+    "x-generation-date": "02/01/2019 9:25:54 AM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -3066,13 +3066,24 @@
         ]
       }
     },
-    "/connect/*": {
+    "/connect/{0}": {
       "get": {
         "deprecated": false,
         "description": "Connect a provider",
         "responses": {
           "200": {
-            "description": "Your user is redirected"
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "foo": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
           },
           "403": {
             "description": "Forbidden",
@@ -3105,27 +3116,22 @@
             }
           }
         },
-        "summary": "Authenticate your user with a custom provider",
+        "summary": "",
         "tags": [
-          "Authentication"
+          "Users-Permissions - User"
         ],
         "parameters": [
           {
-            "name": "provider",
+            "name": 0,
             "in": "path",
-            "required": true,
+            "description": "",
             "deprecated": false,
-            "description": "The name of the provider you want to use",
+            "required": true,
             "schema": {
               "type": "string"
             }
           }
-        ],
-        "security": [],
-        "externalDocs": {
-          "description": "Find out more about the authentication flow in the strapi documentation",
-          "url": "https://strapi.io/documentation/guides/authentication.html#providers"
-        }
+        ]
       }
     },
     "/auth/local": {
