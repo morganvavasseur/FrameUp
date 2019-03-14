@@ -1,4 +1,19 @@
 <resources>
     <string name="app_name">Amaze</string>
     <string name="lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ullamcorper</string>
+
+    <!-- Bottom Navigation View -->
+    <string name="nav_home_text">Home</string>
+    <string name="nav_notifications">Notifications</string>
+    <string name="nav_account">Profile</string>
+
+    <string name="nav_add_event">Add Event</string>
+
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="empty_basket_text">Empty Basket</string>
+    <string name="add_article_button_text">Add an article</string>
+    <string name="propose_choose_article_text">Choose un article in  the Menu</string>
+    <string name="total_order_text">Total de la commande</string>
 </resources>

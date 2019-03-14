@@ -1,4 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <dimen name="edittext_padding_bottom">20sp</dimen>
+    <dimen name="h3_font_size">25</dimen>
+    <dimen name="h4_font_size">16</dimen>
+    <dimen name="button_font_size">14</dimen>
+    <dimen name="number_of_product_into_basket_font_size">11</dimen>
+    <dimen name="price_value_text">42</dimen>
+    <dimen name="design_bottom_navigation_item_max_width" tools:override="true">600dp</dimen>
+    <dimen name="design_bottom_navigation_active_item_max_width" tools:override="true">600dp</dimen>
 </resources>

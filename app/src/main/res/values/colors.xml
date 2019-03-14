@@ -6,4 +6,7 @@
     <color name="colorEditTextHintColor">#B7B4B4</color>
     <color name="colorBlackText">#3C3C3C</color>
     <color name="colorBackground">#F9F9F9</color>
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="colorWhiteTransparent">#90FFFFFF</color>
+    <color name="ColorBlackSecondary">#515C6F</color>
 </resources>

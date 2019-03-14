@@ -13,16 +13,29 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
         <activity android:name="com.example.amaze.activities.SignUpActivity">
+        <activity android:name="com.example.frameup.activities.Order">
         </activity>
         <activity android:name="com.example.amaze.activities.LoginActivity">
+        <activity android:name="com.example.frameup.activities.Basket">
         </activity>
         <activity android:name="com.example.amaze.HomeActivity">
+        <activity android:name="com.example.frameup.activities.CreateEventActivity">
+        </activity>
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <activity android:name="com.example.frameup.activities.SignUpActivity">
+        </activity>
+        <activity android:name="com.example.frameup.activities.LoginActivity">
+        </activity>
+
+        <meta-data
+                android:name="preloaded_fonts"
+                android:resource="@array/preloaded_fonts"/>
     </application>
 
 </manifest>
