@@ -1,4 +1,4 @@
-package com.example.frameup
+package com.example.amaze
 
 import org.junit.Test
 

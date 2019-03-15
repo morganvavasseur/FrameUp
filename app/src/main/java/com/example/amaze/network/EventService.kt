@@ -1,10 +1,10 @@
-package com.example.frameup.network
+package com.example.amaze.network
 
 import com.android.volley.NetworkResponse
 import com.android.volley.Request
 import com.android.volley.VolleyError
-import com.example.frameup.AmazeApp
-import com.example.frameup.models.Event
+import com.example.amaze.AmazeApp
+import com.example.amaze.models.Event
 import com.neopixl.spitfire.listener.RequestListener
 import com.neopixl.spitfire.request.BaseRequest
 
@@ -14,7 +14,7 @@ class EventService {
     companion object {
 
         fun getEvents(results: (results: List<Event>,
-                                  error: Error)-> Unit) {
+                                error: Error)-> Unit) {
 
             val url = UrlBuilder.getEvents()
             val token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1YzM5Y2M3ZGEyNDQyNTEwYzMyMzZjZGYiLCJpYXQiOjE1NDg5MzgxMjUsImV4cCI6MTU1MTUzMDEyNX0.yFknfrwLjskuqF-8gV67Hyjzzv3xzR-5lxlWAKDnZvs"

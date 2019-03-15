@@ -1,4 +1,4 @@
-package com.example.frameup
+package com.example.amaze
 
 import android.app.Application
 import com.android.volley.RequestQueue

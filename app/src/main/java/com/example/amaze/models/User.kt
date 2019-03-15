@@ -1,4 +1,4 @@
-package com.example.frameup.models
+package com.example.amaze.models
 
 import android.provider.ContactsContract
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
