@@ -5,15 +5,23 @@ import android.support.design.widget.BottomNavigationView
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentTransaction
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.Toolbar
 import android.widget.FrameLayout
 import com.example.frameup.activities.AccountFragment
 import com.example.frameup.activities.HomeFragment
 import com.example.frameup.activities.NotificationsFragment
+import android.widget.Toast
+import android.R.id
+import android.R.menu
+import android.view.Menu
+import android.view.MenuItem
+
 
 class MainActivity : AppCompatActivity() {
 
     lateinit var mMainNav : BottomNavigationView
     lateinit var mMainFrame : FrameLayout
+    lateinit var mToolbar : Toolbar
 
     lateinit var homeFragment: HomeFragment
     lateinit var notificationFragment: NotificationsFragment
@@ -27,6 +35,10 @@ class MainActivity : AppCompatActivity() {
         this.mMainFrame = findViewById(R.id.main_frame)
         this.mMainNav = findViewById(R.id.main_nav)
 
+        // Initialise la toolbar
+        this.mToolbar = findViewById(R.id.toolbar)
+        setSupportActionBar(mToolbar)
+
         // Initialise un les fragments
         homeFragment = HomeFragment()
         notificationFragment = NotificationsFragment()
@@ -36,9 +48,11 @@ class MainActivity : AppCompatActivity() {
         setFragment(homeFragment)
 
         this.mMainNav.setOnNavigationItemSelectedListener {
+            mToolbar.menu.clear()
             if (R.id.nav_home == it.itemId) {
                 mMainNav.setBackgroundResource(R.color.colorPrimary)
                 setFragment(homeFragment)
+                menuInflater.inflate(R.menu.home_toolbar, mToolbar.menu)
                 true
 
             }
@@ -69,6 +83,27 @@ class MainActivity : AppCompatActivity() {
 
         //val intent = Intent(this, LoginActivity::class.java)
         //startActivity(intent)G
+    }
+
+    /* override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        menuInflater.inflate(R.menu.home_toolbar, menu)
+        return true
+    }*/
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        val id = item.getItemId()
+
+
+        if (id == R.id.add_event_button) {
+            Toast.makeText(this@MainActivity, "Action clicked", Toast.LENGTH_LONG).show()
+            return true
+        }
+
+        return super.onOptionsItemSelected(item)
     }
 
     private fun setFragment(fragment: Fragment) {

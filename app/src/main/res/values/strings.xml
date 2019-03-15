@@ -16,4 +16,5 @@
     <string name="add_article_button_text">Add an article</string>
     <string name="propose_choose_article_text">Choose un article in  the Menu</string>
     <string name="total_order_text">Total de la commande</string>
+    <string name="toolbar_create_event_button_text">Create Event</string>
 </resources>
