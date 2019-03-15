@@ -1,4 +1,4 @@
-package com.example.frameup.network
+package com.example.amaze.network
 
 class UrlBuilder {
 
