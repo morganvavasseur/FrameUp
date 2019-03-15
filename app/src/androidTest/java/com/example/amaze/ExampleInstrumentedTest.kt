@@ -1,4 +1,4 @@
-package com.example.frameup
+package com.example.amaze
 
 import android.support.test.InstrumentationRegistry
 import android.support.test.runner.AndroidJUnit4

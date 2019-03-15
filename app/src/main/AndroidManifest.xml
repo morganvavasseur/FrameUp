@@ -5,18 +5,18 @@
     <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
-            android:name="com.example.frameup.AmazeApp"
+            android:name="com.example.amaze.AmazeApp"
             android:allowBackup="true"
             android:icon="@mipmap/ic_launcher"
             android:label="@string/app_name"
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name="com.example.frameup.activities.SignUpActivity">
+        <activity android:name="com.example.amaze.activities.SignUpActivity">
         </activity>
-        <activity android:name="com.example.frameup.activities.LoginActivity">
+        <activity android:name="com.example.amaze.activities.LoginActivity">
         </activity>
-        <activity android:name=".HomeActivity">
+        <activity android:name="com.example.amaze.HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
