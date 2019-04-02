@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="EventCardView">
+        <attr name="event_card_profile_image" format="reference"/>
+        <attr name="event_card_title" format="string"/>
+        <attr name="event_card_date" format="string"/>
+        <attr name="event_card_host_name" format="string"/>
+        <attr name="event_card_description" format="string"/>
+        <attr name="event_card_location" format="string"/>
+        <attr name="event_card_hour" format="string"/>
+    </declare-styleable>
+</resources>
