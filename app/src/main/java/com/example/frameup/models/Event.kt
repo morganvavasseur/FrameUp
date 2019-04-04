@@ -24,16 +24,16 @@ data class Event(
     val date: Date,
 
     // Personne qui à créer l'event
-    val host: User,
+    //val host: User,
 
     // Description de l'event
     val description: String,
 
     // Vrai si la date de l'event est validée
-    var dateIsFinal: Boolean = false,
+    var dateIsFinal: Boolean = false
 
     // Contient le lieu de l'event
-    val location: String
+    //val location: String
 
     // Vrai si le lieu de l'event est validé
     //var locationIsFinal: Boolean = false,

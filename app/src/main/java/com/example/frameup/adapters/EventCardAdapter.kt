@@ -26,10 +26,10 @@ class EventCardAdapter(val events : List<Event>) : RecyclerView.Adapter<EventCar
         // Affecte les valeurs à l'event récupéré
         holder.view.event_card_title.text = event.title
         holder.view.event_card_date.text = event.date.toString()
-        holder.view.event_card_host_name.text = event.host.firstName
+        holder.view.event_card_host_name.text = "LE NOM DE L'HOTE"
         holder.view.event_card_description.text = event.description
         holder.view.event_card_hour.text = event.date.time.toString()
-        holder.view.event_card_location.text = event.location
+        //holder.view.event_card_location.text = event.location
 
     }
 

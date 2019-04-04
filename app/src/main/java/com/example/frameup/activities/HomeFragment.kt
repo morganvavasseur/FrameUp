@@ -6,23 +6,30 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Adapter
-import android.widget.ListAdapter
-import android.widget.ListView
 import com.example.amaze.R
 import com.example.frameup.adapters.EventCard
 import kotlinx.android.synthetic.main.fragment_home.view.*
 import android.R.layout
 import android.R.attr.data
 import android.R.id
+import android.content.Intent
 import android.support.constraint.ConstraintLayout
 import android.support.v7.widget.LinearLayoutManager
-import android.widget.FrameLayout
+import android.util.Log
+import android.widget.*
+import com.example.amaze.MainActivity
+import com.example.frameup.AmazeApp
 import com.example.frameup.adapters.EventCardAdapter
+import com.example.frameup.models.ConnectResults
 import com.example.frameup.models.Event
 import com.example.frameup.models.User
+import com.example.frameup.network.RetrofitClient
+import com.example.frameup.utils.SecureStorageServices
 import kotlinx.android.synthetic.main.activity_order.*
 import kotlinx.android.synthetic.main.fragment_home.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.sql.Date
 
 
@@ -38,54 +45,33 @@ private const val ARG_PARAM2 = "param2"
  */
 class HomeFragment : Fragment() {
 
-    lateinit var events: List<Event>
+    var events: ArrayList<Event> = ArrayList<Event>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        events = listOf(
-            Event(
-                "01",
-                "Thomas’s Birthday party",
-                Date(System.currentTimeMillis()),
-                User("00", "Yann", "Malanda", Date(System.currentTimeMillis()), "064752839", "YannMLD", "malanda70@gmail.com"),
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...",
-                false,
-                "1 Place du Châtelet, 75001 Paris"),
-            Event(
-                "01",
-                "Anniversaire de Maxime",
-                Date(System.currentTimeMillis()),
-                User("00", "Yann", "Malanda", Date(System.currentTimeMillis()), "064752839", "YannMLD", "malanda70@gmail.com"),
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...",
-                false,
-                "1 Place du Châtelet, 75001 Paris"),
-            Event(
-                "01",
-                "Thomas’s Birthday party",
-                Date(System.currentTimeMillis()),
-                User("00", "Yann", "Malanda", Date(System.currentTimeMillis()), "064752839", "YannMLD", "malanda70@gmail.com"),
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...",
-                false,
-                "1 Place du Châtelet, 75001 Paris"),
-            Event(
-                "01",
-                "Thomas’s Birthday party",
-                Date(System.currentTimeMillis()),
-                User("00", "Yann", "Malanda", Date(System.currentTimeMillis()), "064752839", "YannMLD", "malanda70@gmail.com"),
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...",
-                false,
-                "1 Place du Châtelet, 75001 Paris"),
-            Event(
-                "01",
-                "Thomas’s Birthday party",
-                Date(System.currentTimeMillis()),
-                User("00", "Yann", "Malanda", Date(System.currentTimeMillis()), "064752839", "YannMLD", "malanda70@gmail.com"),
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...",
-                false,
-                "1 Place du Châtelet, 75001 Paris")
-        )
+        val connectLocalRequest = RetrofitClient.eventService.getInvitedEvent("5ca34fcc82ecd255bf1be017")
+
+        connectLocalRequest.enqueue(object : Callback<ArrayList<Event>> {
+            override fun onFailure(call: Call<ArrayList<Event>>, t: Throwable) {
+                error(t.message.toString())
+
+            }
+
+            override fun onResponse(call: Call<ArrayList<Event>>, response: Response<ArrayList<Event>>) {
+                var responseEvents = response.body()
+                if(responseEvents is ArrayList<Event>){
+                    events = responseEvents
+                    recyclerViewEvents.layoutManager = LinearLayoutManager(context)
+                    recyclerViewEvents.adapter = EventCardAdapter(events)
+                }
+            }
+
+        })
+
+        Toast.makeText(AmazeApp.sharedInstance, "${events.count()}", Toast.LENGTH_SHORT).show()
+
 
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_home, container, false)
@@ -96,6 +82,8 @@ class HomeFragment : Fragment() {
 
         recyclerViewEvents.layoutManager = LinearLayoutManager(context)
         recyclerViewEvents.adapter = EventCardAdapter(events)
+
+
 
     }
 
