@@ -1,4 +1,4 @@
-package com.example.frameup.activities
+package com.example.amaze.activities
 
 
 import android.os.Bundle

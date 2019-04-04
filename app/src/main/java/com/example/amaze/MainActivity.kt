@@ -9,9 +9,9 @@ import android.support.v7.widget.Toolbar
 import android.view.MenuItem
 import android.widget.FrameLayout
 import android.widget.Toast
-import com.example.frameup.activities.AccountFragment
-import com.example.frameup.activities.HomeFragment
-import com.example.frameup.activities.NotificationsFragment
+import com.example.amaze.activities.AccountFragment
+import com.example.amaze.activities.HomeFragment
+import com.example.amaze.activities.NotificationsFragment
 
 
 class MainActivity : AppCompatActivity() {

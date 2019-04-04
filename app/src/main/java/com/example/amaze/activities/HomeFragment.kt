@@ -1,4 +1,4 @@
-package com.example.frameup.activities
+package com.example.amaze.activities
 
 
 import android.os.Bundle
@@ -7,30 +7,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.amaze.R
-import com.example.frameup.adapters.EventCard
-import kotlinx.android.synthetic.main.fragment_home.view.*
-import android.R.layout
-import android.R.attr.data
-import android.R.id
-import android.content.Intent
-import android.support.constraint.ConstraintLayout
 import android.support.v7.widget.LinearLayoutManager
-import android.util.Log
 import android.widget.*
-import com.example.amaze.MainActivity
-import com.example.frameup.AmazeApp
-import com.example.frameup.adapters.EventCardAdapter
-import com.example.frameup.models.ConnectResults
-import com.example.frameup.models.Event
-import com.example.frameup.models.User
-import com.example.frameup.network.RetrofitClient
-import com.example.frameup.utils.SecureStorageServices
-import kotlinx.android.synthetic.main.activity_order.*
+import com.example.amaze.AmazeApp
+import com.example.amaze.adapters.EventCardAdapter
+import com.example.amaze.models.Event
+import com.example.amaze.network.RetrofitClient
 import kotlinx.android.synthetic.main.fragment_home.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.sql.Date
 
 
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER

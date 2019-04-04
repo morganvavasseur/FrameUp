@@ -1,4 +1,4 @@
-package com.example.frameup.models
+package com.example.amaze.models
 
 class OrderItem {
     // Nom du produit dans le panier

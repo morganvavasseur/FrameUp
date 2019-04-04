@@ -1,15 +1,9 @@
-package com.example.frameup.network
+package com.example.amaze.network
 
-import com.chamber.java.library.SharedChamber
-import com.example.frameup.interfaces.EventService
-import com.example.frameup.interfaces.UserService
-import com.example.frameup.utils.SecureStorageServices
-import okhttp3.Interceptor
+import com.example.amaze.interfaces.EventService
+import com.example.amaze.interfaces.UserService
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import okhttp3.OkHttpClient
-import okhttp3.Response
-import java.io.IOException
 
 
 // Création de l'instance Retrofit

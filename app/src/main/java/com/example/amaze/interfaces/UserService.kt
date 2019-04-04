@@ -1,6 +1,6 @@
-package com.example.frameup.interfaces
+package com.example.amaze.interfaces
 
-import com.example.frameup.models.ConnectResults
+import com.example.amaze.models.ConnectResults
 import retrofit2.Call
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded

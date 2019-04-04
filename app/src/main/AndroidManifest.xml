@@ -14,20 +14,17 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name="com.example.amaze.activities.SignUpActivity">
-        <activity android:name="com.example.frameup.activities.Order">
+        <activity android:name=".activities.Order">
         </activity>
-        <activity android:name="com.example.amaze.activities.LoginActivity">
-        <activity android:name="com.example.frameup.activities.Basket">
+        <activity android:name=".activities.Basket">
         </activity>
-        <activity android:name="com.example.amaze.HomeActivity">
-        <activity android:name="com.example.frameup.activities.CreateEventActivity">
+        <activity android:name=".activities.CreateEventActivity">
         </activity>
         <activity android:name=".MainActivity">
         </activity>
-        <activity android:name="com.example.frameup.activities.SignUpActivity">
+        <activity android:name="com.example.amaze.activities.SignUpActivity">
         </activity>
-        <activity android:name="com.example.frameup.activities.LoginActivity">
+        <activity android:name="com.example.amaze.activities.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 

@@ -1,7 +1,7 @@
-package com.example.frameup.interfaces
+package com.example.amaze.interfaces
 
-import com.example.frameup.models.Event
-import com.example.frameup.utils.SecureStorageServices
+import com.example.amaze.models.Event
+import com.example.amaze.utils.SecureStorageServices
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Header

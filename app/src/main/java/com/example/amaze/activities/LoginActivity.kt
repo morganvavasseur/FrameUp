@@ -6,9 +6,9 @@ import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.widget.Toast
 import com.example.amaze.MainActivity
-import com.example.frameup.models.ConnectResults
-import com.example.frameup.network.RetrofitClient
-import com.example.frameup.utils.SecureStorageServices
+import com.example.amaze.models.ConnectResults
+import com.example.amaze.network.RetrofitClient
+import com.example.amaze.utils.SecureStorageServices
 import kotlinx.android.synthetic.main.activity_login.*
 import retrofit2.Call
 import retrofit2.Callback

@@ -1,4 +1,4 @@
-package com.example.frameup.adapters
+package com.example.amaze.adapters
 
 import android.content.Context
 import android.support.constraint.ConstraintLayout

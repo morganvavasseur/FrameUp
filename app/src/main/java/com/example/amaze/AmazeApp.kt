@@ -2,10 +2,8 @@ package com.example.amaze
 
 import android.app.Application
 import android.content.Intent
-import com.android.volley.RequestQueue
-import com.android.volley.toolbox.Volley
 import com.chamber.java.library.SharedChamber
-import com.example.frameup.activities.LoginActivity
+import com.example.amaze.activities.LoginActivity
 
 class AmazeApp : Application(){
     // Element principal lancé lorsque l'utilisateur

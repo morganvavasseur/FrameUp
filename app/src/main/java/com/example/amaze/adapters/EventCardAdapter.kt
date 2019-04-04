@@ -1,11 +1,11 @@
-package com.example.frameup.adapters
+package com.example.amaze.adapters
 
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.amaze.R
-import com.example.frameup.models.Event
+import com.example.amaze.models.Event
 import kotlinx.android.synthetic.main.component_event_card.view.*
 
 class EventCardAdapter(val events : List<Event>) : RecyclerView.Adapter<EventCardAdapter.EventCardViewHolder>() {

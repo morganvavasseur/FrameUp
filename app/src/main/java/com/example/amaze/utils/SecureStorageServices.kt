@@ -1,8 +1,8 @@
-package com.example.frameup.utils
+package com.example.amaze.utils
 
 import com.chamber.java.library.SharedChamber
 import com.chamber.java.library.model.ChamberType
-import com.example.frameup.AmazeApp
+import com.example.amaze.AmazeApp
 
 class SecureStorageServices {
 
