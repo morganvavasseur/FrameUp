@@ -6,15 +6,12 @@ import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentTransaction
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
+import android.view.MenuItem
 import android.widget.FrameLayout
+import android.widget.Toast
 import com.example.frameup.activities.AccountFragment
 import com.example.frameup.activities.HomeFragment
 import com.example.frameup.activities.NotificationsFragment
-import android.widget.Toast
-import android.R.id
-import android.R.menu
-import android.view.Menu
-import android.view.MenuItem
 
 
 class MainActivity : AppCompatActivity() {
@@ -79,10 +76,9 @@ class MainActivity : AppCompatActivity() {
 
         //EventService.getEvents { results, error ->
 
-       // }
+        //}
 
-        //val intent = Intent(this, LoginActivity::class.java)
-        //startActivity(intent)G
+
     }
 
     /* override fun onCreateOptionsMenu(menu: Menu): Boolean {

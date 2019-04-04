@@ -33,7 +33,7 @@ class EventCard(context: Context, attrs: AttributeSet) : ConstraintLayout(contex
         eventHour.text = attributes.getString(R.styleable.EventCardView_event_card_hour)
         eventDescription.text = attributes.getString(R.styleable.EventCardView_event_card_description)
         eventLocation.text = attributes.getString(R.styleable.EventCardView_event_card_location)
-        eventLocation.text = attributes.getString(R.styleable.EventCardView_event_card_host_name)
+        eventHostName.text = attributes.getString(R.styleable.EventCardView_event_card_host_name)
 
         // Necessary for Android memory management
         attributes.recycle()
