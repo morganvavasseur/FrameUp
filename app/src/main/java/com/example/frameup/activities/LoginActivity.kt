@@ -42,14 +42,14 @@ class LoginActivity : AppCompatActivity() {
 
         connectLocalRequest.enqueue(object : Callback<ConnectResults> {
             override fun onFailure(call: Call<ConnectResults>, t: Throwable) {
-                error("Lerreur é ici")
+                error(t.message.toString())
             }
 
             override fun onResponse(call: Call<ConnectResults>, response: Response<ConnectResults>) {
                 var jwt = response.body()?.jwt
                 var user = response.body()?.user
 
-                Toast.makeText(this@LoginActivity, "${user?.username} est connecté", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@LoginActivity, "${jwt}", Toast.LENGTH_SHORT).show()
 
                 // On vérifie que le token est bien
                 // une String puis on le stock de manière sécurisé

@@ -21,15 +21,15 @@
         <activity android:name="com.example.frameup.activities.CreateEventActivity">
         </activity>
         <activity android:name=".MainActivity">
+        </activity>
+        <activity android:name="com.example.frameup.activities.SignUpActivity">
+        </activity>
+        <activity android:name="com.example.frameup.activities.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
-        </activity>
-        <activity android:name="com.example.frameup.activities.SignUpActivity">
-        </activity>
-        <activity android:name="com.example.frameup.activities.LoginActivity">
         </activity>
 
         <meta-data
