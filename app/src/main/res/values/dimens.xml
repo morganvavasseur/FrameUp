@@ -13,4 +13,7 @@
     <dimen name="event_card_date_font_size">17sp</dimen>
     <dimen name="event_card_chat_button_font_size">13sp</dimen>
     <dimen name="event_card_infos_details_font_size">12sp</dimen>
+    <dimen name="app_bar_height">180dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="text_margin">16dp</dimen>
 </resources>
