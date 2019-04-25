@@ -32,4 +32,30 @@
     <string name="event_date_label">When</string>
     <string name="event_price_label">Price</string>
     <string name="price_placeholder">Set a price</string>
+
+    <string name="first_name">Firstname</string>
+    <string name="last_name">Lastname</string>
+    <string name="email">Email</string>
+    <string name="phone_number">Phone number</string>
+    <string name="diet_information">Diet informations</string>
+    <string name="log_out">Log out</string>
+    <string name="info">Info</string>
+    <string name="disponibilities">Disponibilities</string>
+    <string name="payments">Paymentss</string>
+    <string name="settings">Settings</string>
+    <string name="textfield_disponibilities">Disponibilities</string>
+    <string name="customize_disponibilities">Customize your experience when you are generaly available</string>
+    <string name="pick_no_dispo">Pick a specific date you can\'t attend</string>
+    <string name="add_no_dispo">add</string>
+    <string name="available_weekend">When are you generally available on week-end</string>
+    <string name="available_weekdays">When you are generally available on week days</string>
+    <string name="morning">Morning</string>
+    <string name="midday">Midday</string>
+    <string name="evening">Evening</string>
+    <string name="night">Night</string>
+    <string name="latenight">Latenight</string>
+    <string name="profileTextView">Profil</string>
+    <string name="profilePictureDescription">profilePictureDescription</string>
+    <string name="action_settings">Profil</string>
+
 </resources>
