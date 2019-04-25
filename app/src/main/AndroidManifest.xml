@@ -29,11 +29,7 @@
         </activity>
         <activity android:name=".MainActivity">
         </activity>
-        <activity android:name="com.example.amaze.activities.SignUpActivity">
-        </activity>
-        <activity android:name="com.example.amaze.activities.LoginActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+
 
         <meta-data
                 android:name="preloaded_fonts"

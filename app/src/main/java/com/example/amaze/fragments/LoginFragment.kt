@@ -90,6 +90,7 @@ class LoginFragment : Fragment() {
                 // une String puis on le stock de manière sécurisé
                 if (jwt is String){
                     SecureStorageServices.authJwtToken = jwt
+                    SecureStorageServices.authUser = user
                 } else {
                     Log.d("SECRET_APP", "Token has no value")
                 }

@@ -13,6 +13,7 @@ import com.example.amaze.AmazeApp
 import com.example.amaze.adapters.EventCardAdapter
 import com.example.amaze.models.Event
 import com.example.amaze.network.RetrofitClient
+import com.example.amaze.utils.SecureStorageServices
 import kotlinx.android.synthetic.main.fragment_home.*
 import retrofit2.Call
 import retrofit2.Callback
