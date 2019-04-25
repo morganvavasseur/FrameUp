@@ -24,4 +24,12 @@
     <string name="password_strength_medium">Medium</string>
     <string name="password_strength_strong">Strong</string>
     <string name="password_strength_very_strong">Very Strong</string>
+    <string name="event_title_label">Event Title</string>
+    <string name="title_placeholder">Title</string>
+    <string name="event_location_label">Where</string>
+    <string name="location_placeholder">Pick a location</string>
+    <string name="date_placeholder">Pick a date</string>
+    <string name="event_date_label">When</string>
+    <string name="event_price_label">Price</string>
+    <string name="price_placeholder">Set a price</string>
 </resources>
