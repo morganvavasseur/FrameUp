@@ -20,7 +20,9 @@ allprojects {
     repositories {
         google()
         jcenter()
-        maven { url "https://www.jitpack.io" }
+        maven { url "http://maven.springframework.org/release" }
+        maven { url "http://maven.restlet.org" }
+        maven { url 'https://jitpack.io' }
     }
 }
 

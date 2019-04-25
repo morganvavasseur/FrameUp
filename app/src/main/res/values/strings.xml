@@ -9,8 +9,6 @@
 
     <string name="nav_add_event">Add Event</string>
 
-
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="empty_basket_text">Empty Basket</string>
     <string name="add_article_button_text">Add an article</string>
@@ -20,4 +18,18 @@
     <string name="hosted_by_text">Hosted By</string>
     <string name="event_card_join_button_text">Join</string>
     <string name="event_card_not_interessed_button_text">Not interessed</string>
+
+    <!-- Password Strength progresses -->
+    <string name="password_strength_weak">Weak</string>
+    <string name="password_strength_medium">Medium</string>
+    <string name="password_strength_strong">Strong</string>
+    <string name="password_strength_very_strong">Very Strong</string>
+    <string name="event_title_label">Event Title</string>
+    <string name="title_placeholder">Title</string>
+    <string name="event_location_label">Where</string>
+    <string name="location_placeholder">Pick a location</string>
+    <string name="date_placeholder">Pick a date</string>
+    <string name="event_date_label">When</string>
+    <string name="event_price_label">Price</string>
+    <string name="price_placeholder">Set a price</string>
 </resources>

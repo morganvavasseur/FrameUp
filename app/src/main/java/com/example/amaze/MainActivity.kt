@@ -50,6 +50,8 @@ class MainActivity : AppCompatActivity() {
                 mMainNav.setBackgroundResource(R.color.colorPrimary)
                 setFragment(homeFragment)
                 menuInflater.inflate(R.menu.home_toolbar, mToolbar.menu)
+
+
                 true
 
             }
