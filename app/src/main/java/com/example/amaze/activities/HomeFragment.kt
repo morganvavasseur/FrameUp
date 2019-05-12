@@ -32,7 +32,7 @@ private const val ARG_PARAM2 = "param2"
  */
 class HomeFragment : Fragment() {
 
-    var events: ArrayList<Event> = ArrayList<Event>()
+    var events: ArrayList<Event> = ArrayList()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -42,23 +42,20 @@ class HomeFragment : Fragment() {
 
         connectLocalRequest.enqueue(object : Callback<ArrayList<Event>> {
             override fun onFailure(call: Call<ArrayList<Event>>, t: Throwable) {
-                error(t.message.toString())
-
+                //error(t.message.toString())
             }
 
             override fun onResponse(call: Call<ArrayList<Event>>, response: Response<ArrayList<Event>>) {
                 var responseEvents = response.body()
-                if(responseEvents is ArrayList<Event>){
+                if(responseEvents is ArrayList<Event>) {
                     events = responseEvents
                     recyclerViewEvents.layoutManager = LinearLayoutManager(context)
                     recyclerViewEvents.adapter = EventCardAdapter(events)
                 }
             }
-
         })
 
         Toast.makeText(AmazeApp.sharedInstance, "${events.count()}", Toast.LENGTH_SHORT).show()
-
 
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_home, container, false)
@@ -69,10 +66,5 @@ class HomeFragment : Fragment() {
 
         recyclerViewEvents.layoutManager = LinearLayoutManager(context)
         recyclerViewEvents.adapter = EventCardAdapter(events)
-
-
-
     }
-
-
 }

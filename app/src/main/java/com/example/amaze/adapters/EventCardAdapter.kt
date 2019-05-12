@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import com.example.amaze.R
 import com.example.amaze.models.Event
 import kotlinx.android.synthetic.main.component_event_card.view.*
+import java.time.format.DateTimeFormatter
 
 class EventCardAdapter(val events : List<Event>) : RecyclerView.Adapter<EventCardAdapter.EventCardViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, p1: Int): EventCardViewHolder {
@@ -28,7 +29,7 @@ class EventCardAdapter(val events : List<Event>) : RecyclerView.Adapter<EventCar
         holder.view.event_card_date.text = event.date.toString()
         holder.view.event_card_host_name.text = "LE NOM DE L'HOTE"
         holder.view.event_card_description.text = event.description
-        holder.view.event_card_hour.text = event.date.time.toString()
+        holder.view.event_card_hour.text = event.date
         //holder.view.event_card_location.text = event.location
 
     }

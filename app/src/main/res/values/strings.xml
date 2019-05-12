@@ -57,5 +57,7 @@
     <string name="profileTextView">Profil</string>
     <string name="profilePictureDescription">profilePictureDescription</string>
     <string name="action_settings">Profil</string>
+    <string name="description">Description</string>
+    <string name="event_creation_description_hint">Is there anything else your friends needs to know about the event</string>
 
 </resources>

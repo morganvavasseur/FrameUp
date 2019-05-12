@@ -20,8 +20,8 @@ class LoginSignUpActivity : FragmentActivity() {
 
         // Si le token à bien été stocké on connecte l'utilisateur à l'activité principale
         if (SecureStorageServices.authJwtToken != null) {
-       //     val intent = Intent(AmazeApp.sharedInstance, MainActivity::class.java)
-       //     startActivity(intent)
+           val intent = Intent(AmazeApp.sharedInstance, MainActivity::class.java)
+            startActivity(intent)
         }
 
         // Instantiate a ViewPager and a PagerAdapter.
