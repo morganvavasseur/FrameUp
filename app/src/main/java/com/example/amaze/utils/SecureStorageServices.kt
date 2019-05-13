@@ -4,6 +4,7 @@ import com.chamber.java.library.SharedChamber
 import com.chamber.java.library.model.ChamberType
 import com.example.amaze.AmazeApp
 import com.example.amaze.models.User
+import com.example.amaze.network.UserResult
 import com.google.gson.Gson
 
 class SecureStorageServices {
@@ -27,16 +28,13 @@ class SecureStorageServices {
             sharedChamber.put(AUTH_JWT_TOKEN_KEY, value)
         }
 
-        var authUser : User?
+        var authUser : UserResult?
             get() {
-                val gson : Gson = Gson()
-                val gsonData = sharedChamber.getModel(AUTH_USER_KEY , User::class.java).toString()
-                val user = gson.fromJson(gsonData, User::class.java)
-                return user
+                val user = sharedChamber.getModel(AUTH_USER_KEY , UserResult::class.java)
+                return user as UserResult
             }
-                set(value) {
-                    val gson : Gson = Gson()
-                    sharedChamber.putModel(AUTH_USER_KEY, gson.toJson(value))
-                }
+            set(value) {
+                sharedChamber.putModel(AUTH_USER_KEY, value)
             }
+        }
     }

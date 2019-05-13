@@ -1,6 +1,7 @@
 package com.example.amaze.interfaces
 
 import com.example.amaze.models.Event
+import com.example.amaze.network.EventResult
 import com.example.amaze.utils.SecureStorageServices
 import retrofit2.Call
 import retrofit2.http.*
@@ -16,6 +17,6 @@ interface EventService {
     // Créer une soirée
     @POST("events")
     fun createEvent(
-        @Body event : Event,
+        @Body event : EventResult,
         @Header("Authorization") auth : String = "Bearer ${SecureStorageServices.authJwtToken}") : Call<Event>
 }

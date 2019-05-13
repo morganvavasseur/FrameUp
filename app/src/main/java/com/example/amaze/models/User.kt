@@ -8,9 +8,6 @@ import java.util.jar.Attributes
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 class User (
-    @JsonProperty("_id")
-    val id: String,
-
     // Prénom de l'utilisateur
     val firstName: String,
 

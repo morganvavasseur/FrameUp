@@ -11,38 +11,35 @@ import java.util.*
 // On demande au parseur d'ignorer les propriétés du Json
 // qui ne sont pas définis dans la classe Kotlin
 @JsonIgnoreProperties(ignoreUnknown = true)
-data class EventResult(
+class EventResult {
 
     @JsonProperty("_id")
-    val id: String,
+    lateinit var id: String
 
     // Titre de l'event
-    val title: String,
+    lateinit var title: String
 
     // Date présumé de l'event
-    val date: Date,
-
-    // Personne qui à créer l'event
-    //val host: User,
+    lateinit var date: String
 
     // Description de l'event
-    val description: String,
+    lateinit var description: String
 
     // Vrai si la date de l'event est validée
     var dateIsFinal: Boolean = false
 
     // Contient le lieu de l'event
-    //val location: String
+    lateinit var location: String
 
     // Vrai si le lieu de l'event est validé
-    //var locationIsFinal: Boolean = false,
+    var locationIsFinal: Boolean = false
 
     // Prix de participation de l'event pour
     // chaque invité
-    //var entrancePrice: Int = 0,
+    var entrancePrice: Number = 0
 
     // Liste des organisateurs de l'event
-    //val organizers: Array<User>,
+    lateinit var organizers: ArrayList<String>
 
     // Liste des invités
     //val guests: Array<User>,
@@ -52,4 +49,4 @@ data class EventResult(
 
     // Liste des Stuffs de l'event
     //val stuffs: Array<Stuff>
-)
+}
