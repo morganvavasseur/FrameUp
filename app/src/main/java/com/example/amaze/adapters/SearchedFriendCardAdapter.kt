@@ -38,13 +38,12 @@ class SearchedFriendCardAdapter(val users: List<UserResult>, val onFriendItemLis
     class SearchedFriendCardViewHolder(val view: View) : RecyclerView.ViewHolder(view), View.OnClickListener {
 
         override fun onClick(v: View?) {
-
         }
 
     }
 
     interface OnFriendItemListener {
-        fun onFriendClick(position: UserResult)
+        fun onFriendClick(friend: UserResult)
     }
 }
 

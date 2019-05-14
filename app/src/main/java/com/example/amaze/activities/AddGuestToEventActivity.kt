@@ -6,6 +6,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import android.widget.Toast
 import com.example.amaze.R
+import com.example.amaze.adapters.HorizontalFriendListAdapter
 import com.example.amaze.adapters.SearchedFriendCardAdapter
 import com.example.amaze.models.Event
 import com.example.amaze.network.EventResult
@@ -17,12 +18,11 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class AddGuestToEventActivity : AppCompatActivity(), SearchedFriendCardAdapter.OnFriendItemListener{
-    
+
     var event : EventResult? = null
     lateinit var searchedUsername : String // Stocke le username recherché
     var usersResults : ArrayList<UserResult> = ArrayList<UserResult>()
-
-    private lateinit var linearLayoutManager: LinearLayoutManager
+    var guests: ArrayList<UserResult> = ArrayList<UserResult>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,10 +30,12 @@ class AddGuestToEventActivity : AppCompatActivity(), SearchedFriendCardAdapter.O
         event = intent.extras.getSerializable(CreateEventActivity.EVENT_CODE) as? EventResult
 
         friendsRecyclerView.layoutManager = LinearLayoutManager(this)
-        friendsRecyclerView.adapter = SearchedFriendCardAdapter(usersResults,this)
+        guestsRecyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
 
-        linearLayoutManager = LinearLayoutManager(this)
-        friendsRecyclerView.layoutManager = linearLayoutManager
+
+        friendsRecyclerView.adapter = SearchedFriendCardAdapter(usersResults,this)
+        guestsRecyclerView.adapter = HorizontalFriendListAdapter(guests)    
+
 
         searchFriendButton.setOnClickListener({onSearchButtonClick()})
         createEventButton.setOnClickListener({onCreateEventButtonClick()})
@@ -66,14 +68,18 @@ class AddGuestToEventActivity : AppCompatActivity(), SearchedFriendCardAdapter.O
 
     override fun onFriendClick(user: UserResult) {
         Log.d("Listener", "OnFriendClick Clicked")
-        if (user.id in event!!.guests)
+        if (user.id in event!!.guests){
             event?.guests?.remove(user.id) // Supprime un utilisateur de la liste des invités
-        else
-            event?.guests?.add(user.id) // Ajoute un utilisateur à la liste des invités
+            guests.remove(user)
 
-        event!!.guests.forEach {
-            Log.d("eventUpdate", it)
         }
+        else{
+            event?.guests?.add(user.id) // Ajoute un utilisateur à la liste des invités
+            guests.add(user)
+
+        }
+        guestsRecyclerView.adapter = HorizontalFriendListAdapter(guests)
+
     }
 
 

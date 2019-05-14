@@ -26,11 +26,11 @@
             android:layout_width="395dp"
             android:layout_height="wrap_content"
             android:id="@+id/searchFriendButton"
+            app:layout_constraintStart_toStartOf="@+id/guestsRecyclerView"
             android:layout_marginTop="8dp"
-            app:layout_constraintTop_toBottomOf="@+id/friendsSearchbar"
-            app:layout_constraintStart_toStartOf="@+id/friendsSearchbar"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginEnd="8dp"/>
+            app:layout_constraintTop_toBottomOf="@+id/guestsRecyclerView"
+            app:layout_constraintEnd_toEndOf="@+id/guestsRecyclerView"
+            />
 
     <EditText
             android:layout_width="395dp"
@@ -48,16 +48,26 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="8dp"/>
 
+    <android.support.v7.widget.RecyclerView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/friendsSearchbar"
+            app:layout_constraintStart_toStartOf="@+id/friendsSearchbar"
+            app:layout_constraintEnd_toEndOf="@+id/friendsSearchbar"
+            android:orientation="horizontal"
+            android:id="@+id/guestsRecyclerView"/>
+
     <ScrollView
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginBottom="8dp"
-            app:layout_constraintBottom_toTopOf="@+id/createEventButton"
-            android:layout_marginTop="8dp"
             app:layout_constraintTop_toBottomOf="@+id/searchFriendButton"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="8dp"
-            app:layout_constraintStart_toStartOf="parent">
+            android:id="@+id/scrollView3"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/createEventButton">
 
         <LinearLayout
                 android:layout_width="match_parent"
