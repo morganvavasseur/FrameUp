@@ -3,28 +3,24 @@ package com.example.amaze.activities
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
+import android.util.Log
 import android.widget.Toast
 import com.example.amaze.R
-import com.example.amaze.adapters.EventCardAdapter
 import com.example.amaze.adapters.SearchedFriendCardAdapter
 import com.example.amaze.models.Event
-import com.example.amaze.models.User
 import com.example.amaze.network.EventResult
 import com.example.amaze.network.RetrofitClient
 import com.example.amaze.network.UserResult
-import com.example.amaze.utils.SecureStorageServices
 import kotlinx.android.synthetic.main.activity_add_guest_to_event.*
-import kotlinx.android.synthetic.main.activity_create_event.*
-import kotlinx.android.synthetic.main.fragment_home.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class AddGuestToEventActivity : AppCompatActivity() {
-
+class AddGuestToEventActivity : AppCompatActivity(), SearchedFriendCardAdapter.OnFriendItemListener{
+    
     var event : EventResult? = null
     lateinit var searchedUsername : String // Stocke le username recherché
-    var users : ArrayList<UserResult> = ArrayList<UserResult>()
+    var usersResults : ArrayList<UserResult> = ArrayList<UserResult>()
 
     private lateinit var linearLayoutManager: LinearLayoutManager
 
@@ -34,12 +30,15 @@ class AddGuestToEventActivity : AppCompatActivity() {
         event = intent.extras.getSerializable(CreateEventActivity.EVENT_CODE) as? EventResult
 
         friendsRecyclerView.layoutManager = LinearLayoutManager(this)
-        friendsRecyclerView.adapter = SearchedFriendCardAdapter(users)
+        friendsRecyclerView.adapter = SearchedFriendCardAdapter(usersResults,this)
 
         linearLayoutManager = LinearLayoutManager(this)
         friendsRecyclerView.layoutManager = linearLayoutManager
 
         searchFriendButton.setOnClickListener({onSearchButtonClick()})
+        createEventButton.setOnClickListener({onCreateEventButtonClick()})
+
+        event?.guests = ArrayList<String>()
 
     }
 
@@ -55,15 +54,28 @@ class AddGuestToEventActivity : AppCompatActivity() {
             override fun onResponse(call: Call<ArrayList<UserResult>>, response: Response<ArrayList<UserResult>>) {
                 var result = response.body()
                 if (result is ArrayList<UserResult>) {
-                    users = result
+                    usersResults = result
 
                     friendsRecyclerView.layoutManager = LinearLayoutManager(this@AddGuestToEventActivity)
-                    friendsRecyclerView.adapter = SearchedFriendCardAdapter(users)
+                    friendsRecyclerView.adapter = SearchedFriendCardAdapter(usersResults, this@AddGuestToEventActivity)
                 }
             }
         })
 
     }
+
+    override fun onFriendClick(user: UserResult) {
+        Log.d("Listener", "OnFriendClick Clicked")
+        if (user.id in event!!.guests)
+            event?.guests?.remove(user.id) // Supprime un utilisateur de la liste des invités
+        else
+            event?.guests?.add(user.id) // Ajoute un utilisateur à la liste des invités
+
+        event!!.guests.forEach {
+            Log.d("eventUpdate", it)
+        }
+    }
+
 
     fun onCreateEventButtonClick(){
 
@@ -79,4 +91,5 @@ class AddGuestToEventActivity : AppCompatActivity() {
             }
         })
     }
+
 }

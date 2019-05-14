@@ -21,7 +21,7 @@ class CreateEventActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_event)
-        createEventButton.setOnClickListener({onNextButtonClick()})
+        createEventButtonToFriends.setOnClickListener({onNextButtonClick()})
     }
 
     fun getOrganizersFromAuthenticatedUser() : ArrayList<String>
