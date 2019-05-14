@@ -28,10 +28,10 @@ class SecureStorageServices {
             sharedChamber.put(AUTH_JWT_TOKEN_KEY, value)
         }
 
-        var authUser : UserResult?
+        var authUser : User?
             get() {
-                val user = sharedChamber.getModel(AUTH_USER_KEY , UserResult::class.java)
-                return user as UserResult
+                val user = sharedChamber.getModel(AUTH_USER_KEY , User::class.java)
+                return user as User
             }
             set(value) {
                 sharedChamber.putModel(AUTH_USER_KEY, value)

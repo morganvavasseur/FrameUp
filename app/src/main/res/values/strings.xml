@@ -59,5 +59,8 @@
     <string name="action_settings">Profil</string>
     <string name="description">Description</string>
     <string name="event_creation_description_hint">Is there anything else your friends needs to know about the event</string>
+    <string name="people_to_invite_text">People to invite</string>
+    <string name="friend_search_hint_text">Type friend\'s name</string>
+    <string name="search_friend_button_text">Search friends</string>
 
 </resources>

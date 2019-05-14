@@ -2,6 +2,7 @@ package com.example.amaze.network
 
 import com.fasterxml.jackson.annotation.JsonProperty
 import java.util.*
+import kotlin.collections.ArrayList
 
 class UserResult {
     @JsonProperty("_id")
@@ -24,4 +25,8 @@ class UserResult {
     lateinit var username: String
 
     lateinit var email: String
+
+    lateinit var organizedEvents : ArrayList<EventResult>
+
+    lateinit var invitedEvents : ArrayList<EventResult>
 }

@@ -30,7 +30,7 @@ class Event {
     var dateIsFinal: Boolean = false
 
     // Contient le lieu de l'event
-    lateinit var location: String
+    lateinit var location: Any
 
     // Vrai si le lieu de l'event est validé
     var locationIsFinal: Boolean = false

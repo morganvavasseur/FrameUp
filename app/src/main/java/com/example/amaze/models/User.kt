@@ -5,22 +5,31 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import com.fasterxml.jackson.annotation.JsonProperty
 import java.util.*
 import java.util.jar.Attributes
+import kotlin.collections.ArrayList
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-class User (
+class User {
+
+    //
+    lateinit var id: String
+
     // Prénom de l'utilisateur
-    val firstName: String,
+    lateinit var firstName: String
 
     // Nom de l'utilisateur
-    val lastName: String,
+    lateinit var lastName: String
 
     // Date d'anniversaire de l'utilisateur
-    val birthday: Date,
+    lateinit var birthday: String
 
     // Numéro de téléphone de l'utilisateur
-    val phone: String,
+    lateinit var phone: String
 
-    val username: String,
+    lateinit var username: String
 
-    val email: String
-)
+    lateinit var email: String
+
+    lateinit var invitedEvents: ArrayList<Event>
+
+    lateinit var organizedEvents: ArrayList<Event>
+}

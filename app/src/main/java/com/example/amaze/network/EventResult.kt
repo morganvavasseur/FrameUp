@@ -2,6 +2,7 @@ package com.example.amaze.network
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import com.fasterxml.jackson.annotation.JsonProperty
+import java.io.Serializable
 import java.util.*
 
 // Pour satisfaire le parser JSON
@@ -11,7 +12,7 @@ import java.util.*
 // On demande au parseur d'ignorer les propriétés du Json
 // qui ne sont pas définis dans la classe Kotlin
 @JsonIgnoreProperties(ignoreUnknown = true)
-class EventResult {
+class EventResult : Serializable {
 
     @JsonProperty("_id")
     lateinit var id: String
@@ -29,7 +30,7 @@ class EventResult {
     var dateIsFinal: Boolean = false
 
     // Contient le lieu de l'event
-    lateinit var location: String
+    lateinit var location: Any
 
     // Vrai si le lieu de l'event est validé
     var locationIsFinal: Boolean = false
@@ -42,7 +43,7 @@ class EventResult {
     lateinit var organizers: ArrayList<String>
 
     // Liste des invités
-    //val guests: Array<User>,
+    lateinit var guests: ArrayList<String>
 
     // Liste des Consumables de l'event
     //var consumables: Array<Consumable>? = null,

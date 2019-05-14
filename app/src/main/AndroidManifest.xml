@@ -14,6 +14,8 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
+        <activity android:name=".activities.AddGuestToEventActivity">
+        </activity>
         <activity android:name=".activities.LoginSignUpActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -26,11 +28,9 @@
         <activity android:name=".activities.Basket">
         </activity>
         <activity android:name=".activities.CreateEventActivity">
-
         </activity>
         <activity android:name=".MainActivity">
         </activity>
-
 
         <meta-data
                 android:name="preloaded_fonts"
