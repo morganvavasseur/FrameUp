@@ -3,7 +3,7 @@ package com.example.amaze.activities
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import com.example.amaze.R
-import com.example.amaze.adapter.CustomPagerAdapter
+import com.example.amaze.adapters.ProfilePagerAdapter
 import kotlinx.android.synthetic.main.activity_profile.*
 
 class ProfileActivity : AppCompatActivity() {
@@ -12,10 +12,10 @@ class ProfileActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
 
-        val adapter = CustomPagerAdapter(supportFragmentManager)
+        val adapter = ProfilePagerAdapter(supportFragmentManager)
 
-        viewPager.adapter = adapter
+        profile_viewPager.adapter = adapter
 
-        tabLayout.setupWithViewPager(viewPager)
+        profile_tabLayout.setupWithViewPager(profile_viewPager)
     }
 }

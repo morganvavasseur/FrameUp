@@ -17,11 +17,6 @@
         <activity android:name=".activities.AddGuestToEventActivity">
         </activity>
         <activity android:name=".activities.LoginSignUpActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
         </activity>
         <activity android:name=".activities.Order">
         </activity>
@@ -31,6 +26,9 @@
         </activity>
         <activity android:name=".MainActivity">
         </activity>
+        <activity android:name=".activities.ProfileActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
 
         <meta-data
                 android:name="preloaded_fonts"
