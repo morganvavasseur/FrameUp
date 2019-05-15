@@ -14,6 +14,8 @@ class RetrofitClient {
 
         // URL to API
         val BASE_URL : String = "https://amaze-api.herokuapp.com/"
+        val PUBLIC_ROLE_ID = "5c39cc2fa2442510c3236beb"
+        val AUTHENTICATED_ROLE_ID = "5c39cc2fa2442510c3236bea"
 
 
         // Retrofit instance declaration

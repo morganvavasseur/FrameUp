@@ -34,7 +34,7 @@ class AddGuestToEventActivity : AppCompatActivity(), SearchedFriendCardAdapter.O
 
 
         friendsRecyclerView.adapter = SearchedFriendCardAdapter(usersResults,this)
-        guestsRecyclerView.adapter = HorizontalFriendListAdapter(guests)    
+        guestsRecyclerView.adapter = HorizontalFriendListAdapter(guests)
 
 
         searchFriendButton.setOnClickListener({onSearchButtonClick()})
@@ -46,7 +46,7 @@ class AddGuestToEventActivity : AppCompatActivity(), SearchedFriendCardAdapter.O
 
     fun onSearchButtonClick(){
         searchedUsername = friendsSearchbar.text.toString() // Get searched username from textedit
-        val searchUserRequest = RetrofitClient.userService.searchByUsername(searchedUsername)
+        val searchUserRequest = RetrofitClient.userService.searchByUsername(searchedUsername, RetrofitClient.PUBLIC_ROLE_ID, RetrofitClient.AUTHENTICATED_ROLE_ID)
 
         searchUserRequest.enqueue(object : Callback<ArrayList<UserResult>> {
             override fun onFailure(call: Call<ArrayList<UserResult>>, t: Throwable) {
@@ -68,23 +68,27 @@ class AddGuestToEventActivity : AppCompatActivity(), SearchedFriendCardAdapter.O
 
     override fun onFriendClick(user: UserResult) {
         Log.d("Listener", "OnFriendClick Clicked")
-        if (user.id in event!!.guests){
-            event?.guests?.remove(user.id) // Supprime un utilisateur de la liste des invités
-            guests.remove(user)
-
+        if (guests.any{ x -> x.id == user.id }){
+            guests = guests.filter { it.id != user.id } as ArrayList<UserResult>
         }
         else{
-            event?.guests?.add(user.id) // Ajoute un utilisateur à la liste des invités
             guests.add(user)
-
         }
         guestsRecyclerView.adapter = HorizontalFriendListAdapter(guests)
+    }
 
+    // Met à jour les invités à l'event
+    fun putGuestsToEvent(){
+        val guestsIds = ArrayList<String>()
+        guests.forEach {
+            guestsIds.add(it.id)
+        }
+        event?.guests = guestsIds // Affecte le tagbleau des guests à l'event
     }
 
 
     fun onCreateEventButtonClick(){
-
+        putGuestsToEvent()
         val createEventRequest = RetrofitClient.eventService.createEvent(event as EventResult)
 
         createEventRequest.enqueue(object : Callback<Event> {

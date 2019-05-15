@@ -28,5 +28,7 @@ interface UserService {
     @GET("users")
     fun searchByUsername(
         @Query("username_contains", encoded = true) username : String,
+        @Query("role_in", encoded = true) publicRoleId : String,
+        @Query("role_in", encoded = true) authenticatedRoleId : String,
         @Header("Authorization") auth : String = "Bearer ${SecureStorageServices.authJwtToken}") : Call<ArrayList<UserResult>>
 }

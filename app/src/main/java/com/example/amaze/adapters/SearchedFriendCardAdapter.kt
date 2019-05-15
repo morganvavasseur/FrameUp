@@ -1,6 +1,7 @@
 package com.example.amaze.adapters
 
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -27,11 +28,22 @@ class SearchedFriendCardAdapter(val users: List<UserResult>, val onFriendItemLis
     }
 
     override fun onBindViewHolder(holder: SearchedFriendCardViewHolder, position: Int){
-        val user = users[position]
 
-        holder.view.setOnClickListener( {onFriendItemListener.onFriendClick(user) })
-        holder.view.searchFriendName.text = user.firstName + " " + user.lastName
-        holder.view.searchedFriendUsername.text = "@"+user.username
+        try {
+            val user = users[position]
+
+            if (user != null){
+                holder.view.setOnClickListener( {onFriendItemListener.onFriendClick(user) })
+                if (user.firstName != null && user.lastName != null)
+                    holder.view.searchFriendName.text = user.firstName + " " + user.lastName
+                if (user.username != null)
+                    holder.view.searchedFriendUsername.text = "@"+user.username
+            }
+
+        } catch (e: Error) {
+            Log.d("Error", e.message)
+        }
+
     }
 
 
