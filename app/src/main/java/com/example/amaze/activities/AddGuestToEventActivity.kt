@@ -1,10 +1,14 @@
 package com.example.amaze.activities
 
+import android.graphics.Typeface
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v4.content.res.ResourcesCompat
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
+import android.view.View
 import android.widget.Toast
+import com.example.amaze.AmazeApp
 import com.example.amaze.R
 import com.example.amaze.adapters.HorizontalFriendListAdapter
 import com.example.amaze.adapters.SearchedFriendCardAdapter
@@ -13,6 +17,7 @@ import com.example.amaze.network.EventResult
 import com.example.amaze.network.RetrofitClient
 import com.example.amaze.network.UserResult
 import kotlinx.android.synthetic.main.activity_add_guest_to_event.*
+import kotlinx.android.synthetic.main.component_searched_friend_card.view.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -33,7 +38,7 @@ class AddGuestToEventActivity : AppCompatActivity(), SearchedFriendCardAdapter.O
         guestsRecyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
 
 
-        friendsRecyclerView.adapter = SearchedFriendCardAdapter(usersResults,this)
+        friendsRecyclerView.adapter = SearchedFriendCardAdapter(usersResults, guests,this)
         guestsRecyclerView.adapter = HorizontalFriendListAdapter(guests)
 
 
@@ -59,20 +64,26 @@ class AddGuestToEventActivity : AppCompatActivity(), SearchedFriendCardAdapter.O
                     usersResults = result
 
                     friendsRecyclerView.layoutManager = LinearLayoutManager(this@AddGuestToEventActivity)
-                    friendsRecyclerView.adapter = SearchedFriendCardAdapter(usersResults, this@AddGuestToEventActivity)
+                    friendsRecyclerView.adapter = SearchedFriendCardAdapter(usersResults, guests, this@AddGuestToEventActivity)
                 }
             }
         })
 
     }
 
-    override fun onFriendClick(user: UserResult) {
+    override fun onFriendClick(user: UserResult, userItem: View) {
         Log.d("Listener", "OnFriendClick Clicked")
+        val boldTypeface = ResourcesCompat.getFont(AmazeApp.sharedInstance, R.font.open_sans_bold)
+        val defaultTypeface = ResourcesCompat.getFont(AmazeApp.sharedInstance, R.font.open_sans_light)
+
         if (guests.any{ x -> x.id == user.id }){
+            userItem.searchFriendName.typeface = defaultTypeface
             guests = guests.filter { it.id != user.id } as ArrayList<UserResult>
         }
         else{
             guests.add(user)
+            userItem.searchFriendName.typeface = boldTypeface
+
         }
         guestsRecyclerView.adapter = HorizontalFriendListAdapter(guests)
     }
