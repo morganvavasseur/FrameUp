@@ -62,5 +62,6 @@
     <string name="people_to_invite_text">People to invite</string>
     <string name="friend_search_hint_text">Type friend\'s name</string>
     <string name="search_friend_button_text">Search friends</string>
+    <string name="next_text">Next</string>
 
 </resources>

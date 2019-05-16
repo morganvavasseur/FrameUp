@@ -134,7 +134,7 @@
 
     <Button
             android:text="Create an account"
-            android:background="@drawable/login_button"
+            android:background="@drawable/amaze_long_button_layout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:id="@+id/loginLocalConnectButton"

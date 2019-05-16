@@ -3,14 +3,17 @@ package com.example.amaze.activities
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v4.content.ContextCompat.startActivity
 import com.example.amaze.R
+import com.example.amaze.activities.CreateEventActivity.Companion.EVENT_CODE
+import com.example.amaze.components.AmazeNextButton
 import com.example.amaze.models.User
 import com.example.amaze.network.EventResult
 import com.example.amaze.utils.SecureStorageServices
 import kotlinx.android.synthetic.main.activity_create_event.*
 import kotlin.collections.ArrayList
 
-class CreateEventActivity : AppCompatActivity() {
+class CreateEventActivity : AppCompatActivity(), AmazeNextButton.OnNextButtonListener {
 
     private lateinit var event : EventResult
 
@@ -21,7 +24,7 @@ class CreateEventActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_event)
-        createEventButtonToFriends.setOnClickListener({onNextButtonClick()})
+        createEventNextButton.setNextButtonOnClickListener(this)
     }
 
     fun getOrganizersFromAuthenticatedUser() : ArrayList<String>
@@ -35,7 +38,7 @@ class CreateEventActivity : AppCompatActivity() {
         return organizers
     }
 
-    fun onNextButtonClick() {
+    override fun onNextButtonClick() {
 
         // Initialise event
         event = EventResult()

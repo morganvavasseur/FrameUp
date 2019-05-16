@@ -17,6 +17,7 @@ import com.example.amaze.network.EventResult
 import com.example.amaze.network.RetrofitClient
 import com.example.amaze.network.UserResult
 import kotlinx.android.synthetic.main.activity_add_guest_to_event.*
+import kotlinx.android.synthetic.main.amaze_long_button.view.*
 import kotlinx.android.synthetic.main.component_searched_friend_card.view.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -34,6 +35,7 @@ class AddGuestToEventActivity : AppCompatActivity(), SearchedFriendCardAdapter.O
         setContentView(R.layout.activity_add_guest_to_event)
         event = intent.extras.getSerializable(CreateEventActivity.EVENT_CODE) as? EventResult
 
+
         friendsRecyclerView.layoutManager = LinearLayoutManager(this)
         guestsRecyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
 
@@ -41,8 +43,7 @@ class AddGuestToEventActivity : AppCompatActivity(), SearchedFriendCardAdapter.O
         friendsRecyclerView.adapter = SearchedFriendCardAdapter(usersResults, guests,this)
         guestsRecyclerView.adapter = HorizontalFriendListAdapter(guests)
 
-
-        searchFriendButton.setOnClickListener({onSearchButtonClick()})
+        searchFriendButton.amazeLongButton.setOnClickListener({onSearchButtonClick()})
         createEventButton.setOnClickListener({onCreateEventButtonClick()})
 
         event?.guests = ArrayList<String>()

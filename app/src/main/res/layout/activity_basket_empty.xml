@@ -58,7 +58,7 @@
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="8dp"
             app:layout_constraintEnd_toEndOf="parent"
-            android:background="@drawable/login_button"
+            android:background="@drawable/amaze_long_button_layout"
             android:layout_marginEnd="8dp"
             android:fontFamily="@font/open_sans_semibold"
             android:textSize="@dimen/button_font_size"

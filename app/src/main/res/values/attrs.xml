@@ -9,4 +9,13 @@
         <attr name="event_card_location" format="string"/>
         <attr name="event_card_hour" format="string"/>
     </declare-styleable>
+
+    <declare-styleable name="AmazeLongButton">
+        <attr name="button_text" format="string"/>
+    </declare-styleable>
+
+    <declare-styleable name="AmazeNextButton_attrs">
+        <attr name="text" format="string"></attr>
+    </declare-styleable>
+
 </resources>
