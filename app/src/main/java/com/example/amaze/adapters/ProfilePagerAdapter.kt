@@ -1,4 +1,4 @@
-package com.example.amaze.adapter
+package com.example.amaze.adapters
 
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
@@ -8,7 +8,7 @@ import com.example.amaze.fragments.InfoFragment
 import com.example.amaze.fragments.OptionsFragment
 import com.example.amaze.fragments.PaiementsFragment
 
-class CustomPagerAdapter(fm: FragmentManager?) : FragmentPagerAdapter(fm) {
+class ProfilePagerAdapter(fm: FragmentManager?) : FragmentPagerAdapter(fm) {
     val fragments = arrayOf(InfoFragment(), DispoFragment(), PaiementsFragment(), OptionsFragment())
     val titles = arrayOf("Info", "Dispo", "Paiements", "Options")
 
@@ -22,7 +22,7 @@ class CustomPagerAdapter(fm: FragmentManager?) : FragmentPagerAdapter(fm) {
         return fragments.size
     }
 
-    // Retourner le titre du bouton à afficher (TabLayout)
+    // Retourne le titre du bouton à afficher (TabLayout)
     override fun getPageTitle(position: Int): CharSequence? {
             return titles[position]
     }

@@ -18,90 +18,86 @@
                     android:text="@string/first_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/textView15"
+                    android:id="@+id/info_firstName_textView"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     android:layout_marginTop="20dp"
-                    android:layout_marginStart="50dp"
+                    android:layout_marginStart="40dp"
                     android:textColor="@color/colorBlackText"/>
 
             <TextView
-                    android:text="Jennifer"
                     android:layout_width="wrap_content"
                     android:layout_height="0dp"
-                    android:id="@+id/textView16"
-                    app:layout_constraintTop_toTopOf="@+id/textView15"
+                    android:id="@+id/info_firstName"
+                    app:layout_constraintTop_toTopOf="@+id/info_firstName_textView"
                     app:layout_constraintEnd_toEndOf="parent"
-                    android:layout_marginEnd="175dp"/>
+                    android:layout_marginEnd="100dp"
+                    app:layout_constraintStart_toEndOf="@+id/info_firstName_textView"
+                    android:layout_marginStart="50dp"
+                    tools:text="Firstname"/>
 
             <TextView
                     android:text="@string/last_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/textView17"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView15"
-                    android:layout_marginStart="50dp"
+                    android:id="@+id/info_lastName_textView"
+                    app:layout_constraintStart_toStartOf="@+id/info_firstName_textView"
+                    app:layout_constraintTop_toBottomOf="@+id/info_firstName_textView"
                     android:layout_marginTop="20dp"
                     android:textColor="@color/colorBlackText"/>
 
             <TextView
-                    android:text="Lawrence"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/textView18"
-                    app:layout_constraintTop_toTopOf="@+id/textView17"
-                    app:layout_constraintStart_toStartOf="@+id/textView16"
-                    />
+                    android:id="@+id/info_lastName"
+                    app:layout_constraintTop_toTopOf="@+id/info_lastName_textView"
+                    app:layout_constraintStart_toStartOf="@+id/info_firstName"
+                    tools:text="Lastname"/>
 
             <TextView
                     android:text="@string/email"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/textView19"
-                    app:layout_constraintTop_toBottomOf="@+id/textView17"
-                    app:layout_constraintStart_toStartOf="parent"
-                    android:layout_marginStart="50dp"
+                    android:id="@+id/info_email_textView"
+                    app:layout_constraintTop_toBottomOf="@+id/info_lastName_textView"
+                    app:layout_constraintStart_toStartOf="@+id/info_lastName_textView"
                     android:layout_marginTop="20dp"
                     android:textColor="@color/colorBlackText"/>
 
             <TextView
-                    android:text="lawrence@gmail.com"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/textView20"
-                    app:layout_constraintTop_toTopOf="@+id/textView19"
-                    app:layout_constraintStart_toStartOf="@+id/textView18"
-                    />
+                    android:id="@+id/info_email"
+                    app:layout_constraintTop_toTopOf="@+id/info_email_textView"
+                    app:layout_constraintStart_toStartOf="@+id/info_lastName"
+                    tools:text="email@example.exp"/>
 
             <TextView
                     android:text="@string/phone_number"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/textView21"
-                    app:layout_constraintTop_toBottomOf="@+id/textView19"
-                    app:layout_constraintStart_toStartOf="parent"
-                    android:layout_marginStart="50dp"
+                    android:id="@+id/info_phoneNumber_textView"
+                    app:layout_constraintTop_toBottomOf="@+id/info_email_textView"
+                    app:layout_constraintStart_toStartOf="@+id/info_email_textView"
                     android:layout_marginTop="20dp"
                     android:textColor="@color/colorBlackText"/>
 
             <TextView
-                    android:text="0612345678"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/textView22"
-                    app:layout_constraintTop_toBottomOf="@+id/textView19"
-                    app:layout_constraintStart_toStartOf="@+id/textView20"
-                    android:layout_marginTop="20dp"/>
+                    android:id="@+id/info_phoneNumber"
+                    app:layout_constraintTop_toBottomOf="@+id/info_email_textView"
+                    app:layout_constraintStart_toStartOf="@+id/info_email"
+                    android:layout_marginTop="20dp"
+                    tools:text="Phonenumber"/>
 
             <TextView
                     android:text="@string/diet_information"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/textView23"
-                    app:layout_constraintTop_toBottomOf="@+id/textView21"
-                    app:layout_constraintStart_toStartOf="parent"
-                    android:layout_marginStart="50dp"
+                    android:id="@+id/info_dietInformation_textView"
+                    app:layout_constraintTop_toBottomOf="@+id/info_phoneNumber_textView"
+                    app:layout_constraintStart_toStartOf="@+id/info_phoneNumber_textView"
                     android:layout_marginTop="50dp"
                     android:textColor="@color/colorBlackText"/>
 
@@ -109,10 +105,9 @@
                     android:text="Diet information..."
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/textView24"
-                    app:layout_constraintTop_toBottomOf="@+id/textView23"
-                    app:layout_constraintStart_toStartOf="parent"
-                    android:layout_marginStart="50dp"
+                    android:id="@+id/info_dietInformation"
+                    app:layout_constraintTop_toBottomOf="@+id/info_dietInformation_textView"
+                    app:layout_constraintStart_toStartOf="@+id/info_dietInformation_textView"
                     android:layout_marginTop="20dp"/>
 
             <Button
@@ -120,17 +115,18 @@
                     android:text="@string/log_out"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/button4"
+                    android:id="@+id/info_logoutButton"
                     app:layout_constraintEnd_toEndOf="parent"
                     android:layout_marginEnd="8dp"
                     app:layout_constraintStart_toStartOf="parent"
                     android:drawablePadding="10dp"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="50dp"
-                    app:layout_constraintTop_toBottomOf="@+id/textView24"
+                    app:layout_constraintTop_toBottomOf="@+id/info_dietInformation"
                     android:textColor="#F47155"
-                    android:background="@color/colorBackground"
-                    android:textAllCaps="false"/>
+                    android:background="@color/transparent"
+                    android:textAllCaps="false"
+                    />
         </android.support.constraint.ConstraintLayout>
     </ScrollView>
 

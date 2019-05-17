@@ -10,7 +10,7 @@
     <Button
             android:layout_width="22.18dp"
             android:layout_height="17.08dp"
-            android:id="@+id/button3"
+            android:id="@+id/profile_button_back"
             android:background="@drawable/left_arrow"
             app:layout_constraintTop_toTopOf="@+id/textViewProfile"
             app:layout_constraintStart_toStartOf="parent"
@@ -44,7 +44,7 @@
             android:contentDescription="@string/profilePictureDescription"/>
 
     <TextView
-            android:text="Jennifer Lawrence"
+            android:text="Firstname Lastname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/textViewProfileName"
@@ -61,7 +61,7 @@
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:id="@+id/tabLayout"
+            android:id="@+id/profile_tabLayout"
             app:layout_constraintHorizontal_bias="0.0"
             android:layout_marginTop="16dp"
             app:layout_constraintTop_toBottomOf="@+id/textViewProfileName"
@@ -97,10 +97,10 @@
     <android.support.v4.view.ViewPager
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:id="@+id/viewPager"
+            android:id="@+id/profile_viewPager"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tabLayout"
-            android:background="#F5F6F8"/>
+            app:layout_constraintTop_toBottomOf="@+id/profile_tabLayout"
+            android:background="@color/colorBackground"/>
 </android.support.constraint.ConstraintLayout>

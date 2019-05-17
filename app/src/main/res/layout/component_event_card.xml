@@ -50,7 +50,7 @@
                 android:layout_marginStart="8dp"
                 app:layout_constraintTop_toTopOf="@+id/custom_horizontal_friend_list_item_image"
                 android:layout_marginEnd="32dp"
-                app:layout_constraintEnd_toStartOf="@+id/button4"/>
+                app:layout_constraintEnd_toStartOf="@+id/info_logoutButton"/>
 
         <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/custom_horizontal_friend_list_item_image"
@@ -131,7 +131,7 @@
                 android:text="Chat"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:id="@+id/button4"
+                android:id="@+id/info_logoutButton"
                 android:drawableLeft="@drawable/chat_icon"
                 android:textColor="@color/colorWhite"
                 android:fontFamily="@font/open_sans"
@@ -174,7 +174,7 @@
                 android:text="@string/event_card_not_interessed_button_text"
                 android:layout_width="186dp"
                 android:layout_height="wrap_content"
-                android:id="@+id/button6"
+                android:id="@+id/dispo_addDate"
                 app:layout_constraintStart_toStartOf="@+id/guideline3"
                 android:layout_marginStart="24dp"
                 app:layout_constraintEnd_toEndOf="parent"
