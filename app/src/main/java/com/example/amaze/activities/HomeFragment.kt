@@ -41,7 +41,7 @@ class HomeFragment : Fragment(), EventCardAdapter.OnEventCardListener {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val connectLocalRequest = RetrofitClient.eventService.getInvitedEvent("5ca34fcc82ecd255bf1be017")
+        val connectLocalRequest = RetrofitClient.eventService.getInvitedEvent(SecureStorageServices.authUser!!.id)
 
         connectLocalRequest.enqueue(object : Callback<ArrayList<Event>> {
             override fun onFailure(call: Call<ArrayList<Event>>, t: Throwable) {

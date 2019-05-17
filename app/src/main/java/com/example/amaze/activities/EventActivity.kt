@@ -34,7 +34,6 @@ class EventActivity : AppCompatActivity() {
 
         amazeDescription.AmazeDescriptionText.text = event.description
 
-        amazeGuestsComponent.amazeGuestsComming.text = event.
     }
 
     // Formatte la date pour une date adaptée a l'event card
