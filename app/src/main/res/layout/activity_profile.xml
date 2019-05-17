@@ -44,7 +44,7 @@
             android:contentDescription="@string/profilePictureDescription"/>
 
     <TextView
-            android:text="Jennifer Lawrence"
+            android:text="Firstname Lastname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/textViewProfileName"
@@ -102,5 +102,5 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/profile_tabLayout"
-            android:background="#F5F6F8"/>
+            android:background="@color/colorBackground"/>
 </android.support.constraint.ConstraintLayout>

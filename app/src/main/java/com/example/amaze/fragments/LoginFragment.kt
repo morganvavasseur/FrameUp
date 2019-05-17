@@ -15,6 +15,7 @@ import com.example.amaze.MainActivity
 
 import com.example.amaze.R
 import com.example.amaze.activities.CreateEventActivity
+import com.example.amaze.activities.ProfileActivity
 import com.example.amaze.models.ConnectResults
 import com.example.amaze.network.RetrofitClient
 import com.example.amaze.utils.SecureStorageServices
@@ -98,7 +99,7 @@ class LoginFragment : Fragment() {
 
                 // Si le token à bien été stocké on connecte l'utilisateur à l'activité principale
                 if (SecureStorageServices.authJwtToken != null){
-                    val intent = Intent(AmazeApp.sharedInstance, CreateEventActivity::class.java)
+                    val intent = Intent(AmazeApp.sharedInstance, ProfileActivity::class.java)
                     startActivity(intent)
                 }
 

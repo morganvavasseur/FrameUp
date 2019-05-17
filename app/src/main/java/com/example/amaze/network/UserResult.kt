@@ -1,5 +1,6 @@
 package com.example.amaze.network
 
+import com.example.amaze.models.Diet
 import com.fasterxml.jackson.annotation.JsonProperty
 import java.util.*
 import kotlin.collections.ArrayList
@@ -25,6 +26,8 @@ class UserResult {
     lateinit var username: String
 
     lateinit var email: String
+
+    lateinit var diets: ArrayList<Diet>
 
     lateinit var organizedEvents : ArrayList<EventResult>
 
