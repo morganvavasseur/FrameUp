@@ -18,39 +18,41 @@
                     android:src="@drawable/calendar_symbol"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/imageView5"
+                    android:id="@+id/dispo_calendar"
                     android:layout_marginTop="20dp"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    android:layout_marginStart="40dp"/>
+                    android:layout_marginStart="20dp"/>
 
             <TextView
                     android:text="@string/textfield_disponibilities"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/textView5"
-                    app:layout_constraintTop_toTopOf="@+id/imageView5"
-                    app:layout_constraintStart_toEndOf="@+id/imageView5"
+                    android:id="@+id/dispo_title"
+                    app:layout_constraintTop_toTopOf="@+id/dispo_calendar"
+                    app:layout_constraintStart_toEndOf="@+id/dispo_calendar"
                     android:layout_marginStart="10dp"
                     android:textColor="#F47155"/>
 
             <TextView
                     android:text="@string/customize_disponibilities"
-                    android:layout_width="335dp"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:id="@+id/textView6"
-                    app:layout_constraintStart_toStartOf="@+id/imageView5"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView5"
+                    android:id="@+id/dispo_customize_textView"
+                    app:layout_constraintStart_toStartOf="@+id/dispo_calendar"
+                    app:layout_constraintTop_toBottomOf="@+id/dispo_calendar"
                     android:layout_marginTop="15dp"
-                    android:textColor="@color/colorBlackText"/>
+                    android:textColor="@color/colorBlackText"
+                    android:layout_marginEnd="20dp"
+                    app:layout_constraintEnd_toEndOf="parent"/>
 
             <TextView
                     android:text="@string/pick_no_dispo"
-                    android:layout_width="335dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/textView7"
-                    app:layout_constraintTop_toBottomOf="@+id/textView6"
-                    app:layout_constraintStart_toStartOf="@+id/textView6"
+                    android:id="@+id/dispo_dateCantAttend_textView"
+                    app:layout_constraintTop_toBottomOf="@+id/dispo_customize_textView"
+                    app:layout_constraintStart_toStartOf="@+id/dispo_customize_textView"
                     android:layout_marginTop="30dp"
                     android:textColor="#515C6F"/>
 
@@ -58,19 +60,19 @@
                     android:text="@string/add_no_dispo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/button6"
+                    android:id="@+id/dispo_addDate"
                     android:layout_marginTop="15dp"
-                    app:layout_constraintTop_toBottomOf="@+id/textView7"
-                    app:layout_constraintStart_toStartOf="@+id/textView7"
+                    app:layout_constraintTop_toBottomOf="@+id/dispo_dateCantAttend_textView"
+                    app:layout_constraintStart_toStartOf="@+id/dispo_dateCantAttend_textView"
                     />
 
             <TextView
                     android:text="@string/available_weekend"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/textView9"
-                    app:layout_constraintTop_toBottomOf="@+id/button6"
-                    app:layout_constraintStart_toStartOf="@+id/button6"
+                    android:id="@+id/dispo_weekend_textView"
+                    app:layout_constraintTop_toBottomOf="@+id/dispo_addDate"
+                    app:layout_constraintStart_toStartOf="@+id/dispo_addDate"
                     android:textColor="#F47155"
                     android:layout_marginTop="30dp"/>
 
@@ -78,101 +80,101 @@
                     android:text="@string/morning"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/checkBox"
-                    app:layout_constraintTop_toBottomOf="@+id/textView9"
-                    app:layout_constraintStart_toStartOf="@+id/textView9"
+                    android:id="@+id/dispo_weekend_morning"
+                    app:layout_constraintTop_toBottomOf="@+id/dispo_weekend_textView"
+                    app:layout_constraintStart_toStartOf="@+id/dispo_weekend_textView"
                     android:layout_marginTop="20dp"/>
 
             <CheckBox
                     android:text="@string/midday"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/checkBox2"
-                    app:layout_constraintTop_toTopOf="@+id/checkBox"
-                    app:layout_constraintStart_toEndOf="@+id/checkBox"
+                    android:id="@+id/dispo_weekend_midday"
+                    app:layout_constraintTop_toTopOf="@+id/dispo_weekend_morning"
+                    app:layout_constraintStart_toEndOf="@+id/dispo_weekend_morning"
                     android:layout_marginStart="20dp"/>
 
             <CheckBox
                     android:text="@string/evening"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/checkBox3"
-                    app:layout_constraintStart_toEndOf="@+id/checkBox2"
+                    android:id="@+id/dispo_weekend_evening"
+                    app:layout_constraintStart_toEndOf="@+id/dispo_weekend_midday"
                     android:layout_marginStart="20dp"
-                    app:layout_constraintTop_toTopOf="@+id/checkBox2"/>
+                    app:layout_constraintTop_toTopOf="@+id/dispo_weekend_midday"/>
 
             <CheckBox
                     android:text="@string/night"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/checkBox4"
-                    app:layout_constraintTop_toBottomOf="@+id/checkBox"
+                    android:id="@+id/dispo_weekend_night"
+                    app:layout_constraintTop_toBottomOf="@+id/dispo_weekend_morning"
                     android:layout_marginTop="15dp"
-                    app:layout_constraintStart_toStartOf="@+id/checkBox"
+                    app:layout_constraintStart_toStartOf="@+id/dispo_weekend_morning"
                     />
 
             <CheckBox
                     android:text="@string/latenight"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/checkBox5"
-                    app:layout_constraintStart_toStartOf="@+id/checkBox2"
-                    app:layout_constraintTop_toTopOf="@+id/checkBox4"/>
+                    android:id="@+id/dispo_weekend_latenight"
+                    app:layout_constraintStart_toStartOf="@+id/dispo_weekend_midday"
+                    app:layout_constraintTop_toTopOf="@+id/dispo_weekend_night"/>
 
             <TextView
                     android:text="@string/available_weekdays"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/textView10"
+                    android:id="@+id/dispo_weekdays_textView"
                     android:textColor="#F47155"
-                    app:layout_constraintStart_toStartOf="@+id/textView9"
-                    app:layout_constraintTop_toBottomOf="@+id/checkBox4"
+                    app:layout_constraintStart_toStartOf="@+id/dispo_weekend_textView"
+                    app:layout_constraintTop_toBottomOf="@+id/dispo_weekend_night"
                     android:layout_marginTop="30dp"/>
 
             <CheckBox
                     android:text="@string/morning"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/checkBox11"
-                    app:layout_constraintStart_toStartOf="@+id/textView10"
-                    app:layout_constraintTop_toBottomOf="@+id/textView10"
+                    android:id="@+id/dispo_weekdays_morning"
+                    app:layout_constraintStart_toStartOf="@+id/dispo_weekdays_textView"
+                    app:layout_constraintTop_toBottomOf="@+id/dispo_weekdays_textView"
                     android:layout_marginTop="20dp"/>
 
             <CheckBox
                     android:text="@string/midday"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/checkBox12"
-                    app:layout_constraintTop_toTopOf="@+id/checkBox11"
-                    app:layout_constraintStart_toEndOf="@+id/checkBox11"
+                    android:id="@+id/dispo_weekdays_midday"
+                    app:layout_constraintTop_toTopOf="@+id/dispo_weekdays_morning"
+                    app:layout_constraintStart_toEndOf="@+id/dispo_weekdays_morning"
                     android:layout_marginStart="20dp"/>
 
             <CheckBox
                     android:text="@string/evening"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/checkBox13"
-                    app:layout_constraintTop_toTopOf="@+id/checkBox12"
-                    app:layout_constraintStart_toEndOf="@+id/checkBox12"
+                    android:id="@+id/dispo_weekdays_evening"
+                    app:layout_constraintTop_toTopOf="@+id/dispo_weekdays_midday"
+                    app:layout_constraintStart_toEndOf="@+id/dispo_weekdays_midday"
                     android:layout_marginStart="20dp"/>
 
             <CheckBox
                     android:text="@string/night"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/checkBox14"
+                    android:id="@+id/dispo_weekdays_night"
                     android:layout_marginTop="15dp"
-                    app:layout_constraintTop_toBottomOf="@+id/checkBox11"
-                    app:layout_constraintStart_toStartOf="@+id/checkBox11"
+                    app:layout_constraintTop_toBottomOf="@+id/dispo_weekdays_morning"
+                    app:layout_constraintStart_toStartOf="@+id/dispo_weekdays_morning"
                     />
 
             <CheckBox
                     android:text="@string/latenight"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/checkBox15"
-                    app:layout_constraintTop_toTopOf="@+id/checkBox14"
-                    app:layout_constraintStart_toStartOf="@+id/checkBox12"
+                    android:id="@+id/dispo_weekdays_latenight"
+                    app:layout_constraintTop_toTopOf="@+id/dispo_weekdays_night"
+                    app:layout_constraintStart_toStartOf="@+id/dispo_weekdays_midday"
                     />
         </android.support.constraint.ConstraintLayout>
     </ScrollView>

@@ -30,6 +30,10 @@ class User : Serializable {
 
     lateinit var email: String
 
+    lateinit var diets: ArrayList<Diet>
+
+    lateinit var dietOther: String
+
     lateinit var invitedEvents: ArrayList<Event>
 
     lateinit var organizedEvents: ArrayList<Event>
