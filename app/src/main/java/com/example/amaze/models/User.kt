@@ -3,12 +3,13 @@ package com.example.amaze.models
 import android.provider.ContactsContract
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import com.fasterxml.jackson.annotation.JsonProperty
+import java.io.Serializable
 import java.util.*
 import java.util.jar.Attributes
 import kotlin.collections.ArrayList
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-class User {
+class User : Serializable {
 
     //
     lateinit var id: String
@@ -32,4 +33,18 @@ class User {
     lateinit var invitedEvents: ArrayList<Event>
 
     lateinit var organizedEvents: ArrayList<Event>
+
+    fun fullName() : String {
+        var fullName : String = ""
+        if (this.firstName != null) {
+            fullName += this.firstName
+            if (this.lastName != null)
+                fullName += " " + this.lastName
+        }
+        else
+            fullName = "NAME IS NULL"
+
+        return fullName
+
+    }
 }

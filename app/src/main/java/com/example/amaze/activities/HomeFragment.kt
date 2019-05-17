@@ -1,6 +1,7 @@
 package com.example.amaze.activities
 
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
@@ -13,6 +14,7 @@ import com.example.amaze.AmazeApp
 import com.example.amaze.adapters.EventCardAdapter
 import com.example.amaze.models.Event
 import com.example.amaze.network.RetrofitClient
+import com.example.amaze.utils.ExtraStrings
 import com.example.amaze.utils.SecureStorageServices
 import kotlinx.android.synthetic.main.fragment_home.*
 import retrofit2.Call
@@ -30,7 +32,8 @@ private const val ARG_PARAM2 = "param2"
  * A simple [Fragment] subclass.
  *
  */
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment(), EventCardAdapter.OnEventCardListener {
+
 
     var events: ArrayList<Event> = ArrayList()
 
@@ -50,7 +53,7 @@ class HomeFragment : Fragment() {
                 if(responseEvents is ArrayList<Event>) {
                     events = responseEvents
                     recyclerViewEvents.layoutManager = LinearLayoutManager(context)
-                    recyclerViewEvents.adapter = EventCardAdapter(events)
+                    recyclerViewEvents.adapter = EventCardAdapter(events, this@HomeFragment)
                 }
             }
         })
@@ -65,6 +68,12 @@ class HomeFragment : Fragment() {
         super.onStart()
 
         recyclerViewEvents.layoutManager = LinearLayoutManager(context)
-        recyclerViewEvents.adapter = EventCardAdapter(events)
+        recyclerViewEvents.adapter = EventCardAdapter(events, this)
+    }
+
+    override fun onEventCardClick(event: Event) {
+        val intent = Intent(AmazeApp.sharedInstance, EventActivity::class.java)
+        intent.putExtra(ExtraStrings.EXTRA_EVENT, event)
+        startActivity(intent)
     }
 }

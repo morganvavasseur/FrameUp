@@ -36,7 +36,7 @@ class LoginSignUpActivity : FragmentActivity() {
             updateUserInfos()
 
             // On démarre l'activité principale
-            val intent = Intent(AmazeApp.sharedInstance, CreateEventActivity::class.java)
+            val intent = Intent(AmazeApp.sharedInstance, MainActivity::class.java)
             startActivity(intent)
         }
 

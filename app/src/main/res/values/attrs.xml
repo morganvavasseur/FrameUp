@@ -18,4 +18,19 @@
         <attr name="text" format="string"></attr>
     </declare-styleable>
 
+    <declare-styleable name="EventSummaryCard_attrs">
+        <attr name="title" format="string"/>
+        <attr name="host_name" format="string"/>
+        <attr name="description" format="string"/>
+        <attr name="date" format="string"/>
+        <attr name="hour" format="string"/>
+        <attr name="location" format="string"/>
+        <attr name="price" format="float"/>
+    </declare-styleable>
+
+    <declare-styleable name="AmazeEventDescription_attrs">
+        <attr name="description_text" format="string"/>
+        <attr name="description_is_editable" format="boolean"/>
+    </declare-styleable>
+
 </resources>

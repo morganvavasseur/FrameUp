@@ -1,5 +1,6 @@
 package com.example.amaze.activities
 
+import android.content.Intent
 import android.graphics.Typeface
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -9,6 +10,7 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import com.example.amaze.AmazeApp
+import com.example.amaze.MainActivity
 import com.example.amaze.R
 import com.example.amaze.adapters.HorizontalFriendListAdapter
 import com.example.amaze.adapters.SearchedFriendCardAdapter
@@ -109,7 +111,8 @@ class AddGuestToEventActivity : AppCompatActivity(), SearchedFriendCardAdapter.O
             }
 
             override fun onResponse(call: Call<Event>, response: Response<Event>) {
-                Toast.makeText(this@AddGuestToEventActivity, response.message(), Toast.LENGTH_LONG)
+                val intent = Intent(AmazeApp.sharedInstance, MainActivity::class.java)
+                startActivity(intent)
             }
         })
     }

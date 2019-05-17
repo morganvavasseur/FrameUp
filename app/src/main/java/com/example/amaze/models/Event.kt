@@ -1,8 +1,11 @@
 package com.example.amaze.models
 import android.location.Location
+import android.os.Parcel
+import android.os.Parcelable
 import com.fasterxml.jackson.annotation.JsonClassDescription
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import com.fasterxml.jackson.annotation.JsonProperty
+import java.io.Serializable
 import java.util.*
 
 // Pour satisfaire le parser JSON
@@ -12,7 +15,7 @@ import java.util.*
 // On demande au parseur d'ignorer les propriétés du Json
 // qui ne sont pas définis dans la classe Kotlin
 @JsonIgnoreProperties(ignoreUnknown = true)
-class Event {
+class Event : Serializable {
 
     // Titre de l'event
     lateinit var title: String
@@ -37,7 +40,7 @@ class Event {
 
     // Prix de participation de l'event pour
     // chaque invité
-    var entrancePrice: Number = 0
+    lateinit var entrancePrice: Number
 
     // Liste des organisateurs de l'event
     lateinit var organizers: ArrayList<User>
@@ -50,4 +53,5 @@ class Event {
 
     // Liste des Stuffs de l'event
     //val stuffs: Array<Stuff>
+
 }
