@@ -66,7 +66,6 @@
                                       <entry key="backgroundColor" value="f47155" />
                                       <entry key="backgroundLayerName" value="ic_launcher_background" />
                                       <entry key="foregroundImage" value="$PROJECT_DIR$/app/src/main/res/drawable/ic_amaze_icon.xml" />
-                                      <entry key="foregroundLayerName" value="ic_launcher_foreground" />
                                       <entry key="outputName" value="ic_amaze_launcher" />
                                     </map>
                                   </option>
