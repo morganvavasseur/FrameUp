@@ -33,4 +33,10 @@
         <attr name="description_is_editable" format="boolean"/>
     </declare-styleable>
 
+    <declare-styleable name="AmazeGuestsComponent_attrs">
+        <attr name="guests_comming" format="integer"/>
+        <attr name="guests_not_comming" format="integer"/>
+        <attr name="guests_maybe" format="integer"/>
+    </declare-styleable>
+
 </resources>

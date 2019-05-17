@@ -8,6 +8,7 @@ import com.example.amaze.utils.EventSupportFunctions
 import com.example.amaze.utils.ExtraStrings
 import kotlinx.android.synthetic.main.activity_event.*
 import kotlinx.android.synthetic.main.amaze_event_description.view.*
+import kotlinx.android.synthetic.main.amaze_guests_component.view.*
 import kotlinx.android.synthetic.main.event_summary_card.view.*
 import java.text.SimpleDateFormat
 import java.time.ZoneId
@@ -32,6 +33,8 @@ class EventActivity : AppCompatActivity() {
         eventSummaryCard.eventSummaryCardPrice.setText(event.entrancePrice.toString())
 
         amazeDescription.AmazeDescriptionText.text = event.description
+
+        amazeGuestsComponent.amazeGuestsComming.text = event.
     }
 
     // Formatte la date pour une date adaptée a l'event card

@@ -64,5 +64,6 @@
     <string name="search_friend_button_text">Search friends</string>
     <string name="next_text">Next</string>
     <string name="free_text">Free</string>
+    <string name="guests">Guests</string>
 
 </resources>
