@@ -39,4 +39,9 @@
         <attr name="guests_maybe" format="integer"/>
     </declare-styleable>
 
+    <declare-styleable name="AmazeEventPrice_attrs">
+        <attr name="price_value" format="integer"/>
+        <attr name="price_is_editable" format="boolean"/>
+    </declare-styleable>
+
 </resources>

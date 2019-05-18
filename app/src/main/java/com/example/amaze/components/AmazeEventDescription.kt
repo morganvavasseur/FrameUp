@@ -26,7 +26,7 @@ class AmazeEventDescription @JvmOverloads constructor(
             0, 0
         ).apply {
             try {
-                AmazeDescriptionText.text = getString(R.styleable.AmazeEventDescription_attrs_description_text)
+                amazeDescriptionText.text = getString(R.styleable.AmazeEventDescription_attrs_description_text)
                 amazeDescriptionEditText.setText(getString(R.styleable.AmazeEventDescription_attrs_description_text))
                 isEditable = getBoolean(R.styleable.AmazeEventDescription_attrs_description_is_editable, false)
                 changeState()
@@ -39,11 +39,11 @@ class AmazeEventDescription @JvmOverloads constructor(
     fun changeState(){
         when(isEditable){
             true -> {
-                AmazeDescriptionText.visibility = View.GONE
+                amazeDescriptionText.visibility = View.GONE
                 amazeDescriptionEditText.visibility = View.VISIBLE
             }
             false -> {
-                AmazeDescriptionText.visibility = View.VISIBLE
+                amazeDescriptionText.visibility = View.VISIBLE
                 amazeDescriptionEditText.visibility = View.GONE
             }
         }

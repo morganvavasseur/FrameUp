@@ -31,7 +31,7 @@ class EventResult : Serializable{
     @SerializedName("locationIsFinal")
     var locationIsFinal: Boolean = false
     @SerializedName("entrancePrice")
-    var entrancePrice: Int = 0
+    var entrancePrice: Number = 0
     @SerializedName("organizers")
     lateinit var organizers: List<Organizer>
     @SerializedName("guests")

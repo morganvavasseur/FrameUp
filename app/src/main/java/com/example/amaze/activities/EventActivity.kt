@@ -3,11 +3,11 @@ package com.example.amaze.activities
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import com.example.amaze.R
-import com.example.amaze.models.Event
 import com.example.amaze.network.EventResult
 import com.example.amaze.utils.EventSupportFunctions
 import com.example.amaze.utils.ExtraStrings
 import kotlinx.android.synthetic.main.activity_event.*
+import kotlinx.android.synthetic.main.activity_event.view.*
 import kotlinx.android.synthetic.main.amaze_event_description.view.*
 import kotlinx.android.synthetic.main.amaze_guests_component.view.*
 import kotlinx.android.synthetic.main.event_summary_card.view.*
@@ -31,9 +31,9 @@ class EventActivity : AppCompatActivity() {
         eventSummaryCard.eventSummaryCardDate.text = getEventDate(event.date)
         eventSummaryCard.eventSummaryCardHour.text = getEventHour(event.date)
         eventSummaryCard.eventSummaryCardAddress.text = event.location.toString()
-        eventSummaryCard.eventSummaryCardPrice.setText(event.entrancePrice.toString())
+        eventSummaryCard.amazeEventPrice.value = event.entrancePrice
 
-        amazeDescription.AmazeDescriptionText.text = event.description
+        amazeDescription.amazeDescriptionText.text = event.description
 
         amazeGuestsComponent.amazeGuestsComming.text = event.guestsComming.count().toString()
         amazeGuestsComponent.amazeGuestsNotComming.text = event.guestsNotComming.count().toString()

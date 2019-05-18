@@ -24,7 +24,7 @@
     <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:id="@+id/AmazeDescriptionText"
+            android:id="@+id/amazeDescriptionText"
             android:layout_marginTop="24dp"
             app:layout_constraintTop_toBottomOf="@+id/textView25"
             app:layout_constraintStart_toStartOf="@+id/textView25"
