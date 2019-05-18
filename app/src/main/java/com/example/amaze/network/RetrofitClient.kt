@@ -18,8 +18,8 @@ class RetrofitClient {
     companion object {
 
         // URL to API
-//        val BASE_URL : String = "https://amaze-api.herokuapp.com/"
-        val BASE_URL : String = "http://192.168.1.56:1337/"
+        val BASE_URL : String = "https://amaze-api.herokuapp.com/"
+//        val BASE_URL : String = "http://192.168.1.56:1337/"
         val PUBLIC_ROLE_ID = "5c39cc2fa2442510c3236beb"
         val AUTHENTICATED_ROLE_ID = "5c39cc2fa2442510c3236bea"
 
