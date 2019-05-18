@@ -12,7 +12,7 @@ interface EventService {
     @GET("events")
     fun getInvitedEvent(
         @Query("guests_in", encoded = true) userId : String,
-        @Header("Authorization") auth : String = "Bearer ${SecureStorageServices.authJwtToken}") : Call<ArrayList<Event>>
+@Header("Authorization") auth : String = "Bearer ${SecureStorageServices.authJwtToken}") : Call<ArrayList<EventResult>>
 
     // Créer une soirée
     @POST("events")

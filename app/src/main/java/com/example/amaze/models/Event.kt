@@ -1,12 +1,9 @@
 package com.example.amaze.models
-import android.location.Location
-import android.os.Parcel
-import android.os.Parcelable
-import com.fasterxml.jackson.annotation.JsonClassDescription
+import com.example.amaze.network.StuffResult
+import com.example.amaze.network.UserResult
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
-import com.fasterxml.jackson.annotation.JsonProperty
 import java.io.Serializable
-import java.util.*
+import kotlin.collections.ArrayList
 
 // Pour satisfaire le parser JSON
 // ne pas mettre de constructeur custom
@@ -23,12 +20,6 @@ class Event : Serializable {
     // Date présumé de l'event
     lateinit var date: String
 
-    // Personne qui à créer l'event
-    //val host: User,
-
-    // Description de l'event
-    lateinit var description: String
-
     // Vrai si la date de l'event est validée
     var dateIsFinal: Boolean = false
 
@@ -43,15 +34,30 @@ class Event : Serializable {
     lateinit var entrancePrice: Number
 
     // Liste des organisateurs de l'event
-    lateinit var organizers: ArrayList<User>
+    lateinit var organizers: ArrayList<UserResult>
 
     // Liste des invités
-    //val guests: Array<User>,
+    lateinit var guests: Array<UserResult>
+
+    // Description de l'event
+    lateinit var description: String
+
+    // Note pour l'event
+    lateinit var note: String
+
+    // Les invités qui ont indiqués venir
+    lateinit var guestsComming : ArrayList<UserResult>
+
+    // Les invités qui ont indiqué ne pas venir
+    lateinit var guestsNotComming : ArrayList<UserResult>
+
+    // Les invités qui ont indiqué ne pas savoir si ils venaient
+    lateinit var guestsMaybe : ArrayList<UserResult>
 
     // Liste des Consumables de l'event
-    //var consumables: Array<Consumable>? = null,
+    lateinit var consumables: ArrayList<Consumable>
 
     // Liste des Stuffs de l'event
-    //val stuffs: Array<Stuff>
+    lateinit var stuffs: ArrayList<StuffResult>
 
 }

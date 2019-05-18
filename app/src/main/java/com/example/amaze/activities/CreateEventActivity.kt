@@ -7,8 +7,10 @@ import android.support.v4.content.ContextCompat.startActivity
 import com.example.amaze.R
 import com.example.amaze.activities.CreateEventActivity.Companion.EVENT_CODE
 import com.example.amaze.components.AmazeNextButton
+import com.example.amaze.models.Organizer
 import com.example.amaze.models.User
 import com.example.amaze.network.EventResult
+import com.example.amaze.network.UserResult
 import com.example.amaze.utils.SecureStorageServices
 import kotlinx.android.synthetic.main.activity_create_event.*
 import kotlin.collections.ArrayList
@@ -27,13 +29,13 @@ class CreateEventActivity : AppCompatActivity(), AmazeNextButton.OnNextButtonLis
         createEventNextButton.setNextButtonOnClickListener(this)
     }
 
-    fun getOrganizersFromAuthenticatedUser() : ArrayList<String>
+    fun getOrganizersFromAuthenticatedUser() : ArrayList<Organizer>
     {
-        val organizers = ArrayList<String>()
+        val organizers = ArrayList<Organizer>()
         // Si le token à bien été stocké on connecte l'utilisateur à l'activité principale
-        val hostUser : User? = SecureStorageServices.authUser
+        val hostUser : Organizer? = SecureStorageServices.authUser as Organizer
         if (hostUser != null)
-            organizers.add(hostUser.id)
+            organizers.add(hostUser)
 
         return organizers
     }

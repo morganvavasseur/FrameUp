@@ -1,7 +1,10 @@
 package com.example.amaze.utils
 
 import com.example.amaze.models.Event
+import com.example.amaze.models.Organizer
 import com.example.amaze.models.User
+import com.example.amaze.network.EventResult
+import com.example.amaze.network.UserResult
 import java.time.Instant
 import java.time.LocalDateTime
 import java.time.ZoneId
@@ -12,7 +15,7 @@ class EventSupportFunctions {
 
     companion object {
 
-        fun getHost(event: Event) : User? {
+        fun getHost(event: EventResult) : Organizer? {
             if (event.organizers != null)
                 return event.organizers?.firstOrNull()
             else

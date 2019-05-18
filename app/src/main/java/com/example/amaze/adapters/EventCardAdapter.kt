@@ -14,12 +14,15 @@ import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
 import java.util.*
 import android.R
+import com.example.amaze.models.Organizer
+import com.example.amaze.network.EventResult
+import com.example.amaze.network.UserResult
 import com.example.amaze.utils.ExtraStrings
 import java.text.SimpleDateFormat
 import java.time.*
 
 
-class EventCardAdapter(val events : List<Event>, val onEventCardListener: OnEventCardListener) : RecyclerView.Adapter<EventCardAdapter.EventCardViewHolder>() {
+class EventCardAdapter(val events : List<EventResult>, val onEventCardListener: OnEventCardListener) : RecyclerView.Adapter<EventCardAdapter.EventCardViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, p1: Int): EventCardViewHolder {
         return EventCardViewHolder(
             LayoutInflater.from(parent.context)
@@ -33,7 +36,7 @@ class EventCardAdapter(val events : List<Event>, val onEventCardListener: OnEven
     override fun onBindViewHolder(holder: EventCardViewHolder, position: Int) {
         // Récupère l'event
         val event = events[position]
-        var host : User? = EventSupportFunctions.getHost(event)
+        var host : Organizer? = EventSupportFunctions.getHost(event)
 
         // Affecte les valeurs à l'event récupéré
         holder.view.event_card_title.text = event.title
@@ -76,6 +79,6 @@ class EventCardAdapter(val events : List<Event>, val onEventCardListener: OnEven
     class EventCardViewHolder(val view: View) : RecyclerView.ViewHolder(view)
 
     interface OnEventCardListener{
-        fun onEventCardClick(event: Event)
+        fun onEventCardClick(event: EventResult)
     }
 }

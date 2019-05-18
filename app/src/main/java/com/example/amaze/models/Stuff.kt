@@ -1,34 +1,31 @@
 package com.example.amaze.models
 
+import com.example.amaze.network.EventResult
+import com.example.amaze.network.UserResult
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import com.fasterxml.jackson.annotation.JsonProperty
+import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 import java.util.jar.Attributes
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-open class Stuff {
+open class Stuff : Serializable {
 
-    @JsonProperty("_id")
-    lateinit var id: String
-
-    lateinit var createdAt: String
-
-    lateinit var updatedAt: String
-
-    // Nom de l'objet
+    @SerializedName("name")
     lateinit var name: String
-
-    // Quantité nécessaire
+    @SerializedName("quantity")
     var quantity: Int = 0
-
-    // Description de l'objet
+    @SerializedName("description")
     lateinit var description: String
+    @SerializedName("usersOnIt")
+    lateinit var usersOnIt: List<String>
 
-    // Invités qui ont dit vouloir se placer sur un Stuff
-    var usersOnIt: Array<String>? = null
-
-    // Anniversaire auquel est lié le Stuff
+    @SerializedName("_id")
+    lateinit var id: String
+    @SerializedName("createdAt")
+    lateinit var createdAt: String
+    @SerializedName("updatedAt")
+    lateinit var updatedAt: String
+    @SerializedName("event")
     lateinit var event: String
-
-
-
 }

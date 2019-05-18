@@ -21,7 +21,7 @@ interface UserService {
     // via le token stocké lorsqu'il s'est connecté
     @GET("users/me")
     fun getAuthenticatedUserInfos(
-        @Header("Authorization") auth : String = "Bearer ${SecureStorageServices.authJwtToken}") : Call<User>
+        @Header("Authorization") auth : String = "Bearer ${SecureStorageServices.authJwtToken}") : Call<UserResult>
 
 
     // Récupère une liste d'utilisateur à partir d'un nom d'utilisateur

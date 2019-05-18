@@ -1,35 +1,37 @@
 package com.example.amaze.network
 
-import com.example.amaze.models.Diet
+import com.example.amaze.models.*
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import com.fasterxml.jackson.annotation.JsonProperty
+import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 import java.util.*
 import kotlin.collections.ArrayList
 
-class UserResult {
-    @JsonProperty("_id")
-    lateinit var id: String
+@JsonIgnoreProperties(ignoreUnknown = true)
+class UserResult : Person(), Serializable {
 
-    // Prénom de l'utilisateur
-    lateinit var firstName: String
+    @SerializedName("provider")
+    lateinit var provider: String
+    @SerializedName("role")
+    lateinit var role: Role
+    @SerializedName("profilePicture")
+    lateinit var profilePicture: String
+    @SerializedName("diets")
+    lateinit var diets: List<Diet>
+    @SerializedName("stuffs")
+    lateinit var stuffs : List<Stuff>
+    @SerializedName("consumables")
+    lateinit var consumables: List<Consumable>
+    @SerializedName("organizedEvents")
+    lateinit var organizedEvents: List<LinkedEvent>
+    @SerializedName("invitedEvents")
+    lateinit var invitedEvents: List<LinkedEvent>
+    @SerializedName("eventsGoing")
+    lateinit var eventsGoing: List<LinkedEvent>
+    @SerializedName("eventsNotGoing")
+    lateinit var eventsNotGoing: List<LinkedEvent>
+    @SerializedName("eventsMaybe")
+    lateinit var eventsMaybe: List<LinkedEvent>
 
-    // Nom de l'utilisateur
-    lateinit var lastName: String
-
-    // Date d'anniversaire de l'utilisateur
-    lateinit var birthday: Date
-
-    lateinit var dietOther: String
-
-    // Numéro de téléphone de l'utilisateur
-    lateinit var phone: String
-
-    lateinit var username: String
-
-    lateinit var email: String
-
-    lateinit var diets: ArrayList<Diet>
-
-    lateinit var organizedEvents : ArrayList<EventResult>
-
-    lateinit var invitedEvents : ArrayList<EventResult>
 }

@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import com.example.amaze.R
 import com.example.amaze.models.Event
+import com.example.amaze.network.EventResult
 import com.example.amaze.utils.EventSupportFunctions
 import com.example.amaze.utils.ExtraStrings
 import kotlinx.android.synthetic.main.activity_event.*
@@ -16,13 +17,13 @@ import java.util.*
 
 class EventActivity : AppCompatActivity() {
 
-    lateinit var event: Event
+    lateinit var event: EventResult
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_event)
 
-        event = intent.extras.getSerializable(ExtraStrings.EXTRA_EVENT) as Event
+        event = intent.extras.getSerializable(ExtraStrings.EXTRA_EVENT) as EventResult
 
         eventSummaryCard.eventSummaryCardTitle.text = event.title
         eventSummaryCard.eventSummaryCardHostName.text = EventSupportFunctions.getHost(event)?.fullName()
@@ -33,6 +34,10 @@ class EventActivity : AppCompatActivity() {
         eventSummaryCard.eventSummaryCardPrice.setText(event.entrancePrice.toString())
 
         amazeDescription.AmazeDescriptionText.text = event.description
+
+        amazeGuestsComponent.amazeGuestsComming.text = event.guestsComming.count().toString()
+        amazeGuestsComponent.amazeGuestsNotComming.text = event.guestsNotComming.count().toString()
+        amazeGuestsComponent.amazeGuestsMaybe.text = event.guestsMaybe.count().toString()
 
     }
 

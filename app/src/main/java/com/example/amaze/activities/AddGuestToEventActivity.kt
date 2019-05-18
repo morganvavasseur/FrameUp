@@ -15,6 +15,7 @@ import com.example.amaze.R
 import com.example.amaze.adapters.HorizontalFriendListAdapter
 import com.example.amaze.adapters.SearchedFriendCardAdapter
 import com.example.amaze.models.Event
+import com.example.amaze.models.Guest
 import com.example.amaze.network.EventResult
 import com.example.amaze.network.RetrofitClient
 import com.example.amaze.network.UserResult
@@ -48,7 +49,7 @@ class AddGuestToEventActivity : AppCompatActivity(), SearchedFriendCardAdapter.O
         searchFriendButton.amazeLongButton.setOnClickListener({onSearchButtonClick()})
         createEventButton.setOnClickListener({onCreateEventButtonClick()})
 
-        event?.guests = ArrayList<String>()
+        event?.guests = ArrayList<Guest>()
 
     }
 
@@ -93,11 +94,11 @@ class AddGuestToEventActivity : AppCompatActivity(), SearchedFriendCardAdapter.O
 
     // Met à jour les invités à l'event
     fun putGuestsToEvent(){
-        val guestsIds = ArrayList<String>()
+        val guests = ArrayList<Guest>()
         guests.forEach {
-            guestsIds.add(it.id)
+            guests.add(it)
         }
-        event?.guests = guestsIds // Affecte le tagbleau des guests à l'event
+        event?.guests = guests // Affecte le tagbleau des guests à l'event
     }
 
 

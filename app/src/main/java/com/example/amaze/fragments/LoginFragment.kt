@@ -99,7 +99,7 @@ class LoginFragment : Fragment() {
 
                 // Si le token à bien été stocké on connecte l'utilisateur à l'activité principale
                 if (SecureStorageServices.authJwtToken != null){
-                    val intent = Intent(AmazeApp.sharedInstance, ProfileActivity::class.java)
+                    val intent = Intent(AmazeApp.sharedInstance, MainActivity::class.java)
                     startActivity(intent)
                 }
 

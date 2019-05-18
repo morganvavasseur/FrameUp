@@ -33,11 +33,11 @@ class LoginSignUpActivity : FragmentActivity() {
         if (SecureStorageServices.authJwtToken != null) {
 
             // On met à jour les données de l'utilisateur
-            updateUserInfos()
+//            updateUserInfos()
 
             // On démarre l'activité principale
-            val intent = Intent(AmazeApp.sharedInstance, MainActivity::class.java)
-            startActivity(intent)
+//            val intent = Intent(AmazeApp.sharedInstance, MainActivity::class.java)
+//            startActivity(intent)
         }
 
         // Instantiate a ViewPager and a PagerAdapter.

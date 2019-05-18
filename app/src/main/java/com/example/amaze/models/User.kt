@@ -9,7 +9,7 @@ import java.util.jar.Attributes
 import kotlin.collections.ArrayList
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-class User : Serializable {
+open class User : Serializable {
 
     //
     lateinit var id: String
@@ -30,7 +30,7 @@ class User : Serializable {
 
     lateinit var email: String
 
-    lateinit var diets: ArrayList<Diet>
+    open lateinit var diets: ArrayList<Diet>
 
     lateinit var dietOther: String
 

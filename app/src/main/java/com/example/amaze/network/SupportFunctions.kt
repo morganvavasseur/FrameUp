@@ -12,14 +12,14 @@ class SupportFunctions() {
         fun updateUserInfos(){
             val connectLocalRequest = RetrofitClient.userService.getAuthenticatedUserInfos()
 
-            connectLocalRequest.enqueue(object : Callback<User> {
-                override fun onFailure(call: Call<User>, t: Throwable) {
-                    //error(t.message.toString())
+            connectLocalRequest.enqueue(object : Callback<UserResult> {
+                override fun onFailure(call: Call<UserResult>, t: Throwable) {
+                    error(t.message.toString())
                 }
 
-                override fun onResponse(call: Call<User>, response: Response<User>) {
+                override fun onResponse(call: Call<UserResult>, response: Response<UserResult>) {
                     var user = response.body()
-                    SecureStorageServices.authUser = user
+                    SecureStorageServices.authUser = user as AuthUser
                 }
             })
 

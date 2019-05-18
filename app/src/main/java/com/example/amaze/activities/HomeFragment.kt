@@ -13,6 +13,7 @@ import android.widget.*
 import com.example.amaze.AmazeApp
 import com.example.amaze.adapters.EventCardAdapter
 import com.example.amaze.models.Event
+import com.example.amaze.network.EventResult
 import com.example.amaze.network.RetrofitClient
 import com.example.amaze.utils.ExtraStrings
 import com.example.amaze.utils.SecureStorageServices
@@ -35,22 +36,22 @@ private const val ARG_PARAM2 = "param2"
 class HomeFragment : Fragment(), EventCardAdapter.OnEventCardListener {
 
 
-    var events: ArrayList<Event> = ArrayList()
+    var events: ArrayList<EventResult> = ArrayList()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val connectLocalRequest = RetrofitClient.eventService.getInvitedEvent(SecureStorageServices.authUser!!.id)
+        val getEventRequest = RetrofitClient.eventService.getInvitedEvent(SecureStorageServices.authUser!!.id)
 
-        connectLocalRequest.enqueue(object : Callback<ArrayList<Event>> {
-            override fun onFailure(call: Call<ArrayList<Event>>, t: Throwable) {
-                //error(t.message.toString())
+        getEventRequest.enqueue(object : Callback<ArrayList<EventResult>> {
+            override fun onFailure(call: Call<ArrayList<EventResult>>, t: Throwable) {
+                error(t.message.toString())
             }
 
-            override fun onResponse(call: Call<ArrayList<Event>>, response: Response<ArrayList<Event>>) {
+            override fun onResponse(call: Call<ArrayList<EventResult>>, response: Response<ArrayList<EventResult>>) {
                 var responseEvents = response.body()
-                if(responseEvents is ArrayList<Event>) {
+                if(responseEvents is ArrayList<EventResult>) {
                     events = responseEvents
                     recyclerViewEvents.layoutManager = LinearLayoutManager(context)
                     recyclerViewEvents.adapter = EventCardAdapter(events, this@HomeFragment)
@@ -71,7 +72,7 @@ class HomeFragment : Fragment(), EventCardAdapter.OnEventCardListener {
         recyclerViewEvents.adapter = EventCardAdapter(events, this)
     }
 
-    override fun onEventCardClick(event: Event) {
+    override fun onEventCardClick(event: EventResult) {
         val intent = Intent(AmazeApp.sharedInstance, EventActivity::class.java)
         intent.putExtra(ExtraStrings.EXTRA_EVENT, event)
         startActivity(intent)
