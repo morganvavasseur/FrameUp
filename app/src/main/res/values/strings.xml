@@ -65,5 +65,7 @@
     <string name="next_text">Next</string>
     <string name="free_text">Free</string>
     <string name="guests">Guests</string>
+    <string name="add_a_note">Add a note</string>
+    <string name="send">Send</string>
 
 </resources>

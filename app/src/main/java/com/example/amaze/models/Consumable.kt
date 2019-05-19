@@ -8,5 +8,5 @@ import com.google.gson.annotations.SerializedName
 class Consumable : Stuff() {
 
     @SerializedName("price")
-    var price: Int = 0
+    var price: Float = 0f
 }

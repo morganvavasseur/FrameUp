@@ -15,6 +15,11 @@ class AmazeEventDescription @JvmOverloads constructor(
 ) : ConstraintLayout(context, attrs, defStyleAttr) {
 
     var isEditable : Boolean = false
+    var text : String = ""
+
+    fun AmazeEventDescription.setText(text : String) {
+        this.text = text
+    }
 
     init {
         LayoutInflater.from(context)

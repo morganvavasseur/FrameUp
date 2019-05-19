@@ -9,7 +9,9 @@ import com.example.amaze.activities.CreateEventActivity.Companion.EVENT_CODE
 import com.example.amaze.components.AmazeNextButton
 import com.example.amaze.models.Organizer
 import com.example.amaze.models.User
+import com.example.amaze.network.AuthUser
 import com.example.amaze.network.EventResult
+import com.example.amaze.network.SendableEvent
 import com.example.amaze.network.UserResult
 import com.example.amaze.utils.SecureStorageServices
 import kotlinx.android.synthetic.main.activity_create_event.*
@@ -17,7 +19,7 @@ import kotlin.collections.ArrayList
 
 class CreateEventActivity : AppCompatActivity(), AmazeNextButton.OnNextButtonListener {
 
-    private lateinit var event : EventResult
+    private lateinit var event : SendableEvent
 
     companion object{
         val EVENT_CODE = "CREATED_EVENT"
@@ -29,13 +31,13 @@ class CreateEventActivity : AppCompatActivity(), AmazeNextButton.OnNextButtonLis
         createEventNextButton.setNextButtonOnClickListener(this)
     }
 
-    fun getOrganizersFromAuthenticatedUser() : ArrayList<Organizer>
+    fun getOrganizersFromAuthenticatedUser() : ArrayList<String>
     {
-        val organizers = ArrayList<Organizer>()
+        val organizers = ArrayList<String>()
         // Si le token à bien été stocké on connecte l'utilisateur à l'activité principale
-        val hostUser : Organizer? = SecureStorageServices.authUser as Organizer
+        val hostUser : AuthUser? = SecureStorageServices.authUser
         if (hostUser != null)
-            organizers.add(hostUser)
+            organizers.add(hostUser.id)
 
         return organizers
     }
@@ -43,14 +45,12 @@ class CreateEventActivity : AppCompatActivity(), AmazeNextButton.OnNextButtonLis
     override fun onNextButtonClick() {
 
         // Initialise event
-        event = EventResult()
+        event = SendableEvent()
 
         event.title = event_creation_title.text.toString()
         event.date = event_creation_date.text.toString() // A CHANGER
-        event.dateIsFinal = false
         event.location = event_creation_location.text.toString()
-        event.locationIsFinal = false
-        event.description = event_creation_description.text.toString()
+        event.description = eventCreationDescription.text.toString()
         event.entrancePrice = Integer.parseInt(event_creation_price.text.toString())
         event.organizers = getOrganizersFromAuthenticatedUser()
 

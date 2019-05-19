@@ -5,11 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.amaze.R
+import com.example.amaze.models.Guest
+import com.example.amaze.network.SearchedGuest
 import com.example.amaze.network.UserResult
 import kotlinx.android.synthetic.main.component_event_card.view.*
 import kotlinx.android.synthetic.main.custom_horizontal_friend_list_item.view.*
 
-class HorizontalFriendListAdapter(val guests: ArrayList<UserResult>): RecyclerView.Adapter<HorizontalFriendListAdapter.HorizontalFriendListViewHolder>() {
+class HorizontalFriendListAdapter(val guests: ArrayList<SearchedGuest>): RecyclerView.Adapter<HorizontalFriendListAdapter.HorizontalFriendListViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, p1: Int): HorizontalFriendListViewHolder {
         return HorizontalFriendListViewHolder(

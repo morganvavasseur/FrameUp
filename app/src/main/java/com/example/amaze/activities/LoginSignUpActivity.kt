@@ -36,8 +36,9 @@ class LoginSignUpActivity : FragmentActivity() {
 //            updateUserInfos()
 
             // On démarre l'activité principale
-//            val intent = Intent(AmazeApp.sharedInstance, MainActivity::class.java)
-//            startActivity(intent)
+            val intent = Intent(AmazeApp.sharedInstance, MainActivity::class.java)
+            startActivity(intent)
+            finish()
         }
 
         // Instantiate a ViewPager and a PagerAdapter.

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                             xmlns:app="http://schemas.android.com/apk/res-auto"
+                                             xmlns:tools="http://schemas.android.com/tools"
+                                             android:layout_width="match_parent"
+                                             android:layout_height="wrap_content"
+                                             android:background="@drawable/custom_card">
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView7"
+            android:text="@string/add_a_note"
+            android:textSize="@dimen/big_title_font_size"
+            android:fontFamily="@font/open_sans_bold"
+            android:textColor="@color/ColorBlackSecondary"
+            android:layout_marginStart="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+    <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:inputType="textMultiLine"
+            android:gravity="start|top"
+            android:ems="10"
+            android:id="@+id/noteEditText"
+            android:hint="Send a message /note to your friends to keep them informed about all the news concerning your event"
+            android:textSize="@dimen/event_card_chat_button_font_size"
+            android:fontFamily="@font/open_sans_light"
+            android:textColor="@color/colorBlueGreyLow"
+            app:layout_constraintStart_toStartOf="@+id/textView7"
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@+id/textView7"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+    <Button
+            android:text="@string/send"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/sendNoteButton"
+            android:background="@drawable/chat_button"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/h4_font_size"
+            android:fontFamily="@font/open_sans_semibold"
+            android:textAllCaps="false"
+            app:layout_constraintEnd_toEndOf="@+id/noteEditText"
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@+id/noteEditText"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="16dp"/>
+
+</android.support.constraint.ConstraintLayout>

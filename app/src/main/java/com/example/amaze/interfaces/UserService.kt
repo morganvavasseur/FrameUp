@@ -3,6 +3,7 @@ package com.example.amaze.interfaces
 import com.example.amaze.models.ConnectResults
 import com.example.amaze.models.Event
 import com.example.amaze.models.User
+import com.example.amaze.network.SearchedGuest
 import com.example.amaze.network.UserResult
 import com.example.amaze.utils.SecureStorageServices
 import retrofit2.Call
@@ -30,5 +31,5 @@ interface UserService {
         @Query("username_contains", encoded = true) username : String,
         @Query("role_in", encoded = true) publicRoleId : String,
         @Query("role_in", encoded = true) authenticatedRoleId : String,
-        @Header("Authorization") auth : String = "Bearer ${SecureStorageServices.authJwtToken}") : Call<ArrayList<UserResult>>
+        @Header("Authorization") auth : String = "Bearer ${SecureStorageServices.authJwtToken}") : Call<ArrayList<SearchedGuest>>
 }

@@ -20,9 +20,10 @@ import com.example.amaze.network.UserResult
 import com.example.amaze.utils.ExtraStrings
 import java.text.SimpleDateFormat
 import java.time.*
+import kotlin.collections.ArrayList
 
 
-class EventCardAdapter(val events : List<EventResult>, val onEventCardListener: OnEventCardListener) : RecyclerView.Adapter<EventCardAdapter.EventCardViewHolder>() {
+class EventCardAdapter(val events : ArrayList<EventResult>, val onEventCardListener: OnEventCardListener) : RecyclerView.Adapter<EventCardAdapter.EventCardViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, p1: Int): EventCardViewHolder {
         return EventCardViewHolder(
             LayoutInflater.from(parent.context)
@@ -61,7 +62,7 @@ class EventCardAdapter(val events : List<EventResult>, val onEventCardListener: 
 
         // Format Date
         val formatter =  SimpleDateFormat(ExtraStrings.EVENT_CARD_DATE_FORMAT)
-        val formatedDate = formatter.format(Date.from(date.atZone(ZoneId.systemDefault()).toInstant()))
+        val formatedDate = formatter.format(date)
         return formatedDate
     }
 
@@ -71,7 +72,7 @@ class EventCardAdapter(val events : List<EventResult>, val onEventCardListener: 
 
         // Format Date
         val formatter =  SimpleDateFormat(ExtraStrings.EVENT_CARD_HOUR_FORMAT)
-        val formatedDate = formatter.format(Date.from(date.atZone(ZoneId.systemDefault()).toInstant()))
+        val formatedDate = formatter.format(date)
         return formatedDate
     }
 

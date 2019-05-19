@@ -68,6 +68,7 @@ class HomeFragment : Fragment(), EventCardAdapter.OnEventCardListener {
     override fun onStart() {
         super.onStart()
 
+        createEventButton.setOnClickListener({onCreateEventButtonClick()})
         recyclerViewEvents.layoutManager = LinearLayoutManager(context)
         recyclerViewEvents.adapter = EventCardAdapter(events, this)
     }
@@ -75,6 +76,11 @@ class HomeFragment : Fragment(), EventCardAdapter.OnEventCardListener {
     override fun onEventCardClick(event: EventResult) {
         val intent = Intent(AmazeApp.sharedInstance, EventActivity::class.java)
         intent.putExtra(ExtraStrings.EXTRA_EVENT, event)
+        startActivity(intent)
+    }
+
+    fun onCreateEventButtonClick() {
+        var intent = Intent(AmazeApp.sharedInstance, CreateEventActivity::class.java)
         startActivity(intent)
     }
 }

@@ -112,8 +112,7 @@
                         app:layout_constraintTop_toBottomOf="@+id/textView13"
                         app:layout_constraintStart_toStartOf="@+id/textView13"
                         app:layout_constraintEnd_toEndOf="@+id/event_creation_date"
-                        android:layout_marginBottom="16dp"
-                        app:layout_constraintBottom_toBottomOf="parent"/>
+                        />
 
                 <TextView
                         android:text="@string/event_title_label"
@@ -153,46 +152,18 @@
                         android:layout_marginTop="16dp"
                         app:layout_constraintTop_toBottomOf="@+id/event_creation_location"
                         app:layout_constraintStart_toStartOf="@+id/event_creation_location"/>
-            </android.support.constraint.ConstraintLayout>
 
-            <android.support.constraint.ConstraintLayout
-                    android:layout_width="395dp"
-                    android:layout_height="wrap_content"
-                    tools:layout_editor_absoluteY="388dp"
-                    tools:layout_editor_absoluteX="8dp"
-                    android:background="@drawable/custom_card"
-                    android:layout_marginTop="40dp"
-                    android:layout_marginEnd="0dp"
-                    android:layout_marginBottom="40dp">
-
-                <TextView
-                        android:text="@string/description"
-                        android:layout_width="wrap_content"
+                <com.example.amaze.components.AmazeEventDescription
+                        android:layout_width="387dp"
                         android:layout_height="wrap_content"
-                        android:id="@+id/textView12"
                         android:layout_marginTop="16dp"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        android:layout_marginStart="16dp"
-                        android:fontFamily="@font/open_sans_semibold"
-                        android:textSize="@dimen/event_card_date_font_size"
-                        android:textColor="@color/ColorBlackSecondary"/>
-
-                <EditText
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:inputType="textMultiLine"
-                        android:ems="10"
-                        android:id="@+id/event_creation_description"
-                        android:hint="@string/event_creation_description_hint"
-                        app:layout_constraintStart_toStartOf="@+id/textView12"
-                        app:layout_constraintTop_toBottomOf="@+id/textView12"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        android:fontFamily="@font/open_sans_light"
-                        android:textSize="@dimen/event_card_chat_button_font_size"
-                        android:layout_marginEnd="16dp"
+                        app:layout_constraintTop_toBottomOf="@+id/event_creation_price"
+                        app:layout_constraintStart_toStartOf="@+id/event_creation_price"
+                        app:layout_constraintEnd_toEndOf="@+id/event_creation_price"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:description_is_editable="true"
                         android:layout_marginBottom="16dp"
-                        app:layout_constraintBottom_toBottomOf="parent"/>
+                        android:id="@+id/eventCreationDescription"/>
 
             </android.support.constraint.ConstraintLayout>
 

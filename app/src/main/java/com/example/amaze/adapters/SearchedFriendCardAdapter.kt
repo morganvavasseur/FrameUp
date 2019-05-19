@@ -9,14 +9,16 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.amaze.AmazeApp
 import com.example.amaze.R
+import com.example.amaze.models.Guest
 import com.example.amaze.models.User
 import com.example.amaze.network.EventResult
+import com.example.amaze.network.SearchedGuest
 import com.example.amaze.network.UserResult
 import kotlinx.android.synthetic.main.component_searched_friend_card.view.*
 import java.io.File
 import java.lang.Number
 
-class SearchedFriendCardAdapter(val users: List<UserResult>, val invitedGuests: List<UserResult>, val onFriendItemListener:OnFriendItemListener) : RecyclerView.Adapter<SearchedFriendCardAdapter.SearchedFriendCardViewHolder>() {
+class SearchedFriendCardAdapter(val users: List<SearchedGuest>, val invitedGuests: List<SearchedGuest>, val onFriendItemListener:OnFriendItemListener) : RecyclerView.Adapter<SearchedFriendCardAdapter.SearchedFriendCardViewHolder>() {
 
     val boldTypeface = ResourcesCompat.getFont(AmazeApp.sharedInstance, R.font.open_sans_bold)
     val defaultTypeface = ResourcesCompat.getFont(AmazeApp.sharedInstance, R.font.open_sans_light)
@@ -67,7 +69,7 @@ class SearchedFriendCardAdapter(val users: List<UserResult>, val invitedGuests: 
     }
 
     interface OnFriendItemListener {
-        fun onFriendClick(friend: UserResult, friendItem: View)
+        fun onFriendClick(friend: SearchedGuest, friendItem: View)
     }
 }
 

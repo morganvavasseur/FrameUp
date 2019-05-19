@@ -45,13 +45,13 @@ class EventActivity : AppCompatActivity() {
     fun getEventDate(originalDate: String) : String {
         val date = EventSupportFunctions.convertInstantStringDateToLocaleDateTime(originalDate)
         val formatter =  SimpleDateFormat(ExtraStrings.EVENT_SUMMARY_DATE_FORMAT)
-        return formatter.format(Date.from(date.atZone(ZoneId.systemDefault()).toInstant()))
+        return formatter.format(date)
     }
 
     // Formatte la date pour une date adaptée a l'event card
     fun getEventHour(originalDate: String) : String {
         val date = EventSupportFunctions.convertInstantStringDateToLocaleDateTime(originalDate)
         val formatter =  SimpleDateFormat(ExtraStrings.EVENT_SUMMARY_HOUR_FORMAT)
-        return formatter.format(Date.from(date.atZone(ZoneId.systemDefault()).toInstant()))
+        return formatter.format(date)
     }
 }
