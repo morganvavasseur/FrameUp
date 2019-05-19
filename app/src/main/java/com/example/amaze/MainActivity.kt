@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
 
     lateinit var mMainNav : BottomNavigationView
     lateinit var mMainFrame : FrameLayout
-    lateinit var mToolbar : Toolbar
+//    lateinit var mToolbar : Toolbar
 
     lateinit var homeFragment: HomeFragment
     lateinit var notificationFragment: NotificationsFragment
@@ -33,8 +33,8 @@ class MainActivity : AppCompatActivity() {
         this.mMainNav = findViewById(R.id.main_nav)
 
         // Initialise la toolbar
-        this.mToolbar = findViewById(R.id.toolbar)
-        setSupportActionBar(mToolbar)
+//        this.mToolbar = findViewById(R.id.toolbar)
+//        setSupportActionBar(mToolbar)
 
         // Initialise un les fragments
         homeFragment = HomeFragment()
@@ -45,11 +45,11 @@ class MainActivity : AppCompatActivity() {
         setFragment(homeFragment)
 
         this.mMainNav.setOnNavigationItemSelectedListener {
-            mToolbar.menu.clear()
+//            mToolbar.menu.clear()
             if (R.id.nav_home == it.itemId) {
                 mMainNav.setBackgroundResource(R.color.colorPrimary)
                 setFragment(homeFragment)
-                menuInflater.inflate(R.menu.home_toolbar, mToolbar.menu)
+//                menuInflater.inflate(R.menu.home_toolbar, mToolbar.menu)
 
 
                 true

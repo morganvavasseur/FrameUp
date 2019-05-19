@@ -67,5 +67,7 @@
     <string name="guests">Guests</string>
     <string name="add_a_note">Add a note</string>
     <string name="send">Send</string>
+    <string name="invited">Invited</string>
+    <string name="hosted">Hosted</string>
 
 </resources>

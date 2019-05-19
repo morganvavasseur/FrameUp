@@ -15,6 +15,12 @@ interface EventService {
         @Query("guests_in", encoded = true) userId : String,
 @Header("Authorization") auth : String = "Bearer ${SecureStorageServices.authJwtToken}") : Call<ArrayList<EventResult>>
 
+    // Récupère les events auquelles un user est connecté en fonction de son id
+    @GET("events")
+    fun getHostedEvent(
+        @Query("organizers_in", encoded = true) userId : String,
+        @Header("Authorization") auth : String = "Bearer ${SecureStorageServices.authJwtToken}") : Call<ArrayList<EventResult>>
+
     // Créer une soirée
     @POST("events")
     fun createEvent(
