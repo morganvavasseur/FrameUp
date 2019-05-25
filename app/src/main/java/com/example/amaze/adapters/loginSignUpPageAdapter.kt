@@ -1,3 +1,10 @@
+/*
+ * Developed by Yann Malanda on 5/25/19 4:24 PM.
+ * Last modified 4/25/19 11:09 AM
+ * Copyright (c) 2019.
+ *
+ */
+
 package com.example.amaze.adapters
 
 import android.support.v4.app.Fragment

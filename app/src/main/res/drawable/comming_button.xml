@@ -1,11 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-  ~ Developed by Yann Malanda on 5/25/19 4:24 PM.
-  ~ Last modified 4/25/19 9:23 AM
-  ~ Copyright (c) 2019.
-  ~
-  -->
-
 <shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle" >
     <corners
             android:radius="100dp"
@@ -14,13 +7,13 @@
             android:color="@color/colorAccent"
             />
     <padding
-            android:left="16dp"
+            android:left="8dp"
             android:top="0dp"
-            android:right="16dp"
+            android:right="8dp"
             android:bottom="0dp"
             />
     <size
-            android:width="100dp"
-            android:height="10dp"
+            android:width="16dp"
+            android:height="30dp"
             />
 </shape>

@@ -43,5 +43,14 @@
         <attr name="price_value" format="integer"/>
         <attr name="price_is_editable" format="boolean"/>
     </declare-styleable>
-
+    
+    <declare-styleable name="AmazeEventStateButton_attrs">
+        <attr name="state" format="enum">
+            <enum name="comming" value="0"/>
+            <enum name="maybe" value="1"/>
+            <enum name="not_comming" value="2"/>
+        </attr>
+        <attr name="event_state_button_text" format="string"/>
+        <attr name="event_state_button_background_color" format="color"/>
+    </declare-styleable>
 </resources>

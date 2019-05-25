@@ -1,3 +1,10 @@
+/*
+ * Developed by Yann Malanda on 5/25/19 4:23 PM.
+ * Last modified 5/16/19 10:16 AM
+ * Copyright (c) 2019.
+ *
+ */
+
 package com.example.amaze.components
 
 import android.content.Context

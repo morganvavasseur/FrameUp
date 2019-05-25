@@ -69,5 +69,9 @@
     <string name="send">Send</string>
     <string name="invited">Invited</string>
     <string name="hosted">Hosted</string>
+    <string name="comming_text">Yes, I\'am In</string>
+    <string name="maybe_text">Maybe</string>
+    <string name="not_comming_text">No</string>
+
 
 </resources>

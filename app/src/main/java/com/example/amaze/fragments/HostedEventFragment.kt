@@ -70,7 +70,7 @@ class HostedEventFragment : Fragment(), EventCardAdapter.OnEventCardListener {
                 if(responseEvents is ArrayList<EventResult>) {
                     events = responseEvents
                     recyclerViewHostedEvents.layoutManager = LinearLayoutManager(context)
-                    recyclerViewHostedEvents.adapter = EventCardAdapter(events, this@HostedEventFragment)
+                    recyclerViewHostedEvents.adapter = EventCardAdapter(events, this@HostedEventFragment, false)
                 }
             }
         })

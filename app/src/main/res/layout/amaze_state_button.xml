@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Developed by Yann Malanda on 5/25/19 4:28 PM.
+  ~ Last modified 5/25/19 4:28 PM
+  ~ Copyright (c) 2019.
+  ~
+  -->
+
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                             xmlns:app="http://schemas.android.com/apk/res-auto"
+                                             xmlns:tools="http://schemas.android.com/tools"
+                                             android:layout_width="match_parent"
+                                             android:layout_height="match_parent">
+
+    <Button
+            android:layout_width="wrap_content"
+            android:layout_height="32dp"
+            android:id="@+id/button"
+            android:background="@drawable/comming_button"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Yes, I'm on in"
+            android:textColor="@color/colorBackground"
+            android:textAllCaps="false"
+            android:fontFamily="@font/open_sans"
+            android:textSize="@dimen/button_font_size"
+            />
+</android.support.constraint.ConstraintLayout>

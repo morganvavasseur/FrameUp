@@ -1,6 +1,5 @@
 package com.example.amaze.fragments
 
-import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -32,13 +31,13 @@ private const val ARG_PARAM2 = "param2"
 /**
  * A simple [Fragment] subclass.
  * Activities that contain this fragment must implement the
- * [CreatedEventFragment.OnFragmentInteractionListener] interface
+ * [InvitedEventFragment.OnFragmentInteractionListener] interface
  * to handle interaction events.
- * Use the [CreatedEventFragment.newInstance] factory method to
+ * Use the [InvitedEventFragment.newInstance] factory method to
  * create an instance of this fragment.
  *
  */
-class CreatedEventFragment : Fragment(), EventCardAdapter.OnEventCardListener {
+class InvitedEventFragment : Fragment(), EventCardAdapter.OnEventCardListener {
 
     var events: ArrayList<EventResult> = ArrayList()
 
@@ -73,7 +72,7 @@ class CreatedEventFragment : Fragment(), EventCardAdapter.OnEventCardListener {
                 if(responseEvents is ArrayList<EventResult>) {
                     events = responseEvents
                     recyclerViewEvents.layoutManager = LinearLayoutManager(context)
-                    recyclerViewEvents.adapter = EventCardAdapter(events, this@CreatedEventFragment)
+                    recyclerViewEvents.adapter = EventCardAdapter(events, this@InvitedEventFragment, true)
                 }
             }
         })
@@ -85,7 +84,7 @@ class CreatedEventFragment : Fragment(), EventCardAdapter.OnEventCardListener {
         super.onStart()
         createEventButton.setOnClickListener({onCreateEventButtonClick()})
         recyclerViewEvents.layoutManager = LinearLayoutManager(context)
-        recyclerViewEvents.adapter = EventCardAdapter(events, this)
+        recyclerViewEvents.adapter = EventCardAdapter(events, this, true)
     }
 
     fun onButtonPressed(uri: Uri) {
@@ -139,11 +138,11 @@ class CreatedEventFragment : Fragment(), EventCardAdapter.OnEventCardListener {
          *
          * @param param1 Parameter 1.
          * @param param2 Parameter 2.
-         * @return A new instance of fragment CreatedEventFragment.
+         * @return A new instance of fragment InvitedEventFragment.
          */
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            CreatedEventFragment().apply {
+            InvitedEventFragment().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)

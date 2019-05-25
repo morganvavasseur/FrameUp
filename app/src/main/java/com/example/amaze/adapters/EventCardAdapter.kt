@@ -1,29 +1,25 @@
+/*
+ * Developed by Yann Malanda on 5/25/19 4:24 PM.
+ * Last modified 5/25/19 4:10 PM
+ * Copyright (c) 2019.
+ *
+ */
+
 package com.example.amaze.adapters
 
 import android.support.v7.widget.RecyclerView
-import android.text.format.DateUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.amaze.models.Event
-import com.example.amaze.models.User
-import com.example.amaze.utils.EventSupportFunctions
-import kotlinx.android.synthetic.main.component_event_card.view.*
-import java.text.DateFormat
-import java.time.format.DateTimeFormatter
-import java.time.format.FormatStyle
-import java.util.*
-import android.R
 import com.example.amaze.models.Organizer
 import com.example.amaze.network.EventResult
-import com.example.amaze.network.UserResult
+import com.example.amaze.utils.EventSupportFunctions
 import com.example.amaze.utils.ExtraStrings
+import kotlinx.android.synthetic.main.component_event_card.view.*
 import java.text.SimpleDateFormat
-import java.time.*
-import kotlin.collections.ArrayList
 
 
-class EventCardAdapter(val events : ArrayList<EventResult>, val onEventCardListener: OnEventCardListener) : RecyclerView.Adapter<EventCardAdapter.EventCardViewHolder>() {
+class EventCardAdapter(val events : ArrayList<EventResult>, val onEventCardListener: OnEventCardListener, val isGuestEventCard : Boolean = true) : RecyclerView.Adapter<EventCardAdapter.EventCardViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, p1: Int): EventCardViewHolder {
         return EventCardViewHolder(
             LayoutInflater.from(parent.context)
@@ -49,6 +45,13 @@ class EventCardAdapter(val events : ArrayList<EventResult>, val onEventCardListe
             holder.view.event_card_host_name.text = host.fullName()
         else
             holder.view.event_card_host_name.text = "No host"
+
+        // Hide states buttons if it's not a guest event card
+        if (!isGuestEventCard){
+            holder.view.eventCardCommingButton.visibility = View.GONE
+            holder.view.eventCardMaybeButton.visibility = View.GONE
+            holder.view.eventCardNotCommingButton.visibility = View.GONE
+        }
 
         holder.view.setOnClickListener( {onEventCardListener.onEventCardClick(event)})
 
