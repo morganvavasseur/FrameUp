@@ -5,46 +5,24 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/colorPrimary">
+        android:background="@drawable/gradient_background"
+        android:rotation="0">
 
-    <Button
-            android:layout_width="22.18dp"
-            android:layout_height="17.08dp"
-            android:id="@+id/profile_button_back"
-            android:background="@drawable/left_arrow"
-            app:layout_constraintTop_toTopOf="@+id/textViewProfile"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="4dp"/>
-
-    <TextView
-            android:text="@string/profileTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/textViewProfile"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginEnd="8dp"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="10dp"
-            app:layout_constraintTop_toTopOf="parent"
-            android:textColor="@android:color/white"/>
-
-    <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:srcCompat="@mipmap/ic_launcher_round"
+    <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:src="@drawable/john_doe"
+            app:civ_border_color="#FF000000"
             android:id="@+id/imageViewProfilePicture"
-            app:layout_constraintTop_toBottomOf="@+id/textViewProfile"
-            app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="8dp"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="10dp"
-            android:contentDescription="@string/profilePictureDescription"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="24dp"/>
+
 
     <TextView
-            android:text="Firstname Lastname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/textViewProfileName"
@@ -54,7 +32,10 @@
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="8dp"
             android:layout_marginTop="10dp"
-            android:textColor="@android:color/white"/>
+            android:textColor="@android:color/white"
+            tools:text="Yann Malanda"
+            android:fontFamily="@font/open_sans"
+            android:textSize="@dimen/big_title_font_size"/>
 
     <android.support.design.widget.TabLayout
             android:layout_width="0dp"
@@ -65,7 +46,7 @@
             app:layout_constraintHorizontal_bias="0.0"
             android:layout_marginTop="16dp"
             app:layout_constraintTop_toBottomOf="@+id/textViewProfileName"
-            app:tabTextColor="@color/colorEditTextHintColor"
+            app:tabTextColor="@color/profileTabTextColor"
             app:tabSelectedTextColor="@android:color/white">
 
         <android.support.design.widget.TabItem
@@ -102,5 +83,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/profile_tabLayout"
-            android:background="@color/colorBackground"/>
+            android:background="@color/colorBackground"
+            android:padding="16dp"/>
 </android.support.constraint.ConstraintLayout>
