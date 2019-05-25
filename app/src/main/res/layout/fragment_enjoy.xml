@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:app="http://schemas.android.com/apk/res-auto"
+             xmlns:tools="http://schemas.android.com/tools"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             tools:context=".fragments.EnjoyFragment">
+
+    <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <ImageView
+                android:id="@+id/enjoy_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/enjoy_image"
+                android:contentDescription="An enjoy image"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginBottom="100dp"/>
+
+        <TextView
+                android:id="@+id/enjoy_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/enjoy_title"
+                android:layout_marginTop="30dp"
+                android:textSize="40sp"
+                android:textColor="@color/colorAccent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintTop_toBottomOf="@+id/enjoy_image"/>
+
+        <TextView
+                android:id="@+id/enjoy_description"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/enjoy_description"
+                android:textColor="@color/colorEventCardDetails"
+                app:layout_constraintTop_toBottomOf="@+id/enjoy_title"
+                app:layout_constraintEnd_toEndOf="@+id/enjoy_image"
+                android:layout_marginTop="20dp"
+                android:textSize="16sp"
+                android:gravity="center"
+                app:layout_constraintStart_toStartOf="@+id/enjoy_image"/>
+
+        <Button
+                android:id="@+id/enjoy_button"
+                android:text="@string/enjoy_button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="@+id/enjoy_image"
+                app:layout_constraintStart_toStartOf="@+id/enjoy_image"
+                android:textColor="@color/colorWhite"
+                android:background="@color/colorAccent"
+                android:textAllCaps="false"
+                app:layout_constraintTop_toBottomOf="@+id/enjoy_description"
+                android:layout_marginTop="30dp"/>
+    </android.support.constraint.ConstraintLayout>
+</FrameLayout>
