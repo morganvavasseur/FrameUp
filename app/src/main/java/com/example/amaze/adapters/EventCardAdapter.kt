@@ -13,6 +13,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.amaze.models.Organizer
 import com.example.amaze.network.EventResult
+import com.example.amaze.network.SendableEvent
 import com.example.amaze.utils.EventSupportFunctions
 import com.example.amaze.utils.ExtraStrings
 import kotlinx.android.synthetic.main.component_event_card.view.*
@@ -45,6 +46,11 @@ class EventCardAdapter(val events : ArrayList<EventResult>, val onEventCardListe
             holder.view.event_card_host_name.text = host.fullName()
         else
             holder.view.event_card_host_name.text = "No host"
+
+        // On donne l'event en question aux boutons
+        holder.view.eventCardCommingButton.event = SendableEvent(event)
+        holder.view.eventCardMaybeButton.event = SendableEvent(event)
+        holder.view.eventCardNotCommingButton.event = SendableEvent(event)
 
         // Hide states buttons if it's not a guest event card
         if (!isGuestEventCard){

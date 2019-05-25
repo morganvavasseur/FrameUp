@@ -8,11 +8,25 @@
 package com.example.amaze.components
 
 import android.content.Context
+import android.content.Intent
 import android.support.constraint.ConstraintLayout
+import android.support.v4.content.ContextCompat.startActivity
 import android.util.AttributeSet
+import android.util.Log
 import android.view.LayoutInflater
+import android.widget.Toast
+import com.example.amaze.AmazeApp
+import com.example.amaze.MainActivity
 import com.example.amaze.R
+import com.example.amaze.models.ConnectResults
+import com.example.amaze.network.EventResult
+import com.example.amaze.network.RetrofitClient
+import com.example.amaze.network.SendableEvent
+import com.example.amaze.utils.SecureStorageServices
 import kotlinx.android.synthetic.main.amaze_state_button.view.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 
 class AmazeEventStateButton @JvmOverloads constructor(
@@ -20,6 +34,7 @@ class AmazeEventStateButton @JvmOverloads constructor(
 ) : ConstraintLayout(context, attrs, defStyleAttr) {
 
     var state = 1
+    lateinit var event : SendableEvent
 
     // Les 3 états possible pour un state button
     enum class State {
@@ -39,6 +54,7 @@ class AmazeEventStateButton @JvmOverloads constructor(
             .apply {
                 try {
                     state = getInteger(R.styleable.AmazeEventStateButton_attrs_state, 0)
+                    button.setOnClickListener({onStateButtonClick()})
                 } catch (e: Error) {
                     error(e)
                 }
@@ -73,6 +89,36 @@ class AmazeEventStateButton @JvmOverloads constructor(
             }
 
         }
+    }
+
+    fun onStateButtonClick() {
+        // 1 - On vire l'utilisateur de toutes les listes de la soirée
+        exitAuthUserFromEachStateList()
+        // 2 - On l'ajoute dans la bonne liste en fonction du bouton clicker
+        when(state){
+            0 -> event.guestsComming.add(SecureStorageServices.authUser!!.id)
+            1 -> event.guestsMaybe.add(SecureStorageServices.authUser!!.id)
+            2 -> event.guestsNotComming.add(SecureStorageServices.authUser!!.id)
+        }
+        // 3 - On envoit l'event mis à jour à la base de donnée
+        val updateEventRequest = RetrofitClient.eventService.updateEvent(event.id, event)
+
+        updateEventRequest.enqueue(object : Callback<EventResult> {
+            override fun onFailure(call: Call<EventResult>, t: Throwable) {
+                error(t.message.toString())
+            }
+
+            override fun onResponse(call: Call<EventResult>, response: Response<EventResult>) {
+                Toast.makeText(AmazeApp.sharedInstance, "${event.title} updated", Toast.LENGTH_LONG).show()
+            }
+
+        })
+    }
+
+    fun exitAuthUserFromEachStateList(){
+        event.guestsComming = event.guestsComming.filter { id -> id != SecureStorageServices.authUser?.id } as ArrayList<String>
+        event.guestsMaybe = event.guestsMaybe.filter { id -> id != SecureStorageServices.authUser?.id } as ArrayList<String>
+        event.guestsNotComming = event.guestsNotComming.filter { id -> id != SecureStorageServices.authUser?.id } as ArrayList<String>
     }
 
 }

@@ -26,4 +26,10 @@ interface EventService {
     fun createEvent(
         @Body event : SendableEvent,
         @Header("Authorization") auth : String = "Bearer ${SecureStorageServices.authJwtToken}") : Call<EventResult>
+
+    @PUT("events/{id}")
+    fun updateEvent(
+        @Path("id") id : String,
+        @Body event : SendableEvent,
+        @Header("Authorization") auth : String = "Bearer ${SecureStorageServices.authJwtToken}") : Call<EventResult>
 }
