@@ -5,11 +5,10 @@ import android.support.design.widget.BottomNavigationView
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentTransaction
 import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.Toolbar
 import android.view.MenuItem
 import android.widget.FrameLayout
 import android.widget.Toast
-import com.example.amaze.activities.AccountFragment
+import com.example.amaze.activities.ProfileFragment
 import com.example.amaze.activities.HomeFragment
 import com.example.amaze.activities.NotificationsFragment
 
@@ -22,7 +21,7 @@ class MainActivity : AppCompatActivity() {
 
     lateinit var homeFragment: HomeFragment
     lateinit var notificationFragment: NotificationsFragment
-    lateinit var accountFragment: AccountFragment
+    lateinit var profileFragment: ProfileFragment
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,7 +38,7 @@ class MainActivity : AppCompatActivity() {
         // Initialise un les fragments
         homeFragment = HomeFragment()
         notificationFragment = NotificationsFragment()
-        accountFragment = AccountFragment()
+        profileFragment = ProfileFragment()
 
         // Affecte le fragment principale à la fragment view
         setFragment(homeFragment)
@@ -65,7 +64,7 @@ class MainActivity : AppCompatActivity() {
 
             else if (R.id.nav_account == it.itemId) {
                 mMainNav.setBackgroundResource(R.color.colorPrimaryDark)
-                setFragment(accountFragment)
+                setFragment(profileFragment)
                 true
             }
 

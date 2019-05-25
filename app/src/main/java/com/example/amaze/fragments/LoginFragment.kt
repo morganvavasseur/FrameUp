@@ -1,8 +1,6 @@
 package com.example.amaze.fragments
 
-import android.content.Context
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.util.Log
@@ -14,8 +12,6 @@ import com.example.amaze.AmazeApp
 import com.example.amaze.MainActivity
 
 import com.example.amaze.R
-import com.example.amaze.activities.CreateEventActivity
-import com.example.amaze.activities.ProfileActivity
 import com.example.amaze.models.ConnectResults
 import com.example.amaze.network.RetrofitClient
 import com.example.amaze.utils.SecureStorageServices

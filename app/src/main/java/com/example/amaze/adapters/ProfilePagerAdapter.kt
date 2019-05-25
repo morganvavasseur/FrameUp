@@ -1,5 +1,6 @@
 package com.example.amaze.adapters
 
+import android.content.Context
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
@@ -8,7 +9,7 @@ import com.example.amaze.fragments.InfoFragment
 import com.example.amaze.fragments.OptionsFragment
 import com.example.amaze.fragments.PaiementsFragment
 
-class ProfilePagerAdapter(fm: FragmentManager?) : FragmentPagerAdapter(fm) {
+class ProfilePagerAdapter(context : Context, fm: FragmentManager?) : FragmentPagerAdapter(fm) {
     val fragments = arrayOf(InfoFragment(), DispoFragment(), PaiementsFragment(), OptionsFragment())
     val titles = arrayOf("Info", "Dispo", "Paiements", "Options")
 

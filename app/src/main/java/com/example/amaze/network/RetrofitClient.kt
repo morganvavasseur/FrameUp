@@ -2,11 +2,6 @@ package com.example.amaze.network
 
 import com.example.amaze.interfaces.EventService
 import com.example.amaze.interfaces.UserService
-import com.example.amaze.models.User
-import kotlinx.android.synthetic.main.activity_profile.*
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
