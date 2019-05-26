@@ -1,5 +1,10 @@
 package com.example.amaze.network
 
+import android.app.Activity
+import android.content.Context
+import android.support.v4.app.Fragment
+import android.view.View
+import android.view.inputmethod.InputMethodManager
 import com.example.amaze.models.User
 import com.example.amaze.utils.SecureStorageServices
 import retrofit2.Call
@@ -25,5 +30,9 @@ class SupportFunctions() {
 
 
         }
+
+
     }
+
+
 }
