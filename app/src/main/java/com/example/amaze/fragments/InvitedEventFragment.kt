@@ -1,3 +1,10 @@
+/*
+ * Developed by Yann Malanda on 5/26/19 3:28 PM.
+ * Last modified 5/26/19 3:23 PM
+ * Copyright (c) 2019.
+ *
+ */
+
 package com.example.amaze.fragments
 
 import android.content.Intent
@@ -40,14 +47,14 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  *
  */
-class InvitedEventFragment : Fragment(), EventCardAdapter.OnEventCardListener, AmazeEventStateButton.OnEventStateListener {
+class InvitedEventFragment : Fragment(), EventCardAdapter.OnEventCardListener {
 
     var events: ArrayList<EventResult> = ArrayList()
 
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
-    private var listener: OnFragmentInteractionListener? = null
+    private var listener: HostedEventFragment.OnFragmentInteractionListener? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -92,11 +99,6 @@ class InvitedEventFragment : Fragment(), EventCardAdapter.OnEventCardListener, A
         recyclerViewEvents.adapter = EventCardAdapter(events, this, true)
     }
 
-    override fun onEventStateChanged(eventChanged: EventResult, stateButton: AmazeEventStateButton) {
-        var e = recyclerViewEvents.layoutManager?.getChildAt(0) as EventCardAdapter.EventCardViewHolder
-        e.view.eventCardCommingButton.background = getDrawable(AmazeApp.sharedInstance, R.drawable.not_comming_button)
-    }
-
 
     override fun onEventCardClick(event: EventResult) {
         val intent = Intent(AmazeApp.sharedInstance, EventActivity::class.java)
@@ -108,52 +110,5 @@ class InvitedEventFragment : Fragment(), EventCardAdapter.OnEventCardListener, A
         var intent = Intent(AmazeApp.sharedInstance, CreateEventActivity::class.java)
         startActivity(intent)
     }
-
-//    override fun onAttach(context: Context) {
-//        super.onAttach(context)
-//        if (context is OnFragmentInteractionListener) {
-//            listener = context
-//        } else {
-//            throw RuntimeException(context.toString() + " must implement OnFragmentInteractionListener")
-//        }
-//    }
-//
-//    override fun onDetach() {
-//        super.onDetach()
-//        listener = null
-//    }
-
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     *
-     *
-     * See the Android Training lesson [Communicating with Other Fragments]
-     * (http://developer.android.com/training/basics/fragments/communicating.html)
-     * for more information.
-     */
-    interface OnFragmentInteractionListener {
-        fun onFragmentInteraction(uri: Uri)
-    }
-
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment InvitedEventFragment.
-         */
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            InvitedEventFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
-    }
+    
 }
