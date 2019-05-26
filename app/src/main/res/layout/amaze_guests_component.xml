@@ -100,7 +100,7 @@
             android:text="View all"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/button"
+            android:id="@+id/stateButton"
             app:layout_constraintStart_toStartOf="@+id/textView27"
             app:layout_constraintEnd_toEndOf="@+id/textView27"
             tools:visibility="visible"

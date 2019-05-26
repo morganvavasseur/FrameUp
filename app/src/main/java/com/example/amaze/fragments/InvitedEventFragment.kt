@@ -4,6 +4,7 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v4.content.ContextCompat.getDrawable
 import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
@@ -14,10 +15,12 @@ import com.example.amaze.R
 import com.example.amaze.activities.CreateEventActivity
 import com.example.amaze.activities.EventActivity
 import com.example.amaze.adapters.EventCardAdapter
+import com.example.amaze.components.AmazeEventStateButton
 import com.example.amaze.network.EventResult
 import com.example.amaze.network.RetrofitClient
 import com.example.amaze.utils.ExtraStrings
 import com.example.amaze.utils.SecureStorageServices
+import kotlinx.android.synthetic.main.component_event_card.view.*
 import kotlinx.android.synthetic.main.fragment_created_event.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -37,7 +40,7 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  *
  */
-class InvitedEventFragment : Fragment(), EventCardAdapter.OnEventCardListener {
+class InvitedEventFragment : Fragment(), EventCardAdapter.OnEventCardListener, AmazeEventStateButton.OnEventStateListener {
 
     var events: ArrayList<EventResult> = ArrayList()
 
@@ -80,6 +83,8 @@ class InvitedEventFragment : Fragment(), EventCardAdapter.OnEventCardListener {
         return inflater.inflate(R.layout.fragment_created_event, container, false)
     }
 
+
+
     override fun onStart() {
         super.onStart()
         createEventButton.setOnClickListener({onCreateEventButtonClick()})
@@ -87,9 +92,11 @@ class InvitedEventFragment : Fragment(), EventCardAdapter.OnEventCardListener {
         recyclerViewEvents.adapter = EventCardAdapter(events, this, true)
     }
 
-    fun onButtonPressed(uri: Uri) {
-        listener?.onFragmentInteraction(uri)
+    override fun onEventStateChanged(eventChanged: EventResult, stateButton: AmazeEventStateButton) {
+        var e = recyclerViewEvents.layoutManager?.getChildAt(0) as EventCardAdapter.EventCardViewHolder
+        e.view.eventCardCommingButton.background = getDrawable(AmazeApp.sharedInstance, R.drawable.not_comming_button)
     }
+
 
     override fun onEventCardClick(event: EventResult) {
         val intent = Intent(AmazeApp.sharedInstance, EventActivity::class.java)

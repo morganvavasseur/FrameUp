@@ -8,17 +8,10 @@
 package com.example.amaze.components
 
 import android.content.Context
-import android.content.Intent
 import android.support.constraint.ConstraintLayout
-import android.support.v4.content.ContextCompat.startActivity
 import android.util.AttributeSet
-import android.util.Log
 import android.view.LayoutInflater
-import android.widget.Toast
-import com.example.amaze.AmazeApp
-import com.example.amaze.MainActivity
 import com.example.amaze.R
-import com.example.amaze.models.ConnectResults
 import com.example.amaze.network.EventResult
 import com.example.amaze.network.RetrofitClient
 import com.example.amaze.network.SendableEvent
@@ -35,6 +28,7 @@ class AmazeEventStateButton @JvmOverloads constructor(
 
     var state = 1
     lateinit var event : SendableEvent
+    var onEventStateListener : OnEventStateListener? = null
 
     // Les 3 états possible pour un state button
     enum class State {
@@ -54,7 +48,7 @@ class AmazeEventStateButton @JvmOverloads constructor(
             .apply {
                 try {
                     state = getInteger(R.styleable.AmazeEventStateButton_attrs_state, 0)
-                    button.setOnClickListener({onStateButtonClick()})
+//                    stateButton.setOnClickListener({onStateButtonClick()})
                 } catch (e: Error) {
                     error(e)
                 }
@@ -74,18 +68,15 @@ class AmazeEventStateButton @JvmOverloads constructor(
         when(state){
             // Si l'utilisateur à dis qu'il venait
             State.COMMING -> {
-                button.text = resources.getText(R.string.comming_text)
-                button.background = resources.getDrawable(R.drawable.comming_button)
+                stateButton.text = resources.getText(R.string.comming_text)
             }
             // Si l'utilisateur avait dis ne pas savoir si il venait
             State.MAYBE -> {
-                button.text = resources.getText(R.string.maybe_text)
-                button.background = resources.getDrawable(R.drawable.maybe_button)
+                stateButton.text = resources.getText(R.string.maybe_text)
             }
             // Si l'utilisateur a dis ne pas venir
             State.NOT_COMMING -> {
-                button.text = resources.getText(R.string.not_comming_text)
-                button.background = resources.getDrawable(R.drawable.not_comming_button)
+                stateButton.text = resources.getText(R.string.not_comming_text)
             }
 
         }
@@ -109,7 +100,9 @@ class AmazeEventStateButton @JvmOverloads constructor(
             }
 
             override fun onResponse(call: Call<EventResult>, response: Response<EventResult>) {
-                Toast.makeText(AmazeApp.sharedInstance, "${event.title} updated", Toast.LENGTH_LONG).show()
+                var eventResult = response.body()
+                if (eventResult is EventResult)
+                    onEventStateListener?.onEventStateChanged(eventResult, this@AmazeEventStateButton)
             }
 
         })
@@ -119,6 +112,14 @@ class AmazeEventStateButton @JvmOverloads constructor(
         event.guestsComming = event.guestsComming.filter { id -> id != SecureStorageServices.authUser?.id } as ArrayList<String>
         event.guestsMaybe = event.guestsMaybe.filter { id -> id != SecureStorageServices.authUser?.id } as ArrayList<String>
         event.guestsNotComming = event.guestsNotComming.filter { id -> id != SecureStorageServices.authUser?.id } as ArrayList<String>
+    }
+
+    fun setOnEventStateListen(listener : OnEventStateListener) {
+        onEventStateListener = listener
+    }
+
+    interface OnEventStateListener {
+        fun onEventStateChanged(eventChanged : EventResult, stateButton : AmazeEventStateButton)
     }
 
 }

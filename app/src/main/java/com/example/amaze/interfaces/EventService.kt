@@ -32,4 +32,10 @@ interface EventService {
         @Path("id") id : String,
         @Body event : SendableEvent,
         @Header("Authorization") auth : String = "Bearer ${SecureStorageServices.authJwtToken}") : Call<EventResult>
+
+    // Récupère les events auquelles un user est connecté en fonction de son id
+    @GET("events/{id}")
+    fun getEvent(
+        @Path("id") id : String,
+        @Header("Authorization") auth : String = "Bearer ${SecureStorageServices.authJwtToken}") : Call<EventResult>
 }
