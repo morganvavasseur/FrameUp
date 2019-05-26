@@ -23,7 +23,9 @@ import com.example.amaze.network.SendableEvent
 import com.example.amaze.utils.EventSupportFunctions
 import com.example.amaze.utils.ExtraStrings
 import com.example.amaze.utils.SecureStorageServices
+import kotlinx.android.synthetic.main.amaze_guests_component.view.*
 import kotlinx.android.synthetic.main.amaze_state_button.view.*
+import kotlinx.android.synthetic.main.amaze_state_button.view.stateButton
 import kotlinx.android.synthetic.main.component_event_card.view.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -64,6 +66,22 @@ class EventCardAdapter(var events : ArrayList<EventResult>, val onEventCardListe
         holder.view.eventCardCommingButton.event = SendableEvent(event)
         holder.view.eventCardMaybeButton.event = SendableEvent(event)
         holder.view.eventCardNotCommingButton.event = SendableEvent(event)
+
+        if (event.guestsComming.any { g -> g.id == SecureStorageServices.authUser?.id }) {
+            holder.view.eventCardCommingButton.stateButton.background = getDrawable(AmazeApp.sharedInstance, R.drawable.comming_button)
+            holder.view.eventCardMaybeButton.stateButton.background = getDrawable(AmazeApp.sharedInstance, R.drawable.maybe_button)
+            holder.view.eventCardNotCommingButton.stateButton.background = getDrawable(AmazeApp.sharedInstance, R.drawable.maybe_button)
+        }
+        if (event.guestsMaybe.any { g -> g.id == SecureStorageServices.authUser?.id }) {
+            holder.view.eventCardMaybeButton.stateButton.background = getDrawable(AmazeApp.sharedInstance, R.drawable.comming_button)
+            holder.view.eventCardCommingButton.stateButton.background = getDrawable(AmazeApp.sharedInstance, R.drawable.maybe_button)
+            holder.view.eventCardNotCommingButton.stateButton.background = getDrawable(AmazeApp.sharedInstance, R.drawable.maybe_button)
+        }
+        if (event.guestsNotComming.any { g -> g.id == SecureStorageServices.authUser?.id }) {
+            holder.view.eventCardNotCommingButton.stateButton.background = getDrawable(AmazeApp.sharedInstance, R.drawable.comming_button)
+            holder.view.eventCardCommingButton.stateButton.background = getDrawable(AmazeApp.sharedInstance, R.drawable.maybe_button)
+            holder.view.eventCardMaybeButton.stateButton.background = getDrawable(AmazeApp.sharedInstance, R.drawable.maybe_button)
+        }
 
         holder.view.eventCardCommingButton.setOnEventStateListen(this)
         holder.view.eventCardMaybeButton.setOnEventStateListen(this)

@@ -9,8 +9,10 @@ package com.example.amaze.components
 
 import android.content.Context
 import android.support.constraint.ConstraintLayout
+import android.support.v4.content.ContextCompat
 import android.util.AttributeSet
 import android.view.LayoutInflater
+import com.example.amaze.AmazeApp
 import com.example.amaze.R
 import com.example.amaze.network.EventResult
 import com.example.amaze.network.RetrofitClient
@@ -109,6 +111,7 @@ class AmazeEventStateButton @JvmOverloads constructor(
     }
 
     fun exitAuthUserFromEachStateList(){
+
         event.guestsComming = event.guestsComming.filter { id -> id != SecureStorageServices.authUser?.id } as ArrayList<String>
         event.guestsMaybe = event.guestsMaybe.filter { id -> id != SecureStorageServices.authUser?.id } as ArrayList<String>
         event.guestsNotComming = event.guestsNotComming.filter { id -> id != SecureStorageServices.authUser?.id } as ArrayList<String>

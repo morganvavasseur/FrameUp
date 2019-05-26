@@ -7,7 +7,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/event_card"
         android:background="@drawable/event_card"
-        android:layout_margin="16dp">
+        android:layout_margin="16dp"
+        android:elevation="1dp">
 
         <!-- Card Header -->
 
