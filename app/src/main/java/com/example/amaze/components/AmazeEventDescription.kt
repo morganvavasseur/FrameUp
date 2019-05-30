@@ -23,10 +23,21 @@ class AmazeEventDescription @JvmOverloads constructor(
 
     var isEditable : Boolean = false
     var text : String = ""
+        get() {
+            if(!isEditable){
+                text = this.amazeDescriptionText.text.toString()
+                return this.amazeDescriptionText.text.toString()
 
-    fun AmazeEventDescription.setText(text : String) {
-        this.text = text
-    }
+            }
+            else{
+                text = this.amazeDescriptionEditText.text.toString()
+                return this.amazeDescriptionEditText.text.toString()
+            }
+
+        }
+
+
+
 
     init {
         LayoutInflater.from(context)
