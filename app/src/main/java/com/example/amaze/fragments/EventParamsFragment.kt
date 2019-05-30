@@ -9,21 +9,14 @@ package com.example.amaze.fragments
 
 import android.app.DatePickerDialog
 import android.content.Context
-import android.content.Intent
-import android.hardware.Sensor
-import android.net.Uri
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.amaze.AmazeApp
 
 import com.example.amaze.R
-import com.example.amaze.activities.AddGuestToEventActivity
-import com.example.amaze.activities.CreateEventActivity
 import com.example.amaze.components.AmazeNextButton
-import com.example.amaze.models.Event
 import com.example.amaze.network.AuthUser
 import com.example.amaze.network.SendableEvent
 import com.example.amaze.utils.SecureStorageServices
@@ -69,6 +62,7 @@ class EventParamsFragment : Fragment(), AmazeNextButton.OnNextButtonListener {
 
         createEventNextButton.setNextButtonOnClickListener(this)
         event_creation_date.setOnClickListener {useDatePicker()}
+        event_creation_location.setOnClickListener {listener?.onParamsLocationIsGoingToBeEdited()}
     }
 
     override fun onAttach(context: Context) {
@@ -148,6 +142,7 @@ class EventParamsFragment : Fragment(), AmazeNextButton.OnNextButtonListener {
      */
     interface OnEventParamsListener {
         fun onParamsDone(event: SendableEvent)
+        fun onParamsLocationIsGoingToBeEdited()
     }
 
     companion object {

@@ -29,9 +29,9 @@ import com.example.amaze.network.EventResult
 import com.example.amaze.network.RetrofitClient
 import com.example.amaze.network.SearchedGuest
 import com.example.amaze.network.SendableEvent
-import kotlinx.android.synthetic.main.activity_add_guest_to_event.*
 import kotlinx.android.synthetic.main.amaze_long_button.view.*
 import kotlinx.android.synthetic.main.component_searched_friend_card.view.*
+import kotlinx.android.synthetic.main.fragment_add_friends_to_event.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

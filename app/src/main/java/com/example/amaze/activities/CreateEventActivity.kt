@@ -15,6 +15,7 @@ import com.example.amaze.R
 import com.example.amaze.components.AmazeNextButton
 import com.example.amaze.fragments.AddFriendsToEventFragment
 import com.example.amaze.fragments.EventParamsFragment
+import com.example.amaze.fragments.PlacesFragment
 import com.example.amaze.network.*
 import com.example.amaze.utils.SecureStorageServices
 import kotlinx.android.synthetic.main.fragment_event__params.*
@@ -24,7 +25,7 @@ import retrofit2.Response
 import java.util.*
 import kotlin.collections.ArrayList
 
-class CreateEventActivity : AppCompatActivity(), EventParamsFragment.OnEventParamsListener, AddFriendsToEventFragment.OnAddFriendsFragmentListener {
+class CreateEventActivity : AppCompatActivity(), EventParamsFragment.OnEventParamsListener, AddFriendsToEventFragment.OnAddFriendsFragmentListener, PlacesFragment.OnPlacesFragmentListener {
 
     private lateinit var event : SendableEvent
 
@@ -34,6 +35,7 @@ class CreateEventActivity : AppCompatActivity(), EventParamsFragment.OnEventPara
 
     lateinit var eventParamsFragment: EventParamsFragment
     lateinit var addFriendsToEventFragment: AddFriendsToEventFragment
+    lateinit var placesFragment: PlacesFragment
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,6 +55,10 @@ class CreateEventActivity : AppCompatActivity(), EventParamsFragment.OnEventPara
         fragmentTransaction.commit()
     }
 
+    override fun onParamsLocationIsGoingToBeEdited() {
+        placesFragment = PlacesFragment.newInstance(event)
+        setFragment(placesFragment)
+    }
 
     override fun onParamsDone(event: SendableEvent) {
         // Affecte le fragment principale à la fragment view

@@ -72,6 +72,7 @@
     <string name="comming_text">Yes, I\'am In</string>
     <string name="maybe_text">Maybe</string>
     <string name="not_comming_text">No</string>
+    <string name="location_search_hint_text">Type place address</string>
 
 
 </resources>
