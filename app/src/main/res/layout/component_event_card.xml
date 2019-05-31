@@ -108,7 +108,6 @@
                 app:layout_constraintVertical_bias="0.120000005"/>
 
         <TextView
-                android:text="1 Place du Châtelet, 75001 Paris"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/event_card_location"

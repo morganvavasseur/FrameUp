@@ -30,7 +30,7 @@ class EventActivity : AppCompatActivity() {
         eventSummaryCard.eventSummaryCardDescription.text = event.description
         eventSummaryCard.eventSummaryCardDate.text = getEventDate(event.date)
         eventSummaryCard.eventSummaryCardHour.text = getEventHour(event.date)
-        eventSummaryCard.eventSummaryCardAddress.text = event.location.toString()
+        eventSummaryCard.eventSummaryCardAddress.text = event.location.formattedAddress
         eventSummaryCard.amazeEventPrice.value = event.entrancePrice
 
         amazeDescription.amazeDescriptionText.text = event.description

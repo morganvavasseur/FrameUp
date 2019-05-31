@@ -117,7 +117,6 @@ class EventParamsFragment : Fragment(), AmazeNextButton.OnNextButtonListener, Fo
 
         // Initialise event
         event?.title = event_creation_title.text.toString()
-        event?.date = event_creation_date.text.toString() // A CHANGER
         event?.description = eventCreationDescription.text
         event?.entrancePrice = Integer.parseInt(event_creation_price.text.toString())
         event?.organizers = getHostFromAuthenticatedUser()
@@ -147,6 +146,7 @@ class EventParamsFragment : Fragment(), AmazeNextButton.OnNextButtonListener, Fo
         val dpd = DatePickerDialog(context, DatePickerDialog.OnDateSetListener{
                 view, mYear, mMonth, mDay ->
                 event_creation_date.setText(""+adapteDaysNumber(mDay)+"/"+adapteDaysNumber(mMonth)+"/"+mYear)
+                event.date = "${adapteDaysNumber(mMonth)}/${adapteDaysNumber(mDay)}/$mYear"
         }, year, month, day)
         dpd.show()
     }

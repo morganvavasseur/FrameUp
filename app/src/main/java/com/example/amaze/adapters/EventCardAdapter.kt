@@ -56,6 +56,7 @@ class EventCardAdapter(var events : ArrayList<EventResult>, val onEventCardListe
         holder.view.event_card_date.text = getEventCardDate(event.date)
         holder.view.event_card_description.text = event.description
         holder.view.event_card_hour.text = getEventCardHour(event.date)
+        holder.view.event_card_location.text = event.location.formattedAddress
 
         if (host != null)
             holder.view.event_card_host_name.text = host.fullName()
@@ -123,8 +124,6 @@ class EventCardAdapter(var events : ArrayList<EventResult>, val onEventCardListe
         }
 
         holder.view.setOnClickListener({ onEventCardListener.onEventCardClick(event) })
-
-        //holder.view.event_card_location.text = event.location
 
     }
 
