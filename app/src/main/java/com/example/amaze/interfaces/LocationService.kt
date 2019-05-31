@@ -20,10 +20,8 @@ import retrofit2.http.Query
 interface LocationService {
 
     // Récupère les events auquelles un user est connecté en fonction de son id
-    @GET("place/findplacefromtext/json")
+    @GET("place/textsearch/json")
     fun searchPlace(
         @Query("key", encoded = true) key : String,
-        @Query("input", encoded = true) searchedPlace : String,
-        @Query("inputtype", encoded = true) textquery : String = "textquery",
-        @Query("fields", encoded = true) fields : String = "formatted_address,name,id") : Call<PlaceResult>
+        @Query("query", encoded = true) searchedPlace : String) : Call<PlaceResult>
 }

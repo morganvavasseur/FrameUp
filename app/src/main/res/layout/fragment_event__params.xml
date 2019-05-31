@@ -196,4 +196,17 @@
 
     </com.example.amaze.components.AmazeNextButton>
 
+    <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/placeFrameLayout"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:background="@color/colorBackground">
+
+    </FrameLayout>
+
 </android.support.constraint.ConstraintLayout>

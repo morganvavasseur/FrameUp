@@ -11,22 +11,23 @@ import android.app.DatePickerDialog
 import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v4.app.FragmentTransaction
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-
-import com.example.amaze.R
+import com.example.amaze.adapters.FoundedPlacesItemAdapter
 import com.example.amaze.components.AmazeNextButton
+import com.example.amaze.models.Place
 import com.example.amaze.network.AuthUser
 import com.example.amaze.network.SendableEvent
 import com.example.amaze.utils.SecureStorageServices
 import kotlinx.android.synthetic.main.fragment_event__params.*
 import java.util.*
 
+
 // TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+// the fragment initialization parameters, onFoundedPlaceItemListener1.g. ARG_ITEM_NUMBER
 private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
@@ -37,10 +38,13 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  *
  */
-class EventParamsFragment : Fragment(), AmazeNextButton.OnNextButtonListener {
+class EventParamsFragment : Fragment(), AmazeNextButton.OnNextButtonListener, FoundedPlacesItemAdapter.OnFoundedPlaceItemListener {
+
     // TODO: Rename and change types of parameters
-    private var event: SendableEvent? = null
+    private var event: SendableEvent = SendableEvent()
     private var listener: OnEventParamsListener? = null
+    lateinit var placesFragment: PlacesFragment
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,15 +58,32 @@ class EventParamsFragment : Fragment(), AmazeNextButton.OnNextButtonListener {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_event__params, container, false)
+        return inflater.inflate(com.example.amaze.R.layout.fragment_event__params, container, false)
     }
 
     override fun onStart() {
         super.onStart()
 
-        createEventNextButton.setNextButtonOnClickListener(this)
+        placesFragment = PlacesFragment.newInstance(this)
+
         event_creation_date.setOnClickListener {useDatePicker()}
-        event_creation_location.setOnClickListener {listener?.onParamsLocationIsGoingToBeEdited()}
+        event_creation_location.setOnClickListener { setFragment(placesFragment) }
+
+        createEventNextButton.setNextButtonOnClickListener(this)
+
+    }
+
+    private fun setFragment(fragment: PlacesFragment, args : Place? = null) {
+        if (args != null) {
+            var arguments = Bundle()
+            arguments.putSerializable("param2", args)
+            fragment.arguments = arguments
+        }
+
+        var fragmentTransaction : FragmentTransaction = fragmentManager!!.beginTransaction()
+        fragmentTransaction.replace(com.example.amaze.R.id.placeFrameLayout, fragment)
+        fragmentTransaction.commit()
+        placeFrameLayout.visibility = View.VISIBLE
     }
 
     override fun onAttach(context: Context) {
@@ -74,9 +95,22 @@ class EventParamsFragment : Fragment(), AmazeNextButton.OnNextButtonListener {
         }
     }
 
+
     override fun onDetach() {
         super.onDetach()
         listener = null
+    }
+
+    fun updateEventPlace(place: Place?) {
+        if (place != null){
+            event?.location = place
+            event_creation_location.setText(place.formattedAddress)
+        }
+    }
+
+    override fun onFoundedPlaceClick(clickedPlace: Place) {
+        placeFrameLayout.visibility = View.GONE
+        updateEventPlace(clickedPlace)
     }
 
     override fun onNextButtonClick() {
@@ -84,7 +118,6 @@ class EventParamsFragment : Fragment(), AmazeNextButton.OnNextButtonListener {
         // Initialise event
         event?.title = event_creation_title.text.toString()
         event?.date = event_creation_date.text.toString() // A CHANGER
-        event?.location = event_creation_location.text.toString()
         event?.description = eventCreationDescription.text
         event?.entrancePrice = Integer.parseInt(event_creation_price.text.toString())
         event?.organizers = getHostFromAuthenticatedUser()
@@ -142,7 +175,6 @@ class EventParamsFragment : Fragment(), AmazeNextButton.OnNextButtonListener {
      */
     interface OnEventParamsListener {
         fun onParamsDone(event: SendableEvent)
-        fun onParamsLocationIsGoingToBeEdited()
     }
 
     companion object {

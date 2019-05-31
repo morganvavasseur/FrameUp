@@ -11,6 +11,6 @@ import com.example.amaze.models.Place
 import com.google.gson.annotations.SerializedName
 
 class PlaceResult {
-    @SerializedName("candidates") lateinit var candidates : ArrayList<Place>
+    @SerializedName("results") lateinit var results : ArrayList<Place>
     @SerializedName("status") lateinit var status : String
 }

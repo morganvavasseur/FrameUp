@@ -18,7 +18,7 @@ open class AbstractEvent() : Serializable {
     @SerializedName("dateIsFinal")
     var dateIsFinal: Boolean = false
     @SerializedName("location")
-    lateinit var location: Any
+    lateinit var location: Place
     @SerializedName("locationIsFinal")
     var locationIsFinal: Boolean = false
     @SerializedName("entrancePrice")

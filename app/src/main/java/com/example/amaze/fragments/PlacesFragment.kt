@@ -8,29 +8,27 @@
 package com.example.amaze.fragments
 
 import android.content.Context
-import android.location.Location
-import android.net.Uri
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v7.widget.LinearLayoutManager
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 
 import com.example.amaze.R
-import com.example.amaze.activities.CreateEventActivity
+import com.example.amaze.adapters.FoundedPlacesItemAdapter
 import com.example.amaze.models.Place
-import com.example.amaze.network.EventResult
 import com.example.amaze.network.PlaceResult
 import com.example.amaze.network.RetrofitClient
-import com.example.amaze.network.SendableEvent
 import kotlinx.android.synthetic.main.fragment_places.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 // TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+// the fragment initialization parameters, onFoundedPlaceItemListener1.g. ARG_ITEM_NUMBER
 private const val ARG_PARAM1 = "param1"
 
 /**
@@ -42,17 +40,16 @@ private const val ARG_PARAM1 = "param1"
  * create an instance of this fragment.
  *
  */
-class PlacesFragment : Fragment() {
+class PlacesFragment : Fragment(), TextWatcher{
+
+
     // TODO: Rename and change types of parameters
-    private var event: SendableEvent? = null
     private var listener: OnPlacesFragmentListener? = null
-    lateinit var places: ArrayList<Place>
+    var places: ArrayList<Place> = ArrayList()
+    lateinit var onFoundedPlaceItemListener1 : FoundedPlacesItemAdapter.OnFoundedPlaceItemListener
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            event = it.getSerializable(ARG_PARAM1) as SendableEvent
-        }
     }
 
     override fun onCreateView(
@@ -65,11 +62,13 @@ class PlacesFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
-        searchLocationButton.setOnClickListener{searchPlaces()}
+        locationSearchBar.addTextChangeListener(this)
+        placesRecyclerView.layoutManager = LinearLayoutManager(context)
+        placesRecyclerView.adapter = FoundedPlacesItemAdapter(places, onFoundedPlaceItemListener1)
     }
 
     fun searchPlaces() {
-        val searchedPlace = locationSearchBar.text.toString()
+        val searchedPlace = locationSearchBar.text
 
         val createEventRequest = RetrofitClient.locationService.searchPlace(RetrofitClient.GOOGLE_MAPS_PLACE_API_KEY, searchedPlace)
 
@@ -79,10 +78,12 @@ class PlacesFragment : Fragment() {
             }
 
             override fun onResponse(call: Call<PlaceResult>, response: Response<PlaceResult>) {
-                var result = response.body()?.candidates
-                if (result is ArrayList<Place>)
+                var result = response.body()?.results
+                if (result is ArrayList<Place>) {
                     places = result
-
+                    placesRecyclerView.layoutManager = LinearLayoutManager(context)
+                    placesRecyclerView.adapter = FoundedPlacesItemAdapter(places, onFoundedPlaceItemListener1)
+                }
             }
         })
     }
@@ -96,9 +97,21 @@ class PlacesFragment : Fragment() {
         }
     }
 
-    override fun onDetach() {
-        super.onDetach()
-        listener = null
+
+    override fun afterTextChanged(s: Editable?) {
+        searchPlaces()
+    }
+
+    override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+    }
+
+    override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+    }
+
+
+
+    fun setOnPlaceFragmentListener(callback: OnPlacesFragmentListener){
+        listener = callback
     }
 
     /**
@@ -113,7 +126,7 @@ class PlacesFragment : Fragment() {
      * for more information.
      */
     interface OnPlacesFragmentListener {
-
+        fun onPlaceSelected(selectedPlace: Place)
     }
 
     companion object {
@@ -127,10 +140,10 @@ class PlacesFragment : Fragment() {
          */
         // TODO: Rename and change types and number of parameters
         @JvmStatic
-        fun newInstance(event: SendableEvent) =
+        fun newInstance(onFoundedPlaceItemListener: FoundedPlacesItemAdapter.OnFoundedPlaceItemListener) =
             PlacesFragment().apply {
                 arguments = Bundle().apply {
-                    putSerializable(ARG_PARAM1, event)
+                    onFoundedPlaceItemListener1 = onFoundedPlaceItemListener
                 }
             }
     }

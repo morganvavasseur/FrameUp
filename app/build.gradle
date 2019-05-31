@@ -61,5 +61,7 @@ dependencies {
     implementation 'com.github.afiqiqmal:SharedChamber:2.5.1'
     implementation 'com.github.yesterselga:password-strength-checker-android:v1.0'
 
+    implementation 'com.github.mancj:MaterialSearchBar:0.8.2'
+
 
 }
