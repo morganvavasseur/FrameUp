@@ -32,4 +32,12 @@ interface UserService {
         @Query("role_in", encoded = true) publicRoleId : String,
         @Query("role_in", encoded = true) authenticatedRoleId : String,
         @Header("Authorization") auth : String = "Bearer ${SecureStorageServices.authJwtToken}") : Call<ArrayList<SearchedGuest>>
+
+    // Récupère une liste d'utilisateur à partir d'un nom d'utilisateur
+    @FormUrlEncoded
+    @POST("/auth/local/register")
+    fun authRegister(
+        @Field("username") username: String,
+        @Field("email") email: String,
+        @Field("password") password: String) : Call<ConnectResults>
 }

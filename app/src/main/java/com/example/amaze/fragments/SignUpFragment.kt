@@ -1,15 +1,27 @@
 package com.example.amaze.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
+import com.example.amaze.AmazeApp
+import com.example.amaze.MainActivity
+import com.example.amaze.R
+import com.example.amaze.models.ConnectResults
+import com.example.amaze.network.RetrofitClient
+import com.example.amaze.utils.SecureStorageServices
 import com.ybs.passwordstrengthmeter.PasswordStrength
 import kotlinx.android.synthetic.main.fragment_sign_up.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -51,6 +63,7 @@ class SignUpFragment : Fragment(), TextWatcher {
     override fun onStart() {
         super.onStart()
         signUpPasswordTextview.addTextChangedListener(this)
+        loginLocalConnectButton.setOnClickListener{register()}
     }
 
     override fun afterTextChanged(s: Editable?) {
@@ -61,6 +74,59 @@ class SignUpFragment : Fragment(), TextWatcher {
 
     override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
         updatePasswordStrengthView(s.toString())
+    }
+
+    fun getPasswordOrNull() : String? {
+        val p1 = signUpPasswordTextview
+        val p2 = signUpPasswordVerifTextview
+
+        if(p1.text.toString() == p2.text.toString())
+            return p1.text.toString()
+        else{
+            signUpPasswordStrength.text = getText(R.string.password_dont_match)
+            return null
+
+        }
+    }
+
+    fun register() {
+        val username = loginIdentifierTextview.text.toString()
+        val email = signUpEmail.text.toString()
+        val password = getPasswordOrNull()
+
+        if(password == null)
+            return
+
+        val connectLocalRequest = RetrofitClient.userService.authRegister(username, email, password)
+
+        connectLocalRequest.enqueue(object : Callback<ConnectResults> {
+            override fun onFailure(call: Call<ConnectResults>, t: Throwable) {
+                error(t.message.toString())
+            }
+
+            override fun onResponse(call: Call<ConnectResults>, response: Response<ConnectResults>) {
+                var jwt = response.body()?.jwt
+                var user = response.body()?.user
+
+                // On vérifie que le token est bien
+                // une String puis on le stock de manière sécurisé
+                if (jwt is String){
+                    SecureStorageServices.authJwtToken = jwt
+                    SecureStorageServices.authUser = user
+                } else {
+                    Log.d("SECRET_APP", "Token has no value")
+                }
+
+                // Si le token à bien été stocké on connecte l'utilisateur à l'activité principale
+                if (SecureStorageServices.authJwtToken != null){
+                    val intent = Intent(AmazeApp.sharedInstance, MainActivity::class.java)
+                    startActivity(intent)
+                }
+
+
+            }
+
+        })
     }
 
     private fun updatePasswordStrengthView(password: String) {
