@@ -1,9 +1,17 @@
+/*
+ * Developed by Yann Malanda on 5/31/19 7:25 PM.
+ * Last modified 5/31/19 7:23 PM
+ * Copyright (c) 2019.
+ *
+ */
+
 package com.example.amaze.fragments
 
 import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.text.Editable
+import android.text.TextUtils
 import android.text.TextWatcher
 import android.util.Log
 import android.view.LayoutInflater
@@ -76,25 +84,51 @@ class SignUpFragment : Fragment(), TextWatcher {
         updatePasswordStrengthView(s.toString())
     }
 
-    fun getPasswordOrNull() : String? {
-        val p1 = signUpPasswordTextview
-        val p2 = signUpPasswordVerifTextview
+    fun checkUsername() : Boolean {
+        val username = loginIdentifierTextview.text.toString()
+        return username.length >= 6
+    }
 
-        if(p1.text.toString() == p2.text.toString())
-            return p1.text.toString()
-        else{
-            signUpPasswordStrength.text = getText(R.string.password_dont_match)
-            return null
+    fun checkEmail() : Boolean{
+        val email = signUpEmail.text.toString()
 
+        if (TextUtils.isEmpty(email)) {
+            return false
+        } else {
+            return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()
         }
+
+    }
+
+    fun checkPassword() : Boolean{
+        val p1 = signUpPasswordTextview.text.toString()
+        val p2 = signUpPasswordVerifTextview.text.toString()
+
+        val str = PasswordStrength.calculateStrength(p1)
+
+        if (str != PasswordStrength.STRONG && str != PasswordStrength.VERY_STRONG) {
+            return false
+        } else
+            return (p1 == p2)
+    }
+
+    fun areRegisterFieldCorrect() : Boolean{
+
+        if(!checkUsername())
+            return false
+        if(!checkEmail())
+            return false
+        if(!checkPassword())
+            return false
+        return true
     }
 
     fun register() {
         val username = loginIdentifierTextview.text.toString()
         val email = signUpEmail.text.toString()
-        val password = getPasswordOrNull()
+        val password = signUpPasswordTextview.text.toString()
 
-        if(password == null)
+        if(!areRegisterFieldCorrect())
             return
 
         val connectLocalRequest = RetrofitClient.userService.authRegister(username, email, password)
@@ -156,6 +190,7 @@ class SignUpFragment : Fragment(), TextWatcher {
         } else {
             progressBar.progress = 100
         }
+
     }
 
 
