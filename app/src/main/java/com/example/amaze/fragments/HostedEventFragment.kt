@@ -10,6 +10,7 @@ package com.example.amaze.fragments
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
+import android.opengl.Visibility
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
@@ -19,6 +20,7 @@ import android.view.ViewGroup
 import com.example.amaze.AmazeApp
 
 import com.example.amaze.R
+import com.example.amaze.activities.CreateEventActivity
 import com.example.amaze.activities.EventActivity
 import com.example.amaze.adapters.EventCardAdapter
 import com.example.amaze.network.EventResult
@@ -75,6 +77,8 @@ class HostedEventFragment : Fragment(), EventCardAdapter.OnEventCardListener {
             override fun onResponse(call: Call<ArrayList<EventResult>>, response: Response<ArrayList<EventResult>>) {
                 var responseEvents = response.body()
                 if(responseEvents is ArrayList<EventResult>) {
+                    if (!responseEvents.isEmpty())
+                        noEventTv.visibility = View.GONE
                     events = responseEvents
                     recyclerViewHostedEvents.layoutManager = LinearLayoutManager(context!!)
                     recyclerViewHostedEvents.adapter = EventCardAdapter(events, this@HostedEventFragment, false)
@@ -88,6 +92,11 @@ class HostedEventFragment : Fragment(), EventCardAdapter.OnEventCardListener {
     override fun onEventCardClick(event: EventResult) {
         val intent = Intent(AmazeApp.sharedInstance, EventActivity::class.java)
         intent.putExtra(ExtraStrings.EXTRA_EVENT, event)
+        startActivity(intent)
+    }
+
+    fun onCreateEventButtonClick() {
+        var intent = Intent(AmazeApp.sharedInstance, CreateEventActivity::class.java)
         startActivity(intent)
     }
 

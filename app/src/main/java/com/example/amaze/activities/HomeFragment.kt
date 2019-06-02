@@ -52,8 +52,14 @@ class HomeFragment : Fragment() {
         val viewPager : ViewPager = homeViewPager
         viewPager.adapter = homeFragmentAdapter
         homeTabs.setupWithViewPager(homeViewPager)
+        createEventButton.setOnClickListener({onCreateEventButtonClick()})
+
     }
 
+    fun onCreateEventButtonClick() {
+        var intent = Intent(AmazeApp.sharedInstance, CreateEventActivity::class.java)
+        startActivity(intent)
+    }
 
 
 }

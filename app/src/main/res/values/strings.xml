@@ -74,6 +74,7 @@
     <string name="maybe_text">Maybe</string>
     <string name="not_comming_text">No</string>
     <string name="location_search_hint_text">Type place address</string>
+    <string name="no_event">You have no event for the moment !! let ’s create one and enjoy memorable moments with the people you love</string>
 
 
 </resources>
