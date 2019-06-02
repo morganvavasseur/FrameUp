@@ -8,7 +8,7 @@ import com.example.amaze.MainActivity
 import com.example.amaze.R
 import com.example.amaze.adapters.ProfilePagerAdapter
 import com.example.amaze.utils.SecureStorageServices
-import com.fasterxml.jackson.databind.AnnotationIntrospector.ReferenceProperty.back
+import kotlinx.android.synthetic.main.activity_basket_empty.*
 import kotlinx.android.synthetic.main.activity_profile.*
 
 class ProfileActivity : AppCompatActivity() {
@@ -27,7 +27,7 @@ class ProfileActivity : AppCompatActivity() {
 //        imageViewProfilePicture = user.profilePicture
         textViewProfileName?.text = user?.firstName + " " + user?.lastName
 
-        profile_button_back.setOnClickListener({back()})
+        profile_back_button.setOnClickListener({back()})
     }
 
     fun back() {

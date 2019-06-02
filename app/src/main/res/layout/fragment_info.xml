@@ -15,117 +15,145 @@
                 android:layout_height="wrap_content">
 
             <TextView
+                    android:id="@+id/info_firstName_textView"
                     android:text="@string/first_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/info_firstName_textView"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     android:layout_marginTop="20dp"
-                    android:layout_marginStart="40dp"
+                    android:layout_marginStart="20dp"
                     android:textColor="@color/colorBlackText"/>
 
             <TextView
+                    android:id="@+id/info_firstName"
                     android:layout_width="wrap_content"
                     android:layout_height="0dp"
-                    android:id="@+id/info_firstName"
                     app:layout_constraintTop_toTopOf="@+id/info_firstName_textView"
                     app:layout_constraintEnd_toEndOf="parent"
-                    android:layout_marginEnd="100dp"
-                    app:layout_constraintStart_toEndOf="@+id/info_firstName_textView"
-                    android:layout_marginStart="50dp"
-                    tools:text="Firstname"/>
+                    android:layout_marginEnd="20dp"
+                    tools:text="Firstname"
+                    app:layout_constraintStart_toStartOf="@+id/info_firstName_textView"
+                    />
 
             <TextView
+                    android:id="@+id/info_lastName_textView"
                     android:text="@string/last_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/info_lastName_textView"
                     app:layout_constraintStart_toStartOf="@+id/info_firstName_textView"
                     app:layout_constraintTop_toBottomOf="@+id/info_firstName_textView"
                     android:layout_marginTop="20dp"
                     android:textColor="@color/colorBlackText"/>
 
             <TextView
+                    android:id="@+id/info_lastName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/info_lastName"
                     app:layout_constraintTop_toTopOf="@+id/info_lastName_textView"
                     app:layout_constraintStart_toStartOf="@+id/info_firstName"
                     tools:text="Lastname"/>
 
             <TextView
+                    android:id="@+id/info_email_textView"
                     android:text="@string/email"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/info_email_textView"
                     app:layout_constraintTop_toBottomOf="@+id/info_lastName_textView"
                     app:layout_constraintStart_toStartOf="@+id/info_lastName_textView"
                     android:layout_marginTop="20dp"
                     android:textColor="@color/colorBlackText"/>
 
             <TextView
+                    android:id="@+id/info_email"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/info_email"
                     app:layout_constraintTop_toTopOf="@+id/info_email_textView"
                     app:layout_constraintStart_toStartOf="@+id/info_lastName"
                     tools:text="email@example.exp"/>
 
             <TextView
+                    android:id="@+id/info_phoneNumber_textView"
                     android:text="@string/phone_number"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/info_phoneNumber_textView"
                     app:layout_constraintTop_toBottomOf="@+id/info_email_textView"
                     app:layout_constraintStart_toStartOf="@+id/info_email_textView"
                     android:layout_marginTop="20dp"
                     android:textColor="@color/colorBlackText"/>
 
             <TextView
+                    android:id="@+id/info_phoneNumber"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/info_phoneNumber"
                     app:layout_constraintTop_toBottomOf="@+id/info_email_textView"
                     app:layout_constraintStart_toStartOf="@+id/info_email"
                     android:layout_marginTop="20dp"
                     tools:text="Phonenumber"/>
 
             <TextView
+                    android:id="@+id/info_dietInformation_textView"
                     android:text="@string/diet_information"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/info_dietInformation_textView"
                     app:layout_constraintTop_toBottomOf="@+id/info_phoneNumber_textView"
                     app:layout_constraintStart_toStartOf="@+id/info_phoneNumber_textView"
                     android:layout_marginTop="50dp"
                     android:textColor="@color/colorBlackText"/>
 
+            <android.support.v7.widget.RecyclerView
+                    android:id="@+id/info_dietInformation_recyclerView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:scrollbars="vertical"
+                    app:layout_constraintTop_toBottomOf="@+id/info_dietInformation_textView"
+                    android:layout_marginTop="10dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginEnd="10dp"
+                    app:layout_constraintStart_toStartOf="@+id/info_dietInformation_textView">
+            </android.support.v7.widget.RecyclerView>
+
             <TextView
-                    android:text="Diet information..."
+                    android:id="@+id/info_dietInformation"
+                    android:text="@string/other_diet"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/info_dietInformation"
-                    app:layout_constraintTop_toBottomOf="@+id/info_dietInformation_textView"
-                    app:layout_constraintStart_toStartOf="@+id/info_dietInformation_textView"
-                    android:layout_marginTop="20dp"/>
+                    app:layout_constraintTop_toBottomOf="@+id/info_dietInformation_recyclerView"
+                    android:layout_marginTop="10dp"
+                    app:layout_constraintStart_toStartOf="@+id/info_dietInformation_textView"/>
 
             <Button
+                    android:id="@+id/info_deleteAccountButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/delete_account"
+                    android:background="@color/colorWhite"
+                    android:textColor="@color/colorRedText"
+                    android:textAllCaps="false"
+                    android:layout_marginEnd="10dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginStart="10dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/info_dietInformation"
+                    android:layout_marginTop="30dp"/>
+
+            <Button
+                    android:id="@+id/info_logoutButton"
                     android:drawableStart="@drawable/logout"
                     android:text="@string/log_out"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/info_logoutButton"
                     app:layout_constraintEnd_toEndOf="parent"
                     android:layout_marginEnd="8dp"
                     app:layout_constraintStart_toStartOf="parent"
                     android:drawablePadding="10dp"
                     android:layout_marginStart="8dp"
-                    android:layout_marginTop="50dp"
-                    app:layout_constraintTop_toBottomOf="@+id/info_dietInformation"
                     android:textColor="@color/colorAccent"
                     android:background="@color/transparent"
-                    android:textAllCaps="false"/>
+                    android:textAllCaps="false"
+                    app:layout_constraintHorizontal_bias="0.498"
+                    app:layout_constraintTop_toBottomOf="@+id/info_deleteAccountButton"
+                    android:layout_marginTop="20dp"/>/>
         </android.support.constraint.ConstraintLayout>
     </ScrollView>
 

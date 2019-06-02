@@ -39,6 +39,7 @@
     <string name="phone_number">Phone number</string>
     <string name="diet_information">Diet information</string>
     <string name="log_out">Log out</string>
+    <string name="profile_edit">Edit</string>
     <string name="info">Info</string>
     <string name="disponibilities">Dispo</string>
     <string name="payments">Payments</string>
@@ -64,11 +65,13 @@
     <string name="search_friend_button_text">Search friends</string>
     <string name="next_text">Next</string>
     <string name="welcome">Welcome !</string>
-    <string name="organise_title">Organise</string>
-    <string name="organise_description">Use our multiple services that our application offer to organise the perfect anniversary surprise</string>
+    <string name="organize_title">Organize</string>
+    <string name="organize_description">Use our multiple services that our application offer to organise the perfect surprise birthday</string>
     <string name="invite_title">Invite</string>
     <string name="invite_description">Once the configuration finished invite your friends through facebook</string>
     <string name="enjoy_title">Surprise &amp; enjoy</string>
-    <string name="enjoy_description">Surprise the people you love and enjoy a memorable moments</string>
+    <string name="enjoy_description">Surprise the people you love and enjoy memorable moments</string>
     <string name="enjoy_button">Let\'s discover !</string>
+    <string name="delete_account">Delete account</string>
+    <string name="other_diet">Other</string>
 </resources>

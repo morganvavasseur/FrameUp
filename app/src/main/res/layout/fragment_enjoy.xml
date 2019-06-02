@@ -56,7 +56,7 @@
                 app:layout_constraintEnd_toEndOf="@+id/enjoy_image"
                 app:layout_constraintStart_toStartOf="@+id/enjoy_image"
                 android:textColor="@color/colorWhite"
-                android:background="@color/colorAccent"
+                android:background="@drawable/amaze_long_button_layout"
                 android:textAllCaps="false"
                 app:layout_constraintTop_toBottomOf="@+id/enjoy_description"
                 android:layout_marginTop="30dp"/>

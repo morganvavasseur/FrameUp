@@ -6,7 +6,7 @@ import android.support.v4.app.FragmentPagerAdapter
 import com.example.amaze.fragments.*
 
 class FirstStepsPagerAdapter(fm: FragmentManager?) : FragmentPagerAdapter(fm) {
-    val fragments = arrayOf(OrganiseFragment(), InviteFragment(), EnjoyFragment())
+    val fragments = arrayOf(OrganizeFragment(), InviteFragment(), EnjoyFragment())
     val titles = arrayOf("", "", "")
 
     // Retourne la vue affichée dans le ViewPager

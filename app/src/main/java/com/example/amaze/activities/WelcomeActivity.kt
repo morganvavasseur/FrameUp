@@ -19,11 +19,13 @@ class WelcomeActivity : AppCompatActivity() {
 
         var countDownTimer = object : CountDownTimer(3000, 1000) {
             override fun onTick(millisUntilFinished: Long) {
-//                Log.d("tick", millisUntilFinished.toString())
+
             }
 
             override fun onFinish() {
-                firststeps()
+                if (this@WelcomeActivity.hasWindowFocus()) {
+                    firststeps()
+                }
             }
         }.start()
     }
@@ -32,10 +34,4 @@ class WelcomeActivity : AppCompatActivity() {
         var intent = Intent(AmazeApp.sharedInstance, FirstStepsActivity::class.java)
         startActivity(intent)
     }
-
-//    Handler().postDelayed({
-//        val intent = Intent(AmazeApp.sharedInstance, FirstStepsActivity::class.java)
-//        startActivity(intent)
-//        finish()
-//    }, 5000)
 }
