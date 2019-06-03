@@ -41,7 +41,6 @@ class ProfileFragment : Fragment() {
         profile_tabLayout.setupWithViewPager(profile_viewPager)
 
         var user = SecureStorageServices.authUser
-//        imageViewProfilePicture = user.profilePicture
         textViewProfileName?.text = user?.firstName + " " + user?.lastName
     }
 

@@ -6,7 +6,9 @@ import android.os.Bundle
 import android.os.CountDownTimer
 import android.util.Log
 import com.example.amaze.AmazeApp
+import com.example.amaze.MainActivity
 import com.example.amaze.R
+import com.example.amaze.utils.SecureStorageServices
 import kotlinx.android.synthetic.main.activity_welcome.*
 
 class WelcomeActivity : AppCompatActivity() {
@@ -17,7 +19,7 @@ class WelcomeActivity : AppCompatActivity() {
 
         welcome_cl.setOnClickListener({firststeps()})
 
-        var countDownTimer = object : CountDownTimer(3000, 1000) {
+        var countDownTimer = object : CountDownTimer(1500, 1000) {
             override fun onTick(millisUntilFinished: Long) {
 
             }
@@ -28,6 +30,12 @@ class WelcomeActivity : AppCompatActivity() {
                 }
             }
         }.start()
+
+        if (SecureStorageServices.authJwtToken != null){
+            val intent = Intent(AmazeApp.sharedInstance, MainActivity::class.java)
+            startActivity(intent)
+            this.finish()
+        }
     }
 
     fun firststeps() {
