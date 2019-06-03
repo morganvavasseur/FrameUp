@@ -1,0 +1,42 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+*,
+*:before,
+*:after {
+	box-sizing : border-box;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 10px; //62.5%
+}
+
+@font-face {
+	font-family: ArialRounded;
+	src: url("../fonts/Arial%20Rounded%20Bold.ttf");
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+a {
+	text-decoration: none;
+}
+
+li {
+	list-style: none;
+}
+
+
+@import "grid";
+@import "variables";
+@import "header";
+@import "footer";
+@import "main";

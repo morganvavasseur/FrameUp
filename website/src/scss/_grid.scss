@@ -1,0 +1,77 @@
+$columns: 12!default; /**/
+$gutter: 0px!default;
+
+$mobile: 320px!default; // For Mobile
+$tablet: 768px!default; // For Tablet
+$laptop: 1024px!default; // For Laptop
+$desktop : 1280px!default; // For Desktop
+
+%clearfix {
+	&:before,
+	&:after {
+		content: "";
+		display: table;
+	}
+
+	&:after {
+		clear: both;
+	}
+
+	& {
+		zoom: 1; // For IE 6/7 (trigger hasLayout)
+	}
+}
+
+@mixin responsive-columns($suffix: '') {
+	@for $i from 0 through $columns {
+		@if $i != 0 {
+			.col#{$suffix}-#{$i} { width: $i / $columns * 100%; }
+		}
+		.col#{$suffix}-push-#{$i} { left: $i / $columns * 100%; }
+		.col#{$suffix}-pull-#{$i} { left: $i / $columns * -100%; }
+		.col#{$suffix}-offset-#{$i} { margin-left: $i / $columns * 100%; }
+		.col#{$suffix}-onset-#{$i} { margin-left: $i / $columns * -100%; }
+	}
+	.col#{$suffix}-center { margin: 0 auto; float: none; }
+	.col#{$suffix}-hidden { display: none; }
+}
+
+%col {
+	float: left;
+	position: relative;
+	min-height: 1px;
+	padding: 0 $gutter * 0.5;
+
+	// background-color: rgba(#000, 0.2);
+	// border: 1px solid rgba(#000, 0.5);
+}
+
+.row {
+	margin: 0 $gutter * -0.5;
+	@extend %clearfix; // Clearfix Without Compass
+}
+
+@for $i from 1 through $columns {
+	.col-s-#{$i}, .col-m-#{$i}, .col-l-#{$i} { @extend %col; }
+}
+.col-m-show, .col-l-show { display: none; }
+
+@include responsive-columns('-s');
+
+@media only screen and (min-width: $tablet) {
+	@include responsive-columns('-m');
+	.col-m-show { display: block; }
+	.col-s-show { display: none; }
+}
+
+@media only screen and (min-width: $laptop) {
+	@include responsive-columns('-l');
+	.col-m-show { display: none; }
+	.col-l-show { display: block; }
+}
+
+@media only screen and (min-width: $desktop) {
+	@include responsive-columns('-xl');
+	.col-m-show { display: none; }
+	.col-l-show { display: block; }
+}
