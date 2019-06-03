@@ -34,7 +34,7 @@ class ProfileFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
-        val adapter = ProfilePagerAdapter(AmazeApp.sharedInstance, childFragmentManager)
+        val adapter = ProfilePagerAdapter(childFragmentManager)
 
         profile_viewPager.adapter = adapter
 

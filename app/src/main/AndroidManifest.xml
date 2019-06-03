@@ -15,21 +15,20 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
         <activity android:name=".activities.WelcomeActivity">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN"/>
+
+            <category android:name="android.intent.category.LAUNCHER"/>
+        </intent-filter>
+        </activity>
         <activity android:name=".activities.EventActivity">
         </activity>
         <activity android:name=".activities.LoginSignUpActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
         </activity>
         <activity android:name=".activities.FirstStepsActivity">
         </activity>
-        <activity android:name=".activities.AddGuestToEventActivity">
-        </activity>
-        <activity android:name=".activities.LoginSignUpActivity">
-        </activity>
+
         <activity android:name=".activities.Order">
         </activity>
         <activity android:name=".activities.Basket">
