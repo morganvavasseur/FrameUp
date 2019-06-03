@@ -75,6 +75,12 @@
     <string name="not_comming_text">No</string>
     <string name="location_search_hint_text">Type place address</string>
     <string name="no_event">You have no event for the moment !! let ’s create one and enjoy memorable moments with the people you love</string>
+    <string name="signup_username_helper_text">Your username is too small ! (6 chars min)</string>
+    <string name="signup_firstname_helper_text">How you friends calls you ?</string>
+    <string name="signup_lastname_helper_text">What\'s your name My Lord ?</string>
+    <string name="signup_email_helper_text">This format of email is invalid</string>
+    <string name="signup_repeat_password_helper_text">Both password doesn\'t match</string>
+
 
 
 </resources>

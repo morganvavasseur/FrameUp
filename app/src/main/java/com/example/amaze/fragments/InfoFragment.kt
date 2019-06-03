@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.amaze.AmazeApp
+import com.example.amaze.MainActivity
 
 import com.example.amaze.R
 import com.example.amaze.activities.LoginSignUpActivity
@@ -49,5 +50,6 @@ class InfoFragment : Fragment() {
         SecureStorageServices.authJwtToken = null
         var intent = Intent(AmazeApp.sharedInstance, LoginSignUpActivity::class.java)
         startActivity(intent)
+        activity?.finish()
     }
 }

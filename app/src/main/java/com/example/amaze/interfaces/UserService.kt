@@ -39,5 +39,7 @@ interface UserService {
     fun authRegister(
         @Field("username") username: String,
         @Field("email") email: String,
-        @Field("password") password: String) : Call<ConnectResults>
+        @Field("password") password: String,
+        @Field("firstName") firstName: String,
+        @Field("lastName") lastName: String): Call<ConnectResults>
 }

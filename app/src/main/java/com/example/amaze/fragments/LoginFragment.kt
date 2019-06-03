@@ -67,8 +67,8 @@ class LoginFragment : Fragment() {
     fun onloginlocalConnectButtonClick(){
 
         // On récupère l'identifiant et le mot de passe
-        identifier = loginIdentifierTextview.text.toString()
-        password = signUpPasswordTextview.text.toString()
+        identifier = loginUsernameTv.text.toString()
+        password = loginPasswordTv.text.toString()
 
 
         val connectLocalRequest = RetrofitClient.userService.connectLocal(identifier, password)
@@ -97,6 +97,7 @@ class LoginFragment : Fragment() {
                 if (SecureStorageServices.authJwtToken != null){
                     val intent = Intent(AmazeApp.sharedInstance, MainActivity::class.java)
                     startActivity(intent)
+                    activity?.finish()
                 }
 
 

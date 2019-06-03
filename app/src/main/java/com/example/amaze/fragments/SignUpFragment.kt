@@ -18,10 +18,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import android.widget.Toast
 import com.example.amaze.AmazeApp
 import com.example.amaze.MainActivity
-import com.example.amaze.R
 import com.example.amaze.models.ConnectResults
 import com.example.amaze.network.RetrofitClient
 import com.example.amaze.utils.SecureStorageServices
@@ -70,7 +68,13 @@ class SignUpFragment : Fragment(), TextWatcher {
 
     override fun onStart() {
         super.onStart()
-        signUpPasswordTextview.addTextChangedListener(this)
+        signUpUsernameTv.addTextChangedListener(this)
+        signUpFirstnameTv.addTextChangedListener(this)
+        signUpLastnameTv.addTextChangedListener(this)
+        signUpEmailTv.addTextChangedListener(this)
+        signUpPasswordTv.addTextChangedListener(this)
+        signUpRepeatPasswordTv.addTextChangedListener(this)
+
         loginLocalConnectButton.setOnClickListener{register()}
     }
 
@@ -81,28 +85,82 @@ class SignUpFragment : Fragment(), TextWatcher {
     }
 
     override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-        updatePasswordStrengthView(s.toString())
+        when(s.hashCode()) {
+            signUpUsernameTv.text.hashCode() -> checkUsername()
+
+            signUpFirstnameTv.text.hashCode() -> checkFirstName(s.toString())
+
+            signUpLastnameTv.text.hashCode() -> checkLastName(s.toString())
+
+            signUpEmailTv.text.hashCode() -> checkEmail()
+
+            signUpPasswordTv.text.hashCode() -> updatePasswordStrengthView(s.toString())
+
+            signUpRepeatPasswordTv.text.hashCode() -> checkRepeatPassword()
+        }
     }
 
     fun checkUsername() : Boolean {
-        val username = loginIdentifierTextview.text.toString()
-        return username.length >= 6
+        val username = signUpUsernameTv.text.toString()
+        val testUsername = username.length >= 6
+        if (testUsername)
+            signUpUsernameHelper.visibility = View.GONE
+        else
+            signUpUsernameHelper.visibility = View.VISIBLE
+        return testUsername
+    }
+
+    fun checkFirstName(name: String) : Boolean {
+        val testFirstName = signUpFirstnameTv.text.isEmpty()
+        if(testFirstName)
+            signUpfirstnameHelper.visibility = View.VISIBLE
+        else signUpfirstnameHelper.visibility = View.GONE
+
+        return !testFirstName
+    }
+
+    fun checkLastName(name: String) : Boolean {
+        val testLastName = signUpLastnameTv.text.isEmpty()
+        if(testLastName)
+            signUpLastnameHelper.visibility = View.VISIBLE
+        else signUpLastnameHelper.visibility = View.GONE
+
+        return !testLastName
     }
 
     fun checkEmail() : Boolean{
-        val email = signUpEmail.text.toString()
+        val email = signUpEmailTv.text.toString()
+        var testEmail : Boolean
 
         if (TextUtils.isEmpty(email)) {
-            return false
+            testEmail =  false
         } else {
-            return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()
+            testEmail = android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()
         }
 
+        if(testEmail)
+            signUpEmailHelper.visibility = View.GONE
+        else
+            signUpEmailHelper.visibility = View.VISIBLE
+
+        return testEmail
+    }
+
+    fun checkRepeatPassword() : Boolean {
+        val p1 = signUpPasswordTv.text.toString()
+        val p2 = signUpRepeatPasswordTv.text.toString()
+        val testRepeatPassword : Boolean = (p1 == p2)
+
+        if(testRepeatPassword)
+            signUpRepeatPasswordHelper.visibility = View.GONE
+        else signUpRepeatPasswordHelper.visibility = View.VISIBLE
+
+        return testRepeatPassword
     }
 
     fun checkPassword() : Boolean{
-        val p1 = signUpPasswordTextview.text.toString()
-        val p2 = signUpPasswordVerifTextview.text.toString()
+        val p1 = signUpPasswordTv.text.toString()
+        val p2 = signUpRepeatPasswordTv.text.toString()
 
         val str = PasswordStrength.calculateStrength(p1)
 
@@ -113,8 +171,11 @@ class SignUpFragment : Fragment(), TextWatcher {
     }
 
     fun areRegisterFieldCorrect() : Boolean{
-
         if(!checkUsername())
+            return false
+        if(!checkFirstName(signUpFirstnameTv.text.toString()))
+            return false
+        if(!checkLastName(signUpLastnameTv.text.toString()))
             return false
         if(!checkEmail())
             return false
@@ -124,16 +185,18 @@ class SignUpFragment : Fragment(), TextWatcher {
     }
 
     fun register() {
-        val username = loginIdentifierTextview.text.toString()
-        val email = signUpEmail.text.toString()
-        val password = signUpPasswordTextview.text.toString()
+        val username = signUpUsernameTv.text.toString()
+        val email = signUpEmailTv.text.toString()
+        val firstName = signUpFirstnameTv.text.toString()
+        val lastName = signUpLastnameTv.text.toString()
+        val password = signUpPasswordTv.text.toString()
 
         if(!areRegisterFieldCorrect())
             return
 
-        val connectLocalRequest = RetrofitClient.userService.authRegister(username, email, password)
+        val registerLocalRequest = RetrofitClient.userService.authRegister(username.toLowerCase(), email, password, firstName, lastName)
 
-        connectLocalRequest.enqueue(object : Callback<ConnectResults> {
+        registerLocalRequest.enqueue(object : Callback<ConnectResults> {
             override fun onFailure(call: Call<ConnectResults>, t: Throwable) {
                 error(t.message.toString())
             }
@@ -155,6 +218,7 @@ class SignUpFragment : Fragment(), TextWatcher {
                 if (SecureStorageServices.authJwtToken != null){
                     val intent = Intent(AmazeApp.sharedInstance, MainActivity::class.java)
                     startActivity(intent)
+                    activity?.finish()
                 }
 
 
