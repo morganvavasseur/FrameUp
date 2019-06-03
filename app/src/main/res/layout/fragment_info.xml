@@ -146,7 +146,23 @@
             </android.support.constraint.ConstraintLayout>
 
             <Button
-                    android:drawableLeft="@drawable/logout"
+                    android:id="@+id/info_deleteAccountButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/delete_account"
+                    android:background="@color/colorWhite"
+                    android:textColor="@color/colorRedText"
+                    android:textAllCaps="false"
+                    android:layout_marginEnd="10dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginStart="10dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/info_dietInformation"
+                    android:layout_marginTop="30dp"/>
+
+            <Button
+                    android:id="@+id/info_logoutButton"
+                    android:drawableStart="@drawable/logout"
                     android:text="@string/log_out"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

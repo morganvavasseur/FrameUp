@@ -7,12 +7,17 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
+import android.widget.ListView
 import com.example.amaze.AmazeApp
 import com.example.amaze.MainActivity
 
 import com.example.amaze.R
 import com.example.amaze.activities.LoginSignUpActivity
+import com.example.amaze.models.Diet
 import com.example.amaze.utils.SecureStorageServices
+import kotlinx.android.synthetic.*
+import kotlinx.android.synthetic.main.activity_profile.*
 import kotlinx.android.synthetic.main.fragment_info.*
 
 // TODO: Rename parameter arguments, choose names that match
@@ -25,14 +30,13 @@ private const val ARG_PARAM2 = "param2"
  *
  */
 class InfoFragment : Fragment() {
+//    private lateinit var listView ListView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_info, container, false)
-
     }
 
     override fun onStart() {
@@ -44,6 +48,7 @@ class InfoFragment : Fragment() {
         info_phoneNumber.text = user?.phone
         info_dietInformation.text = user?.dietOther
         info_logoutButton.setOnClickListener({logout()})
+        info_deleteAccountButton.setOnClickListener({deleteAccount()})
     }
 
     fun logout() {
@@ -51,5 +56,9 @@ class InfoFragment : Fragment() {
         var intent = Intent(AmazeApp.sharedInstance, LoginSignUpActivity::class.java)
         startActivity(intent)
         activity?.finish()
+    }
+
+    fun deleteAccount() {
+//        Suppression / Désactivation du compte
     }
 }

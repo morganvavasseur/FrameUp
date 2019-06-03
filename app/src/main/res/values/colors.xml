@@ -12,6 +12,7 @@
     <color name="ColorBlackSecondary">#515C6F</color>
     <color name="colorEventCardDetails">#727C8E</color>
     <color name="colorBlueGreyLow">#AAB0BC</color>
+    <color name="colorRedText">#EF4159</color>
     <color name="profileTabTextColor">#B2FFFFFF</color>
     <color name="colorMaybeButton">#D5D3D3</color>
 </resources>

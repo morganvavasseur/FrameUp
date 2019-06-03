@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:app="http://schemas.android.com/apk/res-auto"
+             xmlns:tools="http://schemas.android.com/tools"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             tools:context=".fragments.OrganiseFragment">
+<android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <ImageView
+            android:id="@+id/organize_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/organize_image"
+            android:contentDescription="An organize image"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginBottom="100dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+            android:id="@+id/organise_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/organize_title"
+            android:layout_marginTop="30dp"
+            android:textSize="40sp"
+            android:textColor="@color/colorAccent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintTop_toBottomOf="@+id/organize_image"/>
+
+    <TextView
+            android:id="@+id/organize_description"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/organize_description"
+            android:textColor="@color/colorEventCardDetails"
+            app:layout_constraintStart_toStartOf="@+id/organize_image"
+            app:layout_constraintTop_toBottomOf="@+id/organise_title"
+            app:layout_constraintEnd_toEndOf="@+id/organize_image"
+            android:layout_marginTop="20dp"
+            android:textSize="16sp"
+            android:gravity="center"/>
+</android.support.constraint.ConstraintLayout>
+</FrameLayout>
