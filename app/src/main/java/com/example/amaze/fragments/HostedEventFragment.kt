@@ -92,6 +92,7 @@ class HostedEventFragment : Fragment(), EventCardAdapter.OnEventCardListener {
     override fun onEventCardClick(event: EventResult) {
         val intent = Intent(AmazeApp.sharedInstance, EventActivity::class.java)
         intent.putExtra(ExtraStrings.EXTRA_EVENT, event)
+        intent.putExtra(ExtraStrings.EXTRA_IS_OWNER, true)
         startActivity(intent)
     }
 

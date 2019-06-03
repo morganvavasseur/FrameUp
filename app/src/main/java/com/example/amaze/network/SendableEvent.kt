@@ -46,6 +46,7 @@ class SendableEvent : Serializable, AbstractEvent {
         this.stuffs = convertListOfStuffToListOfString(eventResult.stuffs)
     }
 
+
     fun convertListOfPeronsToListOfString(persons: List<Person>) : ArrayList<String> {
         var personsList = ArrayList<String>()
         persons.forEach {

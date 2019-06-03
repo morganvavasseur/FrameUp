@@ -14,6 +14,8 @@ import kotlin.collections.ArrayList
 @JsonIgnoreProperties(ignoreUnknown = true)
 class Event : Serializable {
 
+
+
     // Titre de l'event
     lateinit var title: String
 
@@ -24,7 +26,7 @@ class Event : Serializable {
     var dateIsFinal: Boolean = false
 
     // Contient le lieu de l'event
-    lateinit var location: Any
+    lateinit var location: Place
 
     // Vrai si le lieu de l'event est validé
     var locationIsFinal: Boolean = false

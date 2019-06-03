@@ -92,10 +92,9 @@ class InvitedEventFragment : Fragment(), EventCardAdapter.OnEventCardListener {
             }
         })
 
+
         return inflater.inflate(R.layout.fragment_created_event, container, false)
     }
-
-
 
     override fun onStart() {
         super.onStart()
@@ -107,6 +106,7 @@ class InvitedEventFragment : Fragment(), EventCardAdapter.OnEventCardListener {
     override fun onEventCardClick(event: EventResult) {
         val intent = Intent(AmazeApp.sharedInstance, EventActivity::class.java)
         intent.putExtra(ExtraStrings.EXTRA_EVENT, event)
+        intent.putExtra(ExtraStrings.EXTRA_IS_OWNER, false)
         startActivity(intent)
     }
 

@@ -26,10 +26,6 @@ class CreateEventActivity : AppCompatActivity(), EventParamsFragment.OnEventPara
 
     private lateinit var event : SendableEvent
 
-    companion object{
-        val EVENT_CODE = "CREATED_EVENT"
-    }
-
     lateinit var eventParamsFragment: EventParamsFragment
     lateinit var addFriendsToEventFragment: AddFriendsToEventFragment
 
