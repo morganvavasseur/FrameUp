@@ -1,6 +1,6 @@
 /*
- * Developed by Yann Malanda on 5/30/19 11:24 AM.
- * Last modified 5/30/19 11:24 AM
+ * Developed by Yann Malanda on 6/3/19 12:09 PM.
+ * Last modified 6/3/19 12:07 PM
  * Copyright (c) 2019.
  *
  */
@@ -9,20 +9,25 @@ package com.example.amaze.fragments
 
 import android.app.DatePickerDialog
 import android.content.Context
+import android.content.res.ColorStateList
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentTransaction
+import android.support.v4.content.ContextCompat
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.amaze.R
 import com.example.amaze.adapters.FoundedPlacesItemAdapter
 import com.example.amaze.components.AmazeNextButton
 import com.example.amaze.models.Place
 import com.example.amaze.network.AuthUser
 import com.example.amaze.network.SendableEvent
 import com.example.amaze.utils.SecureStorageServices
+import kotlinx.android.synthetic.main.amaze_event_description.view.*
 import kotlinx.android.synthetic.main.fragment_event__params.*
 import java.util.*
+import kotlin.collections.ArrayList
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -101,6 +106,57 @@ class EventParamsFragment : Fragment(), AmazeNextButton.OnNextButtonListener, Fo
         listener = null
     }
 
+    fun checkEventTitle() : Boolean {
+        val testEventTitle= event_creation_title.text.isNotEmpty()
+        if (!testEventTitle) {
+            event_creation_title.setError(getString(R.string.new_event_no_title_error))
+        }
+        return testEventTitle
+    }
+
+    fun checkEventLocation() : Boolean {
+        val testEventLocation = event_creation_location.text.isNotEmpty()
+        if (!testEventLocation)
+            event_creation_location.setError(getString(R.string.new_event_no_location_error))
+
+        return testEventLocation
+    }
+
+    fun checkEventDate() : Boolean {
+        val testEventDate = event_creation_date.text.isNotEmpty()
+        if (!testEventDate)
+            event_creation_date.setError(getString(R.string.new_event_no_date_error))
+        return testEventDate
+    }
+
+    fun checkEventPrice() : Boolean {
+        val testEventPrice = event_creation_price.text.isNotEmpty()
+        if (!testEventPrice)
+            event_creation_price.setError(getString(R.string.new_event_no_price_error))
+        return testEventPrice
+    }
+
+    fun checkEventDescription() : Boolean {
+        val testEventDescription = eventCreationDescription.text.isNotEmpty()
+        if (!testEventDescription)
+            eventCreationDescription.amazeDescriptionEditText.setError(getString(R.string.new_event_no_description_error))
+        return testEventDescription
+    }
+
+    fun checkEventParams() : Boolean {
+        if (!checkEventTitle())
+            return false
+        if (!checkEventLocation())
+            return false
+        if (!checkEventDate())
+            return false
+        if (!checkEventPrice())
+            return false
+        if (!checkEventDescription())
+            return false
+        return true
+    }
+
     fun updateEventPlace(place: Place?) {
         if (place != null){
             event?.location = place
@@ -115,6 +171,8 @@ class EventParamsFragment : Fragment(), AmazeNextButton.OnNextButtonListener, Fo
 
     override fun onNextButtonClick() {
 
+        if(!checkEventParams())
+            return
         // Initialise event
         event?.title = event_creation_title.text.toString()
         event?.description = eventCreationDescription.text

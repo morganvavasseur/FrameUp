@@ -65,6 +65,7 @@ class PlacesFragment : Fragment(), TextWatcher{
         locationSearchBar.addTextChangeListener(this)
         placesRecyclerView.layoutManager = LinearLayoutManager(context)
         placesRecyclerView.adapter = FoundedPlacesItemAdapter(places, onFoundedPlaceItemListener1)
+
     }
 
     fun searchPlaces() {
@@ -96,6 +97,7 @@ class PlacesFragment : Fragment(), TextWatcher{
             throw RuntimeException(context.toString() + " must implement OnFragmentInteractionListener")
         }
     }
+
 
 
     override fun afterTextChanged(s: Editable?) {

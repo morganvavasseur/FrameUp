@@ -1,31 +1,21 @@
 package com.example.amaze.activities
 
-import android.app.DatePickerDialog
-import android.content.Intent
-import android.net.Uri
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentTransaction
+import android.support.v7.app.AppCompatActivity
 import android.util.Log
-import android.widget.Toast
-import com.example.amaze.AmazeApp
-import com.example.amaze.MainActivity
-import com.example.amaze.R
-import com.example.amaze.components.AmazeNextButton
 import com.example.amaze.fragments.AddFriendsToEventFragment
 import com.example.amaze.fragments.EventParamsFragment
 import com.example.amaze.fragments.PlacesFragment
 import com.example.amaze.models.Place
-import com.example.amaze.network.*
-import com.example.amaze.utils.SecureStorageServices
-import kotlinx.android.synthetic.main.activity_create_event.*
-import kotlinx.android.synthetic.main.fragment_event__params.*
+import com.example.amaze.network.EventResult
+import com.example.amaze.network.RetrofitClient
+import com.example.amaze.network.SendableEvent
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.util.*
-import kotlin.collections.ArrayList
+
 
 class CreateEventActivity : AppCompatActivity(), EventParamsFragment.OnEventParamsListener, AddFriendsToEventFragment.OnAddFriendsFragmentListener,
     PlacesFragment.OnPlacesFragmentListener {
@@ -45,17 +35,17 @@ class CreateEventActivity : AppCompatActivity(), EventParamsFragment.OnEventPara
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_create_event)
+        setContentView(com.example.amaze.R.layout.activity_create_event)
         event = SendableEvent()
         eventParamsFragment = EventParamsFragment.newInstance(event)
 
         eventParamsFragment.setOnEventParamsListener(this)
 
-        setFragment(eventParamsFragment)
+        setFragment(eventParamsFragment, tag = "tag")
     }
 
 
-    private fun setFragment(fragment: Fragment, args : Place? = null) {
+    private fun setFragment(fragment: Fragment, args : Place? = null, tag : String? = "") {
         if (args != null) {
             var arguments = Bundle()
             arguments.putSerializable("param2", args)
@@ -64,7 +54,8 @@ class CreateEventActivity : AppCompatActivity(), EventParamsFragment.OnEventPara
 
 
         var fragmentTransaction : FragmentTransaction = supportFragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.createEventFragment, fragment)
+        fragmentTransaction.replace(com.example.amaze.R.id.createEventFragment, fragment,tag)
+        fragmentTransaction.addToBackStack("tag")
         fragmentTransaction.commit()
     }
 
@@ -73,6 +64,19 @@ class CreateEventActivity : AppCompatActivity(), EventParamsFragment.OnEventPara
         addFriendsToEventFragment = AddFriendsToEventFragment.newInstance(event)
         addFriendsToEventFragment.setOnAddFriendsFragmentListener(this)
         setFragment(addFriendsToEventFragment)
+    }
+
+    override fun onBackPressed() {
+
+        val fm = supportFragmentManager
+        if (fm.backStackEntryCount > 0) {
+            Log.i("MainActivity", "popping backstack")
+            fm.popBackStack()
+        } else {
+            Log.i("MainActivity", "nothing on backstack, calling super")
+            super.onBackPressed()
+        }
+        super.onBackPressed()
     }
 
     override fun onEventCreated(finishedEvent: SendableEvent) {

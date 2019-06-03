@@ -81,7 +81,12 @@
     <string name="signup_lastname_helper_text">What\'s your name My Lord ?</string>
     <string name="signup_email_helper_text">This format of email is invalid</string>
     <string name="signup_repeat_password_helper_text">Both password doesn\'t match</string>
-
+    <string name="new_account_suggestion_text"><![CDATA[Don’t have an account? Swipe right to create a new account ->]]></string>
+    <string name="new_event_no_title_error">Event must have a title !</string>
+    <string name="new_event_no_location_error">Where are going to come your guest ?</string>
+    <string name="new_event_no_date_error">When are your guest supposed to come ?</string>
+    <string name="new_event_no_price_error">Need some help from your guest for this birthday ?</string>
+    <string name="new_event_no_description_error">Tell some words about this birthday</string>
 
 
     <string name="welcome">Welcome !</string>
