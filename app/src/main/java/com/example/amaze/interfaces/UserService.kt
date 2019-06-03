@@ -42,4 +42,9 @@ interface UserService {
         @Field("password") password: String,
         @Field("firstName") firstName: String,
         @Field("lastName") lastName: String): Call<ConnectResults>
+
+    @DELETE("users/{id}")
+    fun deleteUser(
+        @Path("id") id : String,
+        @Header("Authorization") auth : String = "Bearer ${SecureStorageServices.authJwtToken}") : Call<Any>
 }

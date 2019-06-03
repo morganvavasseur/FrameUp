@@ -145,40 +145,6 @@
                         android:id="@+id/guideline2"/>
             </android.support.constraint.ConstraintLayout>
 
-            <Button
-                    android:id="@+id/info_deleteAccountButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/delete_account"
-                    android:background="@color/colorWhite"
-                    android:textColor="@color/colorRedText"
-                    android:textAllCaps="false"
-                    android:layout_marginEnd="8dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    android:layout_marginTop="16dp"
-                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout5"
-                    android:layout_marginStart="8dp"
-                    app:layout_constraintStart_toStartOf="parent"/>
-
-            <Button
-                    android:id="@+id/info_logoutButton"
-                    android:drawableStart="@drawable/logout"
-                    android:text="@string/log_out"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:drawablePadding="10dp"
-                    android:textColor="#F47155"
-                    android:background="@color/transparent"
-                    android:textAllCaps="false"
-                    android:layout_marginTop="32dp"
-                    app:layout_constraintTop_toBottomOf="@+id/info_deleteAccountButton"
-                    app:layout_constraintStart_toStartOf="parent"
-                    android:layout_marginStart="8dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    android:layout_marginEnd="8dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    android:layout_marginBottom="8dp"/>
-
             <android.support.constraint.ConstraintLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -217,6 +183,38 @@
                         app:layout_constraintVertical_bias="0.0"
                         tools:text="Diet informations..."/>
             </android.support.constraint.ConstraintLayout>
+
+            <Button
+                    android:id="@+id/info_deleteAccountButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/delete_account"
+                    android:background="@color/colorWhite"
+                    android:textColor="@color/colorRedText"
+                    android:textAllCaps="false"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginTop="16dp"
+                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout5"
+                    app:layout_constraintStart_toStartOf="parent"/>
+
+            <Button
+                    android:id="@+id/info_logoutButton"
+                    android:drawableStart="@drawable/logout"
+                    android:text="@string/log_out"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="10dp"
+                    android:textColor="#F47155"
+                    android:background="@color/transparent"
+                    android:textAllCaps="false"
+                    android:layout_marginTop="32dp"
+                    app:layout_constraintTop_toBottomOf="@+id/info_deleteAccountButton"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginStart="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginEnd="8dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_marginBottom="8dp"/>
 
         </android.support.constraint.ConstraintLayout>
     </ScrollView>
