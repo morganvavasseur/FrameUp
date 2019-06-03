@@ -1,0 +1,383 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"cons",
+				"console.log"
+			],
+			[
+				"ob",
+				"objB"
+			],
+			[
+				"text",
+				"text-decoration\tproperty"
+			],
+			[
+				"flex",
+				"flex-direction\tproperty"
+			],
+			[
+				"list",
+				"list-style\tproperty"
+			],
+			[
+				"b",
+				"background\tproperty"
+			],
+			[
+				"font",
+				"font-size\tproperty"
+			],
+			[
+				"create",
+				"createElement〔function〕"
+			],
+			[
+				"fun",
+				"function〔keyword〕"
+			],
+			[
+				"te",
+				"text-block"
+			],
+			[
+				"fo",
+				"footer\tTag"
+			],
+			[
+				"fr",
+				"firebase"
+			],
+			[
+				"a",
+				"auth"
+			],
+			[
+				"fir",
+				"firebaseApp"
+			],
+			[
+				"ht",
+				"https"
+			],
+			[
+				"slide",
+				"slide__img"
+			],
+			[
+				"ima",
+				"images"
+			],
+			[
+				"sacri",
+				"sacrifice_text"
+			],
+			[
+				"sacr",
+				"sacrifice_text"
+			],
+			[
+				"sa",
+				"sacrifice_text"
+			],
+			[
+				"figu",
+				"figure\tTag"
+			],
+			[
+				"if",
+				"iframe\tTag"
+			],
+			[
+				"im",
+				"iframe\t<iframe>"
+			],
+			[
+				"main",
+				"main\t<main>"
+			],
+			[
+				"ma",
+				"main\t<main>"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 357.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"aur",
+				"Autoprefix CSS"
+			],
+			[
+				"pclp",
+				"Package Control: List Packages"
+			],
+			[
+				"boxy",
+				"Boxy Theme: Configuration"
+			],
+			[
+				"pcip",
+				"Package Control: Install Package"
+			],
+			[
+				"pcl",
+				"Package Control: List Packages"
+			],
+			[
+				"stop",
+				"SublimeServer: Stop SublimeServer"
+			],
+			[
+				"start",
+				"SublimeServer: Restart SublimeServer"
+			],
+			[
+				"restart",
+				"SublimeServer: Restart SublimeServer"
+			],
+			[
+				"pc",
+				"Package Control: Remove Package"
+			],
+			[
+				"server",
+				"SublimeServer: Start SublimeServer"
+			],
+			[
+				"bo",
+				"Boxy Theme: Configuration"
+			],
+			[
+				"pci",
+				"Package Control: List Packages"
+			],
+			[
+				"pcrp",
+				"Package Control: Remove Package"
+			]
+		],
+		"width": 558.0
+	},
+	"console":
+	{
+		"height": 130.0,
+		"history":
+		[
+			"control+keypad_divide",
+			"Ctrl+Shift+/",
+			"Ctrl+/",
+			"sublime.log_commands(True)",
+			"import urllib.request,os,hashlib; h = '6f4c264a24d933ce70df5dedcf1dcaee' + 'ebe013ee18cced0ef93d5f746d80ef60'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/morganvavasseur/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/Users/morganvavasseur/Library/Application Support/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
+		"/Users/morganvavasseur/Documents/Hetic/Web3/Amaze/website/app/untitled.html",
+		"/Users/morganvavasseur/Documents/Hetic/web1/Projet initiale/project_sass-compass/config.rb",
+		"/Users/morganvavasseur/Documents/DispoFragment.kt",
+		"/DispoFragment.txt",
+		"/DispoFragment.kt",
+		"/Users/morganvavasseur/Downloads/white icon.svg",
+		"/Users/morganvavasseur/Documents/Shell/essaie.sh",
+		"/Users/morganvavasseur/Documents/Hetic/Web3/Amaze/app/src/main/res/drawable/ic_launcher_background.xml",
+		"/Users/morganvavasseur/Documents/Hetic/Web3/Partiel/partiel.html",
+		"/Users/morganvavasseur/Documents/Hetic/Web3/Partiel/partieljs.js",
+		"/Applications/MAMP/htdocs/bWAPP_latest/bWAPP/admin/settings.php",
+		"/Users/morganvavasseur/Documents/Hetic/Web3/Sécurité Informatique/bWAPP_latest/bWAPP/admin/settings.php",
+		"/Users/morganvavasseur/Documents/pepite.html",
+		"/Users/morganvavasseur/Documents/style.css",
+		"/Volumes/TOSHIBA EXT/etc/autres/disque dur provisoire/etc/morganvavasseur3662904356/Historique/laurinevavasseur1760812644.xml",
+		"/Users/morganvavasseur/Downloads/design element-02.svg",
+		"/Users/morganvavasseur/Documents/untitled.html",
+		"/Users/morganvavasseur/Documents/Hetic/Web2/feelae/hetic_feelae_groupe_12_web/scss/partials/_animation.scss",
+		"/Users/morganvavasseur/Documents/Hetic/Web2/feelae/hetic_feelae_groupe_12_web/scss/partials/_home.scss",
+		"/Users/morganvavasseur/Documents/Hetic/Web2/feelae/hetic_feelae_groupe_12_web/scss/partials/_header.scss",
+		"/Users/morganvavasseur/Documents/Hetic/Web2/feelae/hetic_feelae_groupe_12_web/scss/style.scss",
+		"/Users/morganvavasseur/Documents/Hetic/Web2/feelae/hetic_feelae_groupe_12_web/js/main.js",
+		"/Users/morganvavasseur/Documents/Hetic/Web2/feelae/hetic_feelae_groupe_12_web/css/style.css",
+		"/Users/morganvavasseur/Documents/Hetic/Web2/feelae/hetic_feelae_groupe_12_web/scss/partials/_footer.scss",
+		"/Users/morganvavasseur/Documents/Hetic/Web2/feelae/hetic_feelae_groupe_12_web/scss/partials/_variables.scss",
+		"/Users/morganvavasseur/Documents/Hetic/Web2/feelae/hetic_feelae_groupe_12_web/scss/partials/_reset.scss",
+		"/Users/morganvavasseur/Documents/Hetic/Web2/feelae/hetic_feelae_groupe_12_web/img/doctors.png",
+		"/Users/morganvavasseur/Documents/Hetic/Web2/feelae/hetic_feelae_groupe_12_web/index.html",
+		"/Users/morganvavasseur/Library/Application Support/Sublime Text 3/Packages/User/Default (OSX).sublime-keymap",
+		"/Users/morganvavasseur/Library/Application Support/Sublime Text 3/Packages/Default/Default (OSX).sublime-keymap",
+		"/Users/morganvavasseur/Documents/Hetic/Web2/feelae/hetic_feelae_groupe_12_web/.gitignore",
+		"/Users/morganvavasseur/Documents/Hetic/Web2/vue.js/vue-webpack-4-cssnext/src/views/SignUp.vue",
+		"/Users/morganvavasseur/Documents/Hetic/Web2/vue.js/vue-webpack-4-cssnext/src/views/Login.vue",
+		"/Users/morganvavasseur/Documents/Pro/Ratp/test_cludo_inline.html",
+		"/Users/morganvavasseur/Documents/Pro/Ratp/test_cludo_overlay.html",
+		"/Users/morganvavasseur/Documents/Pro/Ratp/test_cludo.html",
+		"/Users/morganvavasseur/Documents/Pro/Ratp/test_cludi.html",
+		"/Users/morganvavasseur/Documents/Hetic/Web2/AMC-Design-Fiction/styles/scss/blocs/_sacrifice.scss",
+		"/Users/morganvavasseur/Documents/Hetic/Web2/AMC-Design-Fiction/styles/scss/screen.scss",
+		"/Users/morganvavasseur/Documents/Hetic/Web2/AMC-Design-Fiction/README.md",
+		"/Users/morganvavasseur/Downloads/V2/event.html",
+		"/Users/morganvavasseur/.zshrc",
+		"/Users/morganvavasseur/Downloads/V2/js/burger.js",
+		"/Users/morganvavasseur/Downloads/V2/low-poly.html",
+		"/Users/morganvavasseur/Downloads/V2/img-layout/arrows.svg",
+		"/Users/morganvavasseur/Library/Application Support/Sublime Text 3/Packages/Emmet/Default (OSX).sublime-keymap",
+		"/Users/morganvavasseur/Library/Application Support/Sublime Text 3/Packages/User/Emmet.sublime-settings",
+		"/Users/morganvavasseur/Documents/untitled.css"
+	],
+	"find":
+	{
+		"height": 48.0
+	},
+	"find_in_files":
+	{
+		"height": 132.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 39.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.SublimeLinter":
+	{
+		"height": 106.0
+	},
+	"output.SublimeLinter Messages":
+	{
+		"height": 102.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.mdpopups":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "package.sublime-project",
+	"replace":
+	{
+		"height": 42.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": false,
+	"side_bar_width": 188.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
