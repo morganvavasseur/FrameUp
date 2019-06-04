@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Developed by Yann Malanda on 04/06/19 10:31.
+  ~ Last modified 02/06/19 17:34
+  ~ Copyright (c) 2019.
+  ~
+  -->
+
+<shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle" >
+    <corners
+            android:radius="100dp"
+            />
+    <solid
+            android:color="@color/colorWhite"
+            />
+    <padding
+            android:left="0dp"
+            android:top="0dp"
+            android:right="0dp"
+            android:bottom="0dp"
+            />
+    <size
+            android:width="302dp"
+            android:height="50dp"
+            />
+</shape>
