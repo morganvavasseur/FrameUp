@@ -96,6 +96,7 @@
     <string name="invite_description">Once the configuration finished invite your friends through facebook</string>
     <string name="enjoy_title">Surprise &amp; enjoy</string>
     <string name="enjoy_description">Surprise the people you love and enjoy memorable moments</string>
+    <string name="enjoy_image_description">An enjoy image</string>
     <string name="enjoy_button">Let\'s discover !</string>
     <string name="delete_account">Delete account</string>
     <string name="other_diet">Other</string>
@@ -105,4 +106,8 @@
     <string name="error_load_event">An error occured when trying to load event, try to restart Amaze</string>
     <string name="comming">Comming</string>
     <string name="not_comming">Not comming</string>
+    <string name="event_created">Event created !</string>
+    <string name="event_successfully_created_image_description">The event successfully created image description</string>
+    <string name="back_to_home">Back to home</string>
+    <string name="empty_page">This feature is not available at this time.</string>
 </resources>
