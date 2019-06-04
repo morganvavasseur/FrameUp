@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import com.example.amaze.fragments.AddFriendsToEventFragment
 import com.example.amaze.fragments.EventParamsFragment
+import com.example.amaze.fragments.EventSuccessfullyCreatedFragment
 import com.example.amaze.fragments.PlacesFragment
 import com.example.amaze.models.Place
 import com.example.amaze.network.EventResult
@@ -88,7 +89,7 @@ class CreateEventActivity : AppCompatActivity(), EventParamsFragment.OnEventPara
             }
 
             override fun onResponse(call: Call<EventResult>, response: Response<EventResult>) {
-                finish()
+                setFragment(EventSuccessfullyCreatedFragment())
             }
         })
 
