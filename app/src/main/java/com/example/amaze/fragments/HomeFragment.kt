@@ -1,4 +1,11 @@
-package com.example.amaze.activities
+/*
+ * Developed by Yann Malanda on 6/4/19 8:32 PM.
+ * Last modified 6/4/19 7:42 PM
+ * Copyright (c) 2019.
+ *
+ */
+
+package com.example.amaze.fragments
 
 
 import android.content.Intent
@@ -9,20 +16,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.amaze.R
-import android.support.v7.widget.LinearLayoutManager
-import android.widget.*
 import com.example.amaze.AmazeApp
-import com.example.amaze.adapters.EventCardAdapter
+import com.example.amaze.activities.CreateEventActivity
 import com.example.amaze.adapters.HomeFragmentAdapter
-import com.example.amaze.models.Event
-import com.example.amaze.network.EventResult
-import com.example.amaze.network.RetrofitClient
-import com.example.amaze.utils.ExtraStrings
-import com.example.amaze.utils.SecureStorageServices
 import kotlinx.android.synthetic.main.fragment_home.*
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 
 // the fragment initialization parameters, onFoundedPlaceItemListener1.g. ARG_ITEM_NUMBER

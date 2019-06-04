@@ -1,6 +1,5 @@
 package com.example.amaze
 
-import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v4.app.Fragment
@@ -10,7 +9,7 @@ import android.view.MenuItem
 import android.widget.FrameLayout
 import android.widget.Toast
 import com.example.amaze.activities.ProfileFragment
-import com.example.amaze.activities.HomeFragment
+import com.example.amaze.fragments.HomeFragment
 import com.example.amaze.activities.NotificationsFragment
 
 

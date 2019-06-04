@@ -9,11 +9,6 @@ import android.view.ViewGroup
 import android.widget.TextView
 import com.example.amaze.R
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, onFoundedPlaceItemListener1.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
 /**
  * A simple [Fragment] subclass.
  *

@@ -20,10 +20,6 @@ import retrofit2.Response
 
 class CreateEventActivity : AppCompatActivity(), EventParamsFragment.OnEventParamsListener, AddFriendsToEventFragment.OnAddFriendsFragmentListener,
     PlacesFragment.OnPlacesFragmentListener {
-    override fun onPlaceSelected(selectedPlace: Place) {
-
-    }
-
 
     private lateinit var event : SendableEvent
 
@@ -88,6 +84,10 @@ class CreateEventActivity : AppCompatActivity(), EventParamsFragment.OnEventPara
                 setFragment(EventSuccessfullyCreatedFragment())
             }
         })
+
+    }
+
+    override fun onPlaceSelected(selectedPlace: Place) {
 
     }
 
