@@ -14,9 +14,11 @@ import android.opengl.Visibility
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.example.amaze.AmazeApp
 
 import com.example.amaze.R
@@ -76,16 +78,16 @@ class HostedEventFragment : Fragment(), EventCardAdapter.OnEventCardListener {
 
         getEventRequest.enqueue(object : Callback<ArrayList<EventResult>> {
             override fun onFailure(call: Call<ArrayList<EventResult>>, t: Throwable) {
-                noEventTv.setText(R.string.error_load_event)
+                Toast.makeText(context, getText(R.string.error_load_event), Toast.LENGTH_LONG).show()
             }
 
             override fun onResponse(call: Call<ArrayList<EventResult>>, response: Response<ArrayList<EventResult>>) {
                 var responseEvents = response.body()
                 if(responseEvents is ArrayList<EventResult>) {
                     if (!responseEvents.isEmpty())
-                        noEventTv.visibility = View.GONE
-                    events = responseEvents
-                    recyclerViewHostedEvents.layoutManager = LinearLayoutManager(context!!)
+                        events = responseEvents
+
+                    recyclerViewHostedEvents.layoutManager = LinearLayoutManager(context!!) as RecyclerView.LayoutManager?
                     recyclerViewHostedEvents.adapter = EventCardAdapter(events, this@HostedEventFragment, false)
                 }
             }

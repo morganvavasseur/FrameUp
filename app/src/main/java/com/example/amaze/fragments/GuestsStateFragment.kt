@@ -22,6 +22,7 @@ import com.example.amaze.adapters.GuestsStateFragmentAdapter
 import com.example.amaze.adapters.HomeFragmentAdapter
 import com.example.amaze.models.Guest
 import com.example.amaze.network.EventResult
+import kotlinx.android.synthetic.main.activity_event.*
 import kotlinx.android.synthetic.main.fragment_guests_state.*
 import kotlinx.android.synthetic.main.fragment_home.*
 
@@ -45,7 +46,7 @@ class GuestsStateFragment : Fragment() {
     private var commingGuests: List<Guest>? = null
     private var notCommingGuests: List<Guest>? = null
     private var maybeCommingGuests: List<Guest>? = null
-    private var listener: OnFragmentInteractionListener? = null
+    private var listener: OnGuestsStateListener? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -63,6 +64,7 @@ class GuestsStateFragment : Fragment() {
         val viewPager : ViewPager = guestsStateViewPager
         viewPager.adapter = guestsStateFragmentAdapter
         guestsStateTabLayout.setupWithViewPager(guestsStateViewPager)
+        closeGuestStateFragmentButton.setOnClickListener {this.listener?.onGuestsStateClose()}
     }
 
     override fun onCreateView(
@@ -71,6 +73,10 @@ class GuestsStateFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_guests_state, container, false)
+    }
+
+    fun setOnGuestsStateListener(callback : OnGuestsStateListener) {
+        this.listener = callback
     }
 
     /**
@@ -84,9 +90,9 @@ class GuestsStateFragment : Fragment() {
      * (http://developer.android.com/training/basics/fragments/communicating.html)
      * for more information.
      */
-    interface OnFragmentInteractionListener {
+    interface OnGuestsStateListener {
         // TODO: Update argument type and name
-        fun onFragmentInteraction(uri: Uri)
+        fun onGuestsStateClose()
     }
 
     companion object {

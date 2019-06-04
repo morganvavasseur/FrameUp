@@ -111,4 +111,6 @@
     <string name="back_to_home">Back to home</string>
     <string name="empty_page">This feature is not available at this time.</string>
     <string name="delete_event">Delete event</string>
+    <string name="close">Close</string>
+    <string name="add_guests">Add guests</string>
 </resources>

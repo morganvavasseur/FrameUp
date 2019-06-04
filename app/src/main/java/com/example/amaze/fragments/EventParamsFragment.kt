@@ -134,6 +134,13 @@ class EventParamsFragment : Fragment(), AmazeNextButton.OnNextButtonListener, Fo
         return testEventDate
     }
 
+    fun checkEventHour() : Boolean {
+        val testEventHour = event_creation_hour.text.isNotEmpty()
+        if (!testEventHour)
+            event_creation_hour.setError(getString(R.string.new_event_no_date_error))
+        return testEventHour
+    }
+
     fun checkEventPrice() : Boolean {
         val testEventPrice = event_creation_price.text.isNotEmpty()
         if (!testEventPrice)
@@ -154,6 +161,8 @@ class EventParamsFragment : Fragment(), AmazeNextButton.OnNextButtonListener, Fo
         if (!checkEventLocation())
             return false
         if (!checkEventDate())
+            return false
+        if (!checkEventHour())
             return false
         if (!checkEventPrice())
             return false

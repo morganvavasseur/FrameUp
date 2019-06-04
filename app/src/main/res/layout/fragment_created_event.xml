@@ -31,21 +31,10 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginEnd="32dp"
                 android:layout_marginStart="32dp"
-                android:layout_marginBottom="128dp"
-                app:layout_constraintBottom_toBottomOf="parent"/>
-
-        <ImageView
-                android:src="@drawable/no_event"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/noInvitedEventIv"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginEnd="8dp"
-                app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginStart="8dp"
-                android:layout_marginBottom="32dp"
-                app:layout_constraintBottom_toTopOf="@+id/noInvitedEventTv"
-                android:visibility="visible"/>
+                android:layout_marginBottom="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginTop="8dp"
+                app:layout_constraintTop_toTopOf="parent"/>
 
     </android.support.constraint.ConstraintLayout>
 

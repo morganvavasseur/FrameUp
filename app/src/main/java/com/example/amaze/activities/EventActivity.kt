@@ -14,6 +14,8 @@ import android.widget.EditText
 import android.widget.Toast
 import com.example.amaze.R
 import com.example.amaze.adapters.FoundedPlacesItemAdapter
+import com.example.amaze.components.AmazeEventStateButton
+import com.example.amaze.fragments.AddFriendsToEventFragment
 import com.example.amaze.fragments.PlacesFragment
 import com.example.amaze.fragments.GuestsStateFragment
 import com.example.amaze.models.Place
@@ -28,14 +30,15 @@ import kotlinx.android.synthetic.main.amaze_guests_component.*
 import kotlinx.android.synthetic.main.amaze_guests_component.view.*
 import kotlinx.android.synthetic.main.event_summary_card.*
 import kotlinx.android.synthetic.main.event_summary_card.view.*
+import kotlinx.android.synthetic.main.fragment_guests_state.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.text.SimpleDateFormat
 import java.util.*
 
-class EventActivity : AppCompatActivity(), FoundedPlacesItemAdapter.OnFoundedPlaceItemListener, PlacesFragment.OnPlacesFragmentListener  {
-
+class EventActivity : AppCompatActivity(), FoundedPlacesItemAdapter.OnFoundedPlaceItemListener, PlacesFragment.OnPlacesFragmentListener, AmazeEventStateButton.OnEventStateListener, GuestsStateFragment.OnGuestsStateListener,
+    AddFriendsToEventFragment.OnAddFriendsFragmentListener {
 
     lateinit var event: EventResult
     var isHostedByAuthUser : Boolean = false
@@ -44,14 +47,13 @@ class EventActivity : AppCompatActivity(), FoundedPlacesItemAdapter.OnFoundedPla
     var eventDate : String = ""
     var eventHour : String = ""
     lateinit var guestsStateFragment : GuestsStateFragment
-
+    lateinit var addFriendsToEvent: AddFriendsToEventFragment
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_event)
 
         placesFragment = PlacesFragment.newInstance(this)
-
 
         event = intent.extras.getSerializable(ExtraStrings.EXTRA_EVENT) as EventResult
         isHostedByAuthUser = intent.extras.getBoolean(ExtraStrings.EXTRA_IS_OWNER)
@@ -65,18 +67,6 @@ class EventActivity : AppCompatActivity(), FoundedPlacesItemAdapter.OnFoundedPla
 
         displayEventInformations()
         adaptLayoutIfEditable()
-
-        guestsStateFragment = GuestsStateFragment.newInstance(event)
-
-        eventDate = getEventDate(ExtraStrings.EVENT_ACTIVITY_DATE_FORMAT)
-        eventHour = getEventDate(ExtraStrings.EVENT_SUMMARY_HOUR_FORMAT)
-
-        eventEditButton.setOnClickListener({onEventEditButtonClick()})
-        eventSummaryCard.eventSummaryCardAddress.setOnClickListener{onEventLocationTvClick()}
-        eventSummaryCard.eventSummaryCardDate.setOnClickListener{useDatePicker()}
-        eventSummaryCard.eventSummaryCardHour.setOnClickListener{useTimePicker()}
-        amazeGuestsComponent.guestsComponentButton.setOnClickListener {onGuestComponentClick()}
-        deleteEventTextView.setOnClickListener{onDeleteEventClick()}
     }
 
     fun onEventLocationTvClick() {
@@ -105,6 +95,19 @@ class EventActivity : AppCompatActivity(), FoundedPlacesItemAdapter.OnFoundedPla
                 var responseEvent = response.body()
                 if(responseEvent is EventResult) {
                     event = responseEvent
+                    guestsStateFragment = GuestsStateFragment.newInstance(event)
+                    addFriendsToEvent = AddFriendsToEventFragment.newInstance(SendableEvent(event))
+
+                    eventDate = getEventDate(ExtraStrings.EVENT_ACTIVITY_DATE_FORMAT)
+                    eventHour = getEventDate(ExtraStrings.EVENT_SUMMARY_HOUR_FORMAT)
+
+                    eventEditButton.setOnClickListener({onEventEditButtonClick()})
+                    eventSummaryCard.eventSummaryCardAddress.setOnClickListener{onEventLocationTvClick()}
+                    eventSummaryCard.eventSummaryCardDate.setOnClickListener{useDatePicker()}
+                    eventSummaryCard.eventSummaryCardHour.setOnClickListener{useTimePicker()}
+                    amazeGuestsComponent.guestsComponentButton.setOnClickListener {onGuestComponentClick()}
+                    deleteEventTextView.setOnClickListener{onDeleteEventClick()}
+                    guestsStateFragment.setOnGuestsStateListener(this@EventActivity)
                     displayEventInformations()
 
                 }
@@ -217,6 +220,10 @@ class EventActivity : AppCompatActivity(), FoundedPlacesItemAdapter.OnFoundedPla
         eventLocationFrag.visibility = View.VISIBLE
     }
 
+    override fun onGuestsStateClose() {
+        eventLocationFrag.visibility = View.GONE
+    }
+
     override fun onFoundedPlaceClick(clickedPlace: Place) {
         eventLocationFrag.visibility = View.GONE
         event.location = clickedPlace
@@ -266,7 +273,13 @@ class EventActivity : AppCompatActivity(), FoundedPlacesItemAdapter.OnFoundedPla
             return ""+day
     }
 
+    override fun onEventStateChanged(eventChanged: EventResult, stateButton: AmazeEventStateButton) {
+        eventLocationFrag.visibility = View.GONE
+    }
 
     override fun onPlaceSelected(selectedPlace: Place) {
+    }
+
+    override fun onEventCreated(event: SendableEvent) {
     }
 }

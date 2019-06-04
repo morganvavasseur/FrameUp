@@ -91,7 +91,6 @@ class InvitedEventFragment : Fragment(), EventCardAdapter.OnEventCardListener {
                 var responseEvents = response.body()
                 if(responseEvents is ArrayList<EventResult>) {
                     if (responseEvents.isNotEmpty()){
-                        noInvitedEventIv.visibility = View.GONE
                         noInvitedEventTv.visibility = View.GONE
 
                     }
