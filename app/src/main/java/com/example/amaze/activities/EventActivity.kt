@@ -162,7 +162,6 @@ class EventActivity : AppCompatActivity(), FoundedPlacesItemAdapter.OnFoundedPla
         if(isEditable) {
             editText.isFocusable = inEditMode
             editText.isFocusableInTouchMode = inEditMode
-            editText.isSuggestionsEnabled = inEditMode
         }
 
         if (inEditMode)
