@@ -76,7 +76,7 @@ class HostedEventFragment : Fragment(), EventCardAdapter.OnEventCardListener {
 
         getEventRequest.enqueue(object : Callback<ArrayList<EventResult>> {
             override fun onFailure(call: Call<ArrayList<EventResult>>, t: Throwable) {
-                error(t.message.toString())
+                noEventTv.setText(R.string.error_load_event)
             }
 
             override fun onResponse(call: Call<ArrayList<EventResult>>, response: Response<ArrayList<EventResult>>) {

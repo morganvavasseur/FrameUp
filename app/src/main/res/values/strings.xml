@@ -110,4 +110,5 @@
     <string name="event_successfully_created_image_description">The event successfully created image description</string>
     <string name="back_to_home">Back to home</string>
     <string name="empty_page">This feature is not available at this time.</string>
+    <string name="delete_event">Delete event</string>
 </resources>

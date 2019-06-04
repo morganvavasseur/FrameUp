@@ -38,4 +38,10 @@ interface EventService {
     fun getEvent(
         @Path("id") id : String,
         @Header("Authorization") auth : String = "Bearer ${SecureStorageServices.authJwtToken}") : Call<EventResult>
+
+    // Supprime un event
+    @DELETE("events/{id}")
+    fun deleteEvent(
+        @Path("id") id : String,
+        @Header("Authorization") auth : String = "Bearer ${SecureStorageServices.authJwtToken}") : Call<Any>
 }

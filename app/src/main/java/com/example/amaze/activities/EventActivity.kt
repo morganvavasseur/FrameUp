@@ -2,6 +2,7 @@ package com.example.amaze.activities
 
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
+import android.content.Intent
 import android.graphics.drawable.ColorDrawable
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -57,8 +58,10 @@ class EventActivity : AppCompatActivity(), FoundedPlacesItemAdapter.OnFoundedPla
 
         updateEventInformations()
 
-        if(!isHostedByAuthUser)
+        if(!isHostedByAuthUser) {
             eventEditButton.visibility = View.GONE
+            deleteEventTextView.visibility = View.GONE
+        }
 
         displayEventInformations()
         adaptLayoutIfEditable()
@@ -73,6 +76,7 @@ class EventActivity : AppCompatActivity(), FoundedPlacesItemAdapter.OnFoundedPla
         eventSummaryCard.eventSummaryCardDate.setOnClickListener{useDatePicker()}
         eventSummaryCard.eventSummaryCardHour.setOnClickListener{useTimePicker()}
         amazeGuestsComponent.guestsComponentButton.setOnClickListener {onGuestComponentClick()}
+        deleteEventTextView.setOnClickListener{onDeleteEventClick()}
     }
 
     fun onEventLocationTvClick() {
@@ -105,6 +109,25 @@ class EventActivity : AppCompatActivity(), FoundedPlacesItemAdapter.OnFoundedPla
 
                 }
             }
+        })
+    }
+
+    fun onDeleteEventClick() {
+
+        val deleteEventRequest = RetrofitClient.eventService.deleteEvent(event.id)
+
+        deleteEventRequest.enqueue(object : Callback<Any> {
+            override fun onFailure(call: Call<Any>, t: Throwable) {
+                Toast.makeText(this@EventActivity, "Error to delete event", Toast.LENGTH_LONG).show()
+            }
+
+            override fun onResponse(call: Call<Any>, response: Response<Any>) {
+                var eventResult = response.body()
+                if (eventResult is EventResult)
+                    Toast.makeText(this@EventActivity, "${event.title} has been deleted", Toast.LENGTH_SHORT).show()
+                finish()
+            }
+
         })
     }
 
