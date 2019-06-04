@@ -9,15 +9,14 @@ package com.example.amaze.components
 
 import android.content.Context
 import android.support.constraint.ConstraintLayout
-import android.support.v4.content.ContextCompat
 import android.util.AttributeSet
 import android.view.LayoutInflater
-import com.example.amaze.AmazeApp
 import com.example.amaze.R
 import com.example.amaze.network.EventResult
 import com.example.amaze.network.RetrofitClient
 import com.example.amaze.network.SendableEvent
 import com.example.amaze.utils.SecureStorageServices
+import kotlinx.android.synthetic.main.amaze_guests_component.view.*
 import kotlinx.android.synthetic.main.amaze_state_button.view.*
 import retrofit2.Call
 import retrofit2.Callback

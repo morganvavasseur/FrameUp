@@ -44,7 +44,8 @@
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginStart="8dp"
                 android:layout_marginBottom="32dp"
-                app:layout_constraintBottom_toTopOf="@+id/noInvitedEventTv"/>
+                app:layout_constraintBottom_toTopOf="@+id/noInvitedEventTv"
+                android:visibility="visible"/>
 
     </android.support.constraint.ConstraintLayout>
 

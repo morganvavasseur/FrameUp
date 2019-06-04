@@ -5,42 +5,32 @@ import android.app.TimePickerDialog
 import android.graphics.drawable.ColorDrawable
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.speech.tts.TextToSpeech
-import android.support.design.widget.Snackbar
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentTransaction
 import android.support.v4.content.ContextCompat
-import android.support.v7.widget.LinearLayoutManager
 import android.view.View
 import android.widget.EditText
 import android.widget.Toast
 import com.example.amaze.R
-import com.example.amaze.adapters.EventCardAdapter
 import com.example.amaze.adapters.FoundedPlacesItemAdapter
 import com.example.amaze.fragments.PlacesFragment
+import com.example.amaze.fragments.GuestsStateFragment
 import com.example.amaze.models.Place
 import com.example.amaze.network.EventResult
 import com.example.amaze.network.RetrofitClient
 import com.example.amaze.network.SendableEvent
-import com.example.amaze.network.UserResult
 import com.example.amaze.utils.EventSupportFunctions
 import com.example.amaze.utils.ExtraStrings
 import com.example.amaze.utils.SecureStorageServices
 import kotlinx.android.synthetic.main.activity_event.*
-import kotlinx.android.synthetic.main.activity_event.view.*
-import kotlinx.android.synthetic.main.amaze_event_description.view.*
+import kotlinx.android.synthetic.main.amaze_guests_component.*
 import kotlinx.android.synthetic.main.amaze_guests_component.view.*
 import kotlinx.android.synthetic.main.event_summary_card.*
 import kotlinx.android.synthetic.main.event_summary_card.view.*
-import kotlinx.android.synthetic.main.fragment_created_event.*
-import kotlinx.android.synthetic.main.fragment_event__params.*
-import kotlinx.android.synthetic.main.fragment_event__params.view.*
-import kotlinx.android.synthetic.main.fragment_places.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.text.SimpleDateFormat
-import java.time.ZoneId
 import java.util.*
 
 class EventActivity : AppCompatActivity(), FoundedPlacesItemAdapter.OnFoundedPlaceItemListener, PlacesFragment.OnPlacesFragmentListener  {
@@ -52,16 +42,12 @@ class EventActivity : AppCompatActivity(), FoundedPlacesItemAdapter.OnFoundedPla
     lateinit var placesFragment: PlacesFragment
     var eventDate : String = ""
     var eventHour : String = ""
+    lateinit var guestsStateFragment : GuestsStateFragment
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_event)
-
-        eventEditButton.setOnClickListener({onEventEditButtonClick()})
-        eventSummaryCard.eventSummaryCardAddress.setOnClickListener{onEventLocationTvClick()}
-        eventSummaryCard.eventSummaryCardDate.setOnClickListener{useDatePicker()}
-        eventSummaryCard.eventSummaryCardHour.setOnClickListener{useTimePicker()}
 
         placesFragment = PlacesFragment.newInstance(this)
 
@@ -69,16 +55,24 @@ class EventActivity : AppCompatActivity(), FoundedPlacesItemAdapter.OnFoundedPla
         event = intent.extras.getSerializable(ExtraStrings.EXTRA_EVENT) as EventResult
         isHostedByAuthUser = intent.extras.getBoolean(ExtraStrings.EXTRA_IS_OWNER)
 
+        updateEventInformations()
 
         if(!isHostedByAuthUser)
             eventEditButton.visibility = View.GONE
 
-        updateEventInformations()
         displayEventInformations()
         adaptLayoutIfEditable()
 
+        guestsStateFragment = GuestsStateFragment.newInstance(event)
+
         eventDate = getEventDate(ExtraStrings.EVENT_ACTIVITY_DATE_FORMAT)
         eventHour = getEventDate(ExtraStrings.EVENT_SUMMARY_HOUR_FORMAT)
+
+        eventEditButton.setOnClickListener({onEventEditButtonClick()})
+        eventSummaryCard.eventSummaryCardAddress.setOnClickListener{onEventLocationTvClick()}
+        eventSummaryCard.eventSummaryCardDate.setOnClickListener{useDatePicker()}
+        eventSummaryCard.eventSummaryCardHour.setOnClickListener{useTimePicker()}
+        amazeGuestsComponent.guestsComponentButton.setOnClickListener {onGuestComponentClick()}
     }
 
     fun onEventLocationTvClick() {
@@ -95,7 +89,7 @@ class EventActivity : AppCompatActivity(), FoundedPlacesItemAdapter.OnFoundedPla
 
     fun updateEventInformations() {
 
-        val getEventRequest = RetrofitClient.eventService.getEvent(SecureStorageServices.authUser!!.id)
+        val getEventRequest = RetrofitClient.eventService.getEvent(event.id)
 
         getEventRequest.enqueue(object : Callback<EventResult> {
             override fun onFailure(call: Call<EventResult>, t: Throwable) {
@@ -107,6 +101,8 @@ class EventActivity : AppCompatActivity(), FoundedPlacesItemAdapter.OnFoundedPla
                 var responseEvent = response.body()
                 if(responseEvent is EventResult) {
                     event = responseEvent
+                    displayEventInformations()
+
                 }
             }
         })
@@ -126,6 +122,9 @@ class EventActivity : AppCompatActivity(), FoundedPlacesItemAdapter.OnFoundedPla
         amazeGuestsComponent.amazeGuestsMaybe.text = event.guestsMaybe.count().toString()
     }
 
+    fun onGuestComponentClick() {
+        setFragment(guestsStateFragment)
+    }
 
     fun onEventEditButtonClick() {
         // 1 - Si on est en mode edit on sauvegarde et on envoie a la base de donnée
@@ -160,10 +159,10 @@ class EventActivity : AppCompatActivity(), FoundedPlacesItemAdapter.OnFoundedPla
     }
 
     fun changeEditTextState(editText: EditText, isEditable: Boolean) {
-
         if(isEditable) {
             editText.isFocusable = inEditMode
             editText.isFocusableInTouchMode = inEditMode
+            editText.isSuggestionsEnabled = inEditMode
         }
 
         if (inEditMode)

@@ -66,7 +66,12 @@ class HostedEventFragment : Fragment(), EventCardAdapter.OnEventCardListener {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_hosted_event, container, false)
+    }
 
+    override fun onStart() {
+        super.onStart()
         val getEventRequest = RetrofitClient.eventService.getHostedEvent(SecureStorageServices.authUser!!.id)
 
         getEventRequest.enqueue(object : Callback<ArrayList<EventResult>> {
@@ -85,8 +90,6 @@ class HostedEventFragment : Fragment(), EventCardAdapter.OnEventCardListener {
                 }
             }
         })
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_hosted_event, container, false)
     }
 
     override fun onEventCardClick(event: EventResult) {
