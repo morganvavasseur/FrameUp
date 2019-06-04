@@ -84,6 +84,19 @@
                         app:layout_constraintEnd_toEndOf="@+id/event_creation_location"/>
 
 
+                <EditText
+                        android:layout_width="363dp"
+                        android:layout_height="wrap_content"
+                        android:inputType="textPersonName"
+                        android:ems="10"
+                        android:id="@+id/event_creation_hour"
+                        android:focusable="false"
+                        android:hint="@string/hour_placeholder"
+                        android:fontFamily="@font/open_sans_light"
+                        android:textSize="@dimen/event_card_infos_details_font_size"
+                        app:layout_constraintTop_toBottomOf="@+id/textView4"
+                        app:layout_constraintStart_toStartOf="@+id/textView4"/>
+
                 <TextView
                         android:text="@string/event_price_label"
                         android:layout_width="wrap_content"
@@ -93,8 +106,8 @@
                         android:textSize="@dimen/name_font_size"
                         android:textColor="@color/ColorBlackSecondary"
                         android:layout_marginTop="16dp"
-                        app:layout_constraintTop_toBottomOf="@+id/event_creation_date"
-                        app:layout_constraintStart_toStartOf="@+id/event_creation_date"/>
+                        app:layout_constraintTop_toBottomOf="@+id/event_creation_hour"
+                        app:layout_constraintStart_toStartOf="@+id/event_creation_hour"/>
 
                 <EditText
                         android:layout_width="0dp"
@@ -111,7 +124,7 @@
                         app:layout_constraintEnd_toEndOf="parent"/>
 
                 <EditText
-                        android:layout_width="0dp"
+                        android:layout_width="363dp"
                         android:layout_height="wrap_content"
                         android:inputType="numberDecimal"
                         android:ems="10"
@@ -120,9 +133,7 @@
                         android:fontFamily="@font/open_sans_light"
                         android:textSize="@dimen/subtitle_font_size"
                         app:layout_constraintTop_toBottomOf="@+id/textView13"
-                        app:layout_constraintStart_toStartOf="@+id/textView13"
-                        app:layout_constraintEnd_toEndOf="@+id/event_creation_date"
-                        />
+                        app:layout_constraintStart_toStartOf="@+id/textView13"/>
 
                 <TextView
                         android:text="@string/event_title_label"
@@ -165,6 +176,21 @@
                         android:layout_marginTop="16dp"
                         app:layout_constraintTop_toBottomOf="@+id/event_creation_location"
                         app:layout_constraintStart_toStartOf="@+id/event_creation_location"/>
+
+                <TextView
+                        android:text="@string/what_time"
+                        android:inputType="date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textView4"
+                        android:focusable="false"
+                        android:editable="false"
+                        android:fontFamily="@font/open_sans"
+                        android:textSize="@dimen/name_font_size"
+                        android:textColor="@color/ColorBlackSecondary"
+                        app:layout_constraintStart_toStartOf="@+id/event_creation_date"
+                        android:layout_marginTop="16dp"
+                        app:layout_constraintTop_toBottomOf="@+id/event_creation_date"/>
 
                 <com.example.amaze.components.AmazeEventDescription
                         android:layout_width="387dp"

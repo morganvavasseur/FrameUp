@@ -8,6 +8,7 @@
 package com.example.amaze.fragments
 
 import android.app.DatePickerDialog
+import android.app.TimePickerDialog
 import android.content.Context
 import android.content.res.ColorStateList
 import android.os.Bundle
@@ -17,6 +18,7 @@ import android.support.v4.content.ContextCompat
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.example.amaze.R
 import com.example.amaze.adapters.FoundedPlacesItemAdapter
 import com.example.amaze.components.AmazeNextButton
@@ -49,6 +51,8 @@ class EventParamsFragment : Fragment(), AmazeNextButton.OnNextButtonListener, Fo
     private var event: SendableEvent = SendableEvent()
     private var listener: OnEventParamsListener? = null
     lateinit var placesFragment: PlacesFragment
+    var eventDate = ""
+    var eventHour = ""
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -72,6 +76,7 @@ class EventParamsFragment : Fragment(), AmazeNextButton.OnNextButtonListener, Fo
         placesFragment = PlacesFragment.newInstance(this)
 
         event_creation_date.setOnClickListener {useDatePicker()}
+        event_creation_hour.setOnClickListener {useTimePicker()}
         event_creation_location.setOnClickListener { setFragment(placesFragment) }
 
         createEventNextButton.setNextButtonOnClickListener(this)
@@ -178,6 +183,8 @@ class EventParamsFragment : Fragment(), AmazeNextButton.OnNextButtonListener, Fo
         event?.description = eventCreationDescription.text
         event?.entrancePrice = Integer.parseInt(event_creation_price.text.toString())
         event?.organizers = getHostFromAuthenticatedUser()
+        event.date = eventDate + " " + eventHour
+
         listener?.onParamsDone(event!!)
 
     }
@@ -204,9 +211,23 @@ class EventParamsFragment : Fragment(), AmazeNextButton.OnNextButtonListener, Fo
         val dpd = DatePickerDialog(context, DatePickerDialog.OnDateSetListener{
                 view, mYear, mMonth, mDay ->
                 event_creation_date.setText(""+adapteDaysNumber(mDay)+"/"+adapteDaysNumber(mMonth)+"/"+mYear)
-                event.date = "${adapteDaysNumber(mMonth)}/${adapteDaysNumber(mDay)}/$mYear"
+                eventDate = "${adapteDaysNumber(mMonth)}/${adapteDaysNumber(mDay)}/$mYear"
         }, year, month, day)
         dpd.show()
+    }
+
+    fun useTimePicker() {
+        val c = Calendar.getInstance()
+        val hour = c.get(Calendar.HOUR)
+        val minute = c.get(Calendar.MINUTE)
+
+        val tpd = TimePickerDialog(context,TimePickerDialog.OnTimeSetListener(function = { view, h, m ->
+            event_creation_hour.setText("${h}H$m")
+            eventHour = "$h:$m"
+
+        }),hour,minute,false)
+
+        tpd.show()
     }
 
     fun setOnEventParamsListener(callback: OnEventParamsListener) {

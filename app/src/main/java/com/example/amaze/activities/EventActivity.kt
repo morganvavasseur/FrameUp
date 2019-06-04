@@ -1,10 +1,12 @@
 package com.example.amaze.activities
 
 import android.app.DatePickerDialog
+import android.app.TimePickerDialog
 import android.graphics.drawable.ColorDrawable
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.speech.tts.TextToSpeech
+import android.support.design.widget.Snackbar
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentTransaction
 import android.support.v4.content.ContextCompat
@@ -48,6 +50,8 @@ class EventActivity : AppCompatActivity(), FoundedPlacesItemAdapter.OnFoundedPla
     var isHostedByAuthUser : Boolean = false
     var inEditMode = false
     lateinit var placesFragment: PlacesFragment
+    var eventDate : String = ""
+    var eventHour : String = ""
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -57,6 +61,7 @@ class EventActivity : AppCompatActivity(), FoundedPlacesItemAdapter.OnFoundedPla
         eventEditButton.setOnClickListener({onEventEditButtonClick()})
         eventSummaryCard.eventSummaryCardAddress.setOnClickListener{onEventLocationTvClick()}
         eventSummaryCard.eventSummaryCardDate.setOnClickListener{useDatePicker()}
+        eventSummaryCard.eventSummaryCardHour.setOnClickListener{useTimePicker()}
 
         placesFragment = PlacesFragment.newInstance(this)
 
@@ -64,12 +69,16 @@ class EventActivity : AppCompatActivity(), FoundedPlacesItemAdapter.OnFoundedPla
         event = intent.extras.getSerializable(ExtraStrings.EXTRA_EVENT) as EventResult
         isHostedByAuthUser = intent.extras.getBoolean(ExtraStrings.EXTRA_IS_OWNER)
 
+
         if(!isHostedByAuthUser)
             eventEditButton.visibility = View.GONE
 
         updateEventInformations()
         displayEventInformations()
         adaptLayoutIfEditable()
+
+        eventDate = getEventDate(ExtraStrings.EVENT_ACTIVITY_DATE_FORMAT)
+        eventHour = getEventDate(ExtraStrings.EVENT_SUMMARY_HOUR_FORMAT)
     }
 
     fun onEventLocationTvClick() {
@@ -78,16 +87,9 @@ class EventActivity : AppCompatActivity(), FoundedPlacesItemAdapter.OnFoundedPla
     }
 
     // Formatte la date pour une date adaptée a l'event card
-    fun getEventDate(originalDate: String) : String {
-        val date = EventSupportFunctions.convertInstantStringDateToLocaleDateTime(originalDate)
-        val formatter =  SimpleDateFormat(ExtraStrings.EVENT_SUMMARY_DATE_FORMAT)
-        return formatter.format(date)
-    }
-
-    // Formatte la date pour une date adaptée a l'event card
-    fun getEventHour(originalDate: String) : String {
-        val date = EventSupportFunctions.convertInstantStringDateToLocaleDateTime(originalDate)
-        val formatter =  SimpleDateFormat(ExtraStrings.EVENT_SUMMARY_HOUR_FORMAT)
+    fun getEventDate(toFormat : String = ExtraStrings.EVENT_SUMMARY_DATE_FORMAT) : String {
+        val date = EventSupportFunctions.convertInstantStringDateToLocaleDateTime(event.date)
+        val formatter =  SimpleDateFormat(toFormat)
         return formatter.format(date)
     }
 
@@ -97,7 +99,8 @@ class EventActivity : AppCompatActivity(), FoundedPlacesItemAdapter.OnFoundedPla
 
         getEventRequest.enqueue(object : Callback<EventResult> {
             override fun onFailure(call: Call<EventResult>, t: Throwable) {
-                error(t.message.toString())
+                Toast.makeText(this@EventActivity, "Error when trying to get event informations", Toast.LENGTH_LONG).show()
+                finish()
             }
 
             override fun onResponse(call: Call<EventResult>, response: Response<EventResult>) {
@@ -113,8 +116,8 @@ class EventActivity : AppCompatActivity(), FoundedPlacesItemAdapter.OnFoundedPla
         eventSummaryCard.eventSummaryCardTitle.setText(event.title)
         eventSummaryCard.eventSummaryCardHostName.setText(EventSupportFunctions.getHost(event)?.fullName())
         eventSummaryCard.eventSummaryCardDescription.setText(event.description)
-        eventSummaryCard.eventSummaryCardDate.setText(getEventDate(event.date))
-        eventSummaryCard.eventSummaryCardHour.setText(getEventHour(event.date))
+        eventSummaryCard.eventSummaryCardDate.setText(getEventDate())
+        eventSummaryCard.eventSummaryCardHour.setText(getEventDate(ExtraStrings.EVENT_SUMMARY_HOUR_FORMAT))
         eventSummaryCard.eventSummaryCardAddress.setText(event.location.formattedAddress)
         eventSummaryCard.amazeSummaryPrice.setText(event.entrancePrice.toString())
 
@@ -130,12 +133,13 @@ class EventActivity : AppCompatActivity(), FoundedPlacesItemAdapter.OnFoundedPla
             event.title = eventSummaryCardTitle.text.toString()
             event.description = eventSummaryCardDescription.text.toString()
             event.entrancePrice = eventSummaryCard.amazeSummaryPrice.text.toString().toInt()
+            event.date = "$eventDate $eventHour"
 
             val updateEventRequest = RetrofitClient.eventService.updateEvent(event.id, SendableEvent(event))
 
             updateEventRequest.enqueue(object : Callback<EventResult> {
                 override fun onFailure(call: Call<EventResult>, t: Throwable) {
-                    error(t.message.toString())
+                    Toast.makeText(this@EventActivity, "Error to save event", Toast.LENGTH_LONG).show()
                 }
 
                 override fun onResponse(call: Call<EventResult>, response: Response<EventResult>) {
@@ -174,6 +178,7 @@ class EventActivity : AppCompatActivity(), FoundedPlacesItemAdapter.OnFoundedPla
         changeEditTextState(eventSummaryCard.amazeSummaryPrice, true)
         changeEditTextState(eventSummaryCard.eventSummaryCardAddress, false)
         changeEditTextState(eventSummaryCard.eventSummaryCardDate, false)
+        changeEditTextState(eventSummaryCard.eventSummaryCardHour, false)
 
         if(inEditMode) {
             eventEditButton.setText(R.string.save)
@@ -210,9 +215,27 @@ class EventActivity : AppCompatActivity(), FoundedPlacesItemAdapter.OnFoundedPla
         val dpd = DatePickerDialog(this, DatePickerDialog.OnDateSetListener{
                 view, mYear, mMonth, mDay ->
             eventSummaryCard.eventSummaryCardDate.setText(""+adapteDaysNumber(mDay)+"/"+adapteDaysNumber(mMonth)+"/"+mYear)
-            event.date = "${adapteDaysNumber(mMonth)}/${adapteDaysNumber(mDay)}/$mYear"
+            eventDate = "${adapteDaysNumber(mMonth)}/${adapteDaysNumber(mDay)}/$mYear"
         }, year, month, day)
         dpd.show()
+    }
+
+    fun useTimePicker() {
+
+        if(!inEditMode)
+            return
+
+        val c = Calendar.getInstance()
+        val hour = c.get(Calendar.HOUR)
+        val minute = c.get(Calendar.MINUTE)
+
+        val tpd = TimePickerDialog(this, TimePickerDialog.OnTimeSetListener(function = { view, h, m ->
+            eventSummaryCard.eventSummaryCardHour.setText("${h}H$m")
+            eventHour = "$h:$m"
+
+        }),hour,minute,false)
+
+        tpd.show()
     }
 
     fun adapteDaysNumber(day : Int) : String {

@@ -100,4 +100,7 @@
     <string name="delete_account">Delete account</string>
     <string name="other_diet">Other</string>
     <string name="save">Save</string>
+    <string name="what_time">What time ?</string>
+    <string name="hour_placeholder">Pick an hour</string>
+    <string name="error_load_event">An error occured when trying to load event, try to restart Amaze</string>
 </resources>

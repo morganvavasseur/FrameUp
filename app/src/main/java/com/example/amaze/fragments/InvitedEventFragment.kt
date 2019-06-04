@@ -16,6 +16,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.example.amaze.AmazeApp
 
 import com.example.amaze.R
@@ -70,17 +71,26 @@ class InvitedEventFragment : Fragment(), EventCardAdapter.OnEventCardListener {
     ): View? {
         // Inflate the layout for this fragment
 
+
+        return inflater.inflate(R.layout.fragment_created_event, container, false)
+    }
+
+    override fun onStart() {
+        super.onStart()
+        recyclerViewEvents.layoutManager = LinearLayoutManager(context)
+        recyclerViewEvents.adapter = EventCardAdapter(events, this, true)
+
         val getEventRequest = RetrofitClient.eventService.getInvitedEvent(SecureStorageServices.authUser!!.id)
 
         getEventRequest.enqueue(object : Callback<ArrayList<EventResult>> {
             override fun onFailure(call: Call<ArrayList<EventResult>>, t: Throwable) {
-                error(t.message.toString())
+                noInvitedEventTv.setText(R.string.error_load_event)
             }
 
             override fun onResponse(call: Call<ArrayList<EventResult>>, response: Response<ArrayList<EventResult>>) {
                 var responseEvents = response.body()
                 if(responseEvents is ArrayList<EventResult>) {
-                    if (!responseEvents.isEmpty()){
+                    if (responseEvents.isNotEmpty()){
                         noInvitedEventIv.visibility = View.GONE
                         noInvitedEventTv.visibility = View.GONE
 
@@ -91,15 +101,6 @@ class InvitedEventFragment : Fragment(), EventCardAdapter.OnEventCardListener {
                 }
             }
         })
-
-
-        return inflater.inflate(R.layout.fragment_created_event, container, false)
-    }
-
-    override fun onStart() {
-        super.onStart()
-        recyclerViewEvents.layoutManager = LinearLayoutManager(context)
-        recyclerViewEvents.adapter = EventCardAdapter(events, this, true)
     }
 
 

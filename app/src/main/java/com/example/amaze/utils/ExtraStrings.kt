@@ -8,5 +8,6 @@ class ExtraStrings {
         val EVENT_CARD_HOUR_FORMAT = "HH:mm"
         val EVENT_SUMMARY_DATE_FORMAT = "EEE, MMM dd"
         val EVENT_SUMMARY_HOUR_FORMAT = "HH:mm"
+        val EVENT_ACTIVITY_DATE_FORMAT = "MM/dd/yy"
     }
 }
