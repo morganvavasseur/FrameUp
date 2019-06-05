@@ -39,7 +39,7 @@
     <EditText
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:inputType="textPersonName"
+            android:inputType="textShortMessage|textMultiLine|textPersonName"
             android:ems="10"
             android:id="@+id/amazeDescriptionEditText"
             android:fontFamily="@font/open_sans_light"
