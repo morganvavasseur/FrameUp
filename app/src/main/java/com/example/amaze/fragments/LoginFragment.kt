@@ -81,7 +81,7 @@ class LoginFragment : Fragment() {
             override fun onResponse(call: Call<ConnectResults>, response: Response<ConnectResults>) {
                 var jwt = response.body()?.jwt
                 var user = response.body()?.user
-                
+
                 // On vérifie que le token est bien
                 // une String puis on le stock de manière sécurisé
                 if (jwt is String){

@@ -13,6 +13,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.Toast
 import com.example.amaze.AmazeApp
 import com.example.amaze.R
 import com.example.amaze.components.AmazeEventStateButton
@@ -144,7 +145,7 @@ class EventCardAdapter(var events : ArrayList<EventResult>, val onEventCardListe
 
         updateEventRequest.enqueue(object : Callback<EventResult> {
             override fun onFailure(call: Call<EventResult>, t: Throwable) {
-                error(t.message.toString())
+                Toast.makeText(AmazeApp.sharedInstance, "Error when updating event", Toast.LENGTH_LONG).show()
             }
 
             override fun onResponse(call: Call<EventResult>, response: Response<EventResult>) {
